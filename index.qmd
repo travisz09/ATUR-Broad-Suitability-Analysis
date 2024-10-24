@@ -36,6 +36,3 @@ jupyter: python3
 ## Conclusion {sec-conclusions}
 
 ## References {.unnumbered}
-
-::: {#refs}
-:::
