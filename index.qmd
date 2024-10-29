@@ -37,8 +37,8 @@ Elevation and elevation derivatives from 30-m NASA SRTM. USGS 3-DEM (10m) produc
 
 SRTM elevation sinks filled prior to calculating slope and aspect.
 
-**(Should elevation be directly used in the suitability analysis?)**
+**Should elevation be directly used in the suitability analysis?**
 
-## Conclusion {sec-conclusions}
+## Conclusion {#sec-conclusions}
 
 ## References {.unnumbered}
