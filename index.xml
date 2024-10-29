@@ -94,12 +94,12 @@ template for more focuse analysis.</p>
     computational requirements).</p>
     <p>SRTM elevation sinks filled prior to calculating slope and
     aspect.</p>
-    <p><bold>(Should elevation be directly used in the suitability
-    analysis?)</bold></p>
+    <p><bold>Should elevation be directly used in the suitability
+    analysis?</bold></p>
   </sec>
 </sec>
-<sec id="conclusion-sec-conclusions">
-  <title>3 Conclusion {sec-conclusions}</title>
+<sec id="sec-conclusions">
+  <title>3 Conclusion</title>
 </sec>
 <sec id="references">
   <title>References</title>
