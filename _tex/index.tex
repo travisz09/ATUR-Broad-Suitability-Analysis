@@ -187,6 +187,8 @@ ground water.
 
 \subsection{Elevation}\label{elevation}
 
+\subsubsection{DEM}\label{dem}
+
 Elevation and elevation derivatives from 30-m NASA SRTM. USGS 3-DEM
 (10m) product not suitable for full study area analysis due to (1) the
 large area of missing data in Mexico, and (2), the excessively high
@@ -195,6 +197,68 @@ spatial resolution (massively increasing computational requirements).
 SRTM elevation sinks filled prior to calculating slope and aspect.
 
 \textbf{Should elevation be directly used in the suitability analysis?}
+
+\subsubsection{Slope}\label{slope}
+
+Slope derived from hydrologically conditioned (filled) 30-m SRTM layer
+using quadratic surface function and a fixed 30-m neighborhood. Slope
+measured in °.
+
+\begin{quote}
+Higher slopes are less suitable because thinning is both more expensive
+and more precipitation will end up as runoff.
+\end{quote}
+
+Slope classified from 1-10 using a continuous function in ArcPro
+Suitability Mapper.
+
+\subsubsection{Aspect}\label{aspect}
+
+Aspect calculated as with slope. Aspect reference point at N. Pole.
+
+\begin{quote}
+Aspect has a large impact on solar radiation. Closer to 0 or 360 is
+desired, low suitability scores for closeness.
+\end{quote}
+
+Aspect classified from 1-10 using a continuous function in ArcPro
+Suitability Mapper.
+
+\subsection{Precipitation}\label{precipitation}
+
+\textbf{Data source?}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{PRISM normals}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    800m resolution
+  \item
+    All months (30-Y)
+  \end{itemize}
+\item
+  \textbf{Custom PRISM}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    1Km resolution
+  \item
+    Subset months of interest
+  \item
+    Custom date range
+  \item
+    Custom averaging function
+  \item
+    More granular control over data
+  \end{itemize}
+\end{itemize}
+
+\textbf{Also applies to Temp and other Climactic variables of interest.}
 
 \section{Conclusion}\label{sec-conclusions}
 

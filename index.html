@@ -125,6 +125,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#sec-data-methods" id="toc-sec-data-methods" class="nav-link" data-scroll-target="#sec-data-methods"><span class="header-section-number">2</span> Data &amp; Methods</a>
   <ul class="collapse">
   <li><a href="#elevation" id="toc-elevation" class="nav-link" data-scroll-target="#elevation"><span class="header-section-number">2.1</span> Elevation</a></li>
+  <li><a href="#precipitation" id="toc-precipitation" class="nav-link" data-scroll-target="#precipitation"><span class="header-section-number">2.2</span> Precipitation</a></li>
   </ul></li>
   <li><a href="#sec-conclusions" id="toc-sec-conclusions" class="nav-link" data-scroll-target="#sec-conclusions"><span class="header-section-number">3</span> Conclusion</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
@@ -147,9 +148,48 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="2" class="anchored" data-anchor-id="sec-data-methods"><span class="header-section-number">2</span> Data &amp; Methods</h2>
 <section id="elevation" class="level3" data-number="2.1">
 <h3 data-number="2.1" class="anchored" data-anchor-id="elevation"><span class="header-section-number">2.1</span> Elevation</h3>
+<section id="dem" class="level4" data-number="2.1.1">
+<h4 data-number="2.1.1" class="anchored" data-anchor-id="dem"><span class="header-section-number">2.1.1</span> DEM</h4>
 <p>Elevation and elevation derivatives from 30-m NASA SRTM. USGS 3-DEM (10m) product not suitable for full study area analysis due to (1) the large area of missing data in Mexico, and (2), the excessively high spatial resolution (massively increasing computational requirements).</p>
 <p>SRTM elevation sinks filled prior to calculating slope and aspect.</p>
 <p><strong>Should elevation be directly used in the suitability analysis?</strong></p>
+</section>
+<section id="slope" class="level4" data-number="2.1.2">
+<h4 data-number="2.1.2" class="anchored" data-anchor-id="slope"><span class="header-section-number">2.1.2</span> Slope</h4>
+<p>Slope derived from hydrologically conditioned (filled) 30-m SRTM layer using quadratic surface function and a fixed 30-m neighborhood. Slope measured in °.</p>
+<blockquote class="blockquote">
+<p>Higher slopes are less suitable because thinning is both more expensive and more precipitation will end up as runoff.</p>
+</blockquote>
+<p>Slope classified from 1-10 using a continuous function in ArcPro Suitability Mapper.</p>
+</section>
+<section id="aspect" class="level4" data-number="2.1.3">
+<h4 data-number="2.1.3" class="anchored" data-anchor-id="aspect"><span class="header-section-number">2.1.3</span> Aspect</h4>
+<p>Aspect calculated as with slope. Aspect reference point at N. Pole.</p>
+<blockquote class="blockquote">
+<p>Aspect has a large impact on solar radiation. Closer to 0 or 360 is desired, low suitability scores for closeness.</p>
+</blockquote>
+<p>Aspect classified from 1-10 using a continuous function in ArcPro Suitability Mapper.</p>
+</section>
+</section>
+<section id="precipitation" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="precipitation"><span class="header-section-number">2.2</span> Precipitation</h3>
+<p><strong>Data source?</strong></p>
+<ul>
+<li><strong>PRISM normals</strong>
+<ul>
+<li>800m resolution</li>
+<li>All months (30-Y)</li>
+</ul></li>
+<li><strong>Custom PRISM</strong>
+<ul>
+<li>1Km resolution</li>
+<li>Subset months of interest</li>
+<li>Custom date range</li>
+<li>Custom averaging function</li>
+<li>More granular control over data</li>
+</ul></li>
+</ul>
+<p><strong>Also applies to Temp and other Climactic variables of interest.</strong></p>
 </section>
 </section>
 <section id="sec-conclusions" class="level2" data-number="3">
