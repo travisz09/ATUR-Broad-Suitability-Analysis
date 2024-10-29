@@ -91,39 +91,6 @@
 % Set default figure placement to htbp
 \def\fps@figure{htbp}
 \makeatother
-% definitions for citeproc citations
-\NewDocumentCommand\citeproctext{}{}
-\NewDocumentCommand\citeproc{mm}{%
-  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
-\makeatletter
- % allow citations to break across lines
- \let\@cite@ofmt\@firstofone
- % avoid brackets around text for \cite:
- \def\@biblabel#1{}
- \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
-\makeatother
-\newlength{\cslhangindent}
-\setlength{\cslhangindent}{1.5em}
-\newlength{\csllabelwidth}
-\setlength{\csllabelwidth}{3em}
-\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
- {\begin{list}{}{%
-  \setlength{\itemindent}{0pt}
-  \setlength{\leftmargin}{0pt}
-  \setlength{\parsep}{0pt}
-  % turn on hanging indent if param 1 is 1
-  \ifodd #1
-   \setlength{\leftmargin}{\cslhangindent}
-   \setlength{\itemindent}{-1\cslhangindent}
-  \fi
-  % set entry spacing
-  \setlength{\itemsep}{#2\baselineskip}}}
- {\end{list}}
-\usepackage{calc}
-\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
-\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
-\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
-\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 \usepackage{url} %this package should fix any errors with URLs in refs.
 \usepackage{lineno}
@@ -177,9 +144,10 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
-  pdftitle={La Palma Earthquake Mechanisms},
-  pdfauthor={Travis Zalesky; Rowan Cockett},
-  pdfkeywords={La Palma, Earthquakes},
+  pdftitle={Arizona Aquifer Recharge Suitability Analysis},
+  pdfauthor={Travis Zalesky},
+  pdfkeywords={Arizona Tri University Recharge (ATUR), water
+table, ground water},
   colorlinks=true,
   linkcolor={blue},
   filecolor={Maroon},
@@ -188,167 +156,52 @@
   pdfcreator={LaTeX via pandoc}}
 
 
-\journalname{Earth and Space Science}
 
 \draftfalse
 
 \begin{document}
-\title{La Palma Earthquake Mechanisms}
+\title{Arizona Aquifer Recharge Suitability Analysis}
 
-\authors{Travis Zalesky\affil{1}, Rowan Cockett\affil{1}}
-\affiliation{1}{Curvenote, }
+\authors{Travis Zalesky\affil{1}}
+\affiliation{1}{University of Arizona, }
 \correspondingauthor{Travis Zalesky}{travisz@arizona.edu}
 
 
 \begin{abstract}
-In September 2021, a significant jump in seismic activity on the island
-of La Palma (Canary Islands, Spain) signaled the start of a volcanic
-crisis that still continues at the time of writing. Earthquake data is
-continually collected and published by the Instituto Geográphico
-Nacional (IGN). \ldots{}
+Aquifer recharge can be either passive or active, and is implemented in
+a variety of ways. This analysis seeks to identify regions across AZ
+which are boadly suitable for aquifer recharge projects as a general
+template for more focuse analysis.
 \end{abstract}
 
 \section*{Plain Language Summary}
-Earthquake data for the island of La Palma from the September 2021
-eruption is found \ldots{}
+Identifying regions in AZ where surface water can be stored long-term as
+ground water.
 
 
 
 
 \section{Introduction}\label{introduction}
 
-\textsubscript{Source:
-\href{https://travisz09.github.io/ATUR-Broad-Suitability-Analysis/index.qmd.html}{Article
-Notebook}}
-
-\begin{figure}[H]
-
-\centering{
-
-\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-pdf/fig-timeline-output-1.pdf}}
-
-}
-
-\caption{\label{fig-timeline}Timeline of recent earthquakes on La Palma}
-
-\end{figure}%
-
-\textsubscript{Source:
-\href{https://travisz09.github.io/ATUR-Broad-Suitability-Analysis/index.qmd.html}{Article
-Notebook}}
-
-\textsubscript{Source:
-\href{https://travisz09.github.io/ATUR-Broad-Suitability-Analysis/index.qmd.html}{Article
-Notebook}}
-
-Based on data up to and including 1971, eruptions on La Palma happen
-every 79.8 years on average.
-
-Studies of the magma systems feeding the volcano, such as Marrero et al.
-(2019), have proposed that there are two main magma reservoirs feeding
-the Cumbre Vieja volcano; one in the mantle (30-40km depth) which
-charges and in turn feeds a shallower crustal reservoir (10-20km depth).
-
-Eight eruptions have been recorded since the late 1400s
-(Figure~\ref{fig-timeline}).
-
-Data and methods are discussed in Section~\ref{sec-data-methods}.
-
-Let \(x\) denote the number of eruptions in a year. Then, \(x\) can be
-modeled by a Poisson distribution
-
-\begin{equation}\phantomsection\label{eq-poisson}{
-p(x) = \frac{e^{-\lambda} \lambda^{x}}{x !}
-}\end{equation}
-
-where \(\lambda\) is the rate of eruptions per year. Using
-Equation~\ref{eq-poisson}, the probability of an eruption in the next
-\(t\) years can be calculated.
-
-\begin{longtable}[]{@{}ll@{}}
-\caption{Recent historic eruptions on La
-Palma}\label{tbl-history}\tabularnewline
-\toprule\noalign{}
-Name & Year \\
-\midrule\noalign{}
-\endfirsthead
-\toprule\noalign{}
-Name & Year \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-Current & 2021 \\
-Teneguía & 1971 \\
-Nambroque & 1949 \\
-El Charco & 1712 \\
-Volcán San Antonio & 1677 \\
-Volcán San Martin & 1646 \\
-Tajuya near El Paso & 1585 \\
-Montaña Quemada & 1492 \\
-\end{longtable}
-
-Table~\ref{tbl-history} summarises the eruptions recorded since the
-colonization of the islands by Europeans in the late 1400s.
-
-\begin{figure}
-
-\centering{
-
-\pandocbounded{\includegraphics[keepaspectratio]{images/la-palma-map.png}}
-
-}
-
-\caption{\label{fig-map}Map of La Palma}
-
-\end{figure}%
-
-La Palma is one of the west most islands in the Volcanic Archipelago of
-the Canary Islands (Figure~\ref{fig-map}).
-
-\begin{figure}[H]
-
-\centering{
-
-\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-latex/notebooks-data-screening-fig-spatial-plot-output-1.png}}
-
-}
-
-\caption{\label{fig-spatial-plot}Locations of earthquakes on La Palma
-since 2017.}
-
-\end{figure}%
-
-\textsubscript{Source:
-\href{https://travisz09.github.io/ATUR-Broad-Suitability-Analysis/index.qmd.html}{Article
-Notebook}}
-
-Figure~\ref{fig-spatial-plot} shows the location of recent Earthquakes
-on La Palma.
-
 \section{Data \& Methods}\label{sec-data-methods}
 
-\section{Conclusion}\label{conclusion}
+\subsection{Elevation}\label{elevation}
+
+Elevation and elevation derivatives from 30-m NASA SRTM. USGS 3-DEM
+(10m) product not suitable for full study area analysis due to (1) the
+large area of missing data in Mexico, and (2), the excessively high
+spatial resolution (massively increasing computational requirements).
+
+SRTM elevation sinks filled prior to calculating slope and aspect.
+
+\textbf{(Should elevation be directly used in the suitability
+analysis?)}
+
+\section{Conclusion
+\{sec-conclusions\}}\label{conclusion-sec-conclusions}
 
 \section*{References}\label{references}
 \addcontentsline{toc}{section}{References}
-
-\vspace{1em}
-
-\textsubscript{Source:
-\href{https://travisz09.github.io/ATUR-Broad-Suitability-Analysis/index.qmd.html}{Article
-Notebook}}
-
-\phantomsection\label{refs}
-\begin{CSLReferences}{1}{0}
-\bibitem[\citeproctext]{ref-marrero2019}
-Marrero, J., García, A., Berrocoso, M., Llinares, Á., Rodríguez-Losada,
-A., \& Ortiz, R. (2019). Strategies for the development of volcanic
-hazard maps in monogenetic volcanic fields: The example of {La} {Palma}
-({Canary} {Islands}). \emph{Journal of Applied Volcanology}, \emph{8}.
-\url{https://doi.org/10.1186/s13617-019-0085-5}
-
-\end{CSLReferences}
 
 
 
