@@ -33,11 +33,44 @@ jupyter: python3
 
 ## Data & Methods {#sec-data-methods}
 ### Elevation
+#### DEM
 Elevation and elevation derivatives from 30-m NASA SRTM. USGS 3-DEM (10m) product not suitable for full study area analysis due to (1) the large area of missing data in Mexico, and (2), the excessively high spatial resolution (massively increasing computational requirements).
 
 SRTM elevation sinks filled prior to calculating slope and aspect.
 
 **Should elevation be directly used in the suitability analysis?**
+
+#### Slope
+Slope derived from hydrologically conditioned (filled) 30-m SRTM layer using quadratic surface function and a fixed 30-m neighborhood. Slope measured in °.
+
+> Higher slopes are less suitable because thinning is both more expensive and more precipitation will end up as runoff.
+
+Slope classified from 1-10 using a continuous function in ArcPro Suitability Mapper.
+
+#### Aspect
+Aspect calculated as with slope. Aspect reference point at N. Pole.
+
+> Aspect has a large impact on solar radiation.
+> Closer to 0 or 360 is desired, low suitability scores for closeness.
+
+Aspect classified from 1-10 using a continuous function in ArcPro Suitability Mapper.
+
+### Precipitation
+**Data source?**
+
+* **PRISM normals**
+  + 800m resolution
+  + All months (30-Y)
+* **Custom PRISM**
+  + 1Km resolution
+  + Subset months of interest
+  + Custom date range
+  + Custom averaging function
+  + More granular control over data
+
+**Also applies to Temp and other Climactic variables of interest.**
+
+
 
 ## Conclusion {#sec-conclusions}
 
