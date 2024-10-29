@@ -70,7 +70,26 @@ Aspect classified from 1-10 using a continuous function in ArcPro Suitability Ma
 
 **Also applies to Temp and other Climactic variables of interest.**
 
+### Vegetation Characteristics
+#### NLCD 2021 Total Canopy Cover
 
+#### Landfire
+
+### Soil Hydrology
+AZ_Soil_Hydric_Group data layer
+
+
+**Classification Schema**
+
+| Class | Count (pixels) | Text | Value |
+|:-----:|:-----:|:-------------:|:-----:|
+|A|62559472|Group A soils consist of deep, well drained sands or gravelly sands with high infiltration and low runoff rates.|10|
+|B|
+|C|
+|D|
+|A/D|
+|B/D|
+|C/D|
 
 ## Conclusion {#sec-conclusions}
 
