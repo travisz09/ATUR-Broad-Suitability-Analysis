@@ -185,14 +185,12 @@ ground water.
 
 \section{Data \& Methods}\label{sec-data-methods}
 
-\subsection{Elevation}\label{elevation}
-
-\subsubsection{DEM}\label{dem}
-
-Elevation and elevation derivatives from 30-m NASA SRTM. USGS 3-DEM
-(10m) product not suitable for full study area analysis due to (1) the
-large area of missing data in Mexico, and (2), the excessively high
-spatial resolution (massively increasing computational requirements).
+\textbf{These methods and data layers are preliminary and subject to
+change} \#\#\# Elevation \#\#\#\# DEM Elevation and elevation
+derivatives from 30-m NASA SRTM. USGS 3-DEM (10m) product not suitable
+for full study area analysis due to (1) the large area of missing data
+in Mexico, and (2), the excessively high spatial resolution (massively
+increasing computational requirements).
 
 SRTM elevation sinks filled prior to calculating slope and aspect.
 
@@ -209,56 +207,147 @@ Higher slopes are less suitable because thinning is both more expensive
 and more precipitation will end up as runoff.
 \end{quote}
 
-Slope classified from 1-10 using a continuous function in ArcPro
-Suitability Mapper.
+Slope classified from 1-10 using a \textbf{continuous function} in
+ArcPro Suitability Mapper.
+
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.3750}}
+  >{\centering\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.6250}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+Pamameter
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Setting
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Function &
+\href{https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst/the-transformation-functions-available-for-rescale-by-function.htm\#ESRI_SECTION1_6C2FDA23D8094B8F99DBF3DF5E176B1D}{MSSSmall} \\
+Mean multiplyer & 1 \\
+Sddv multiplier & 2 \\
+Lower threshold & 0 \\
+Value below threshold & 0 \\
+Upper threshold & 90 \\
+Value above threshold & 0 \\
+Invert function & FALSE \\
+Save transformed dataset & TRUE \\
+Output & Transformed\_SRTM\_slope \\
+\end{longtable}
+
+\begin{figure}[H]
+
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{images/SuitabilityAnalysis_Transformations/Slope.png}}
+
+}
+
+\caption{Slope suitability mapper rescale transformation setup.}
+
+\end{figure}%
 
 \subsubsection{Aspect}\label{aspect}
 
 Aspect calculated as with slope. Aspect reference point at N. Pole.
 
 \begin{quote}
-Aspect has a large impact on solar radiation. Closer to 0 or 360 is
-desired, low suitability scores for closeness.
+Aspect has a large impact on solar radiation.
 \end{quote}
 
-Aspect classified from 1-10 using a continuous function in ArcPro
-Suitability Mapper.
+\begin{quote}
+Closer to 0 or 360 is desired, low suitability scores for closeness.
+\end{quote}
+
+Aspect classified from 1-10 using a \textbf{continuous function} in
+ArcPro Suitability Mapper.
+
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.3750}}
+  >{\centering\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.6250}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+Pamameter
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Setting
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Function &
+\href{https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst/the-transformation-functions-available-for-rescale-by-function.htm\#ESRI_SECTION1_A7FC2FC126CD4A41974C8D3F5E0F8FD6}{Near} \\
+Mid Point & 180 \\
+Point spread & 0.0011049638968393428 (default) \\
+Lower threshold & -1 (flat) \\
+Value below threshold & 0 \\
+Upper threshold & 360 \\
+Value above threshold & 0 \\
+Invert function & TRUE \\
+Save transformed dataset & TRUE \\
+Output & Transformed\_SRTM\_aspect \\
+\end{longtable}
+
+\begin{figure}[H]
+
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{images/SuitabilityAnalysis_Transformations/Aspect.png}}
+
+}
+
+\caption{Aspect suitability mapper rescale transformation setup.}
+
+\end{figure}%
 
 \subsection{Precipitation}\label{precipitation}
 
-\textbf{Data source?}
+PRISM normals, 800m resolution. Annual precipitation.
 
-\begin{itemize}
-\tightlist
-\item
-  \textbf{PRISM normals}
+\begin{quote}
+Mean annual precipitation must be higher than 500mm 1990 - 2020
+\end{quote}
 
-  \begin{itemize}
-  \tightlist
-  \item
-    800m resolution
-  \item
-    All months (30-Y)
-  \end{itemize}
-\item
-  \textbf{Custom PRISM}
+Precipitation classified from 1-10 using a \textbf{continuous function}
+in ArcPro Suitability Mapper.
 
-  \begin{itemize}
-  \tightlist
-  \item
-    1Km resolution
-  \item
-    Subset months of interest
-  \item
-    Custom date range
-  \item
-    Custom averaging function
-  \item
-    More granular control over data
-  \end{itemize}
-\end{itemize}
+NOTE: The logistic growth function may also be a good choice for this
+dataset. See
+\href{https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst/the-transformation-functions-available-for-rescale-by-function.htm\#ESRI_SECTION1_76ED0A2D02A24C95B98B8A691603F2F4}{Logistic
+Growth function}
 
-\textbf{Also applies to Temp and other Climactic variables of interest.}
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.3750}}
+  >{\centering\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.6250}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+Pamameter
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Setting
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Function &
+\href{https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst/the-transformation-functions-available-for-rescale-by-function.htm\#ESRI_SECTION1_B83C9047549542DE995823E6030A29F3}{MSLarge} \\
+Mean multiplyer & 1.68 (aproximates 500mm at x-intercept) \\
+Sddv multiplier & 1 \\
+Lower threshold & 67.33789825439453 (default, minimum) \\
+Value below threshold & 0 \\
+Upper threshold & 1214.5689697265625 (default, maximum) \\
+Value above threshold & 0 \\
+Invert function & FALSE \\
+Save transformed dataset & TRUE \\
+Output & Transformed\_PRISM\_ppt\_30yrnormal\_800m \\
+\end{longtable}
+
+\begin{figure}[H]
+
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{images/SuitabilityAnalysis_Transformations/Precip_PRISM.png}}
+
+}
+
+\caption{Aspect suitability mapper rescale transformation setup.}
+
+\end{figure}%
 
 \subsection{Vegetation
 Characteristics}\label{vegetation-characteristics}
@@ -275,10 +364,10 @@ AZ\_Soil\_Hydric\_Group data layer
 \textbf{Classification Schema}
 
 \begin{longtable}[]{@{}
-  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1944}}
-  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1944}}
-  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.4167}}
-  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1944}}@{}}
+  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1591}}
+  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1591}}
+  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.5227}}
+  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1591}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\centering
 Class
@@ -295,12 +384,26 @@ Value
 \endlastfoot
 A & 62559472 & Group A soils consist of deep, well drained sands or
 gravelly sands with high infiltration and low runoff rates. & 10 \\
-B & & & \\
-C & & & \\
-D & & & \\
-A/D & & & \\
-B/D & & & \\
-C/D & & & \\
+B & 76665198 & Group B soils consist of deep well drained soils with a
+moderately fine to moderately coarse texture and a moderate rate of
+infiltration and runoff. & 10 \\
+C & 88491710 & Group C consists of soils with a layer that impedes the
+downward movement of water or fine textured soils and a slow rate of
+infiltration. & 8 \\
+D & 155095790 & Group D consists of soils with a very slow infiltration
+rate and high runoff potential. This group is composed of clays that
+have a high shrink-swell potential, soils with a high water table, soils
+that have a clay pan or clay layer at or near the surface, and soils
+that are shallow over nearly impervious material. & 3 \\
+A/D & 43192 & Group A/D soils naturally have a very slow infiltration
+rate due to a high water table but will have high infiltration and low
+runoff rates if drained. & ?? \\
+B/D & 18456 & Group B/D soils naturally have a very slow infiltration
+rate due to a high water table but will have a moderate rate of
+infiltration and runoff if drained. & ?? \\
+C/D & 217771 & Group C/D soils naturally have a very slow infiltration
+rate due to a high water table but will have a slow rate of infiltration
+if drained. & ?? \\
 \end{longtable}
 
 \section{Conclusion}\label{sec-conclusions}

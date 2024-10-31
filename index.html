@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Travis Zalesky">
-<meta name="dcterms.date" content="2024-10-29">
+<meta name="dcterms.date" content="2024-10-31">
 <meta name="keywords" content="Arizona Tri University Recharge (ATUR), water table, ground water">
 
 <title>Arizona Aquifer Recharge Suitability Analysis</title>
@@ -36,6 +36,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-31a2f722d5f60c7c32074e0b9f018429.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script async="" src="https://hypothes.is/embed.js"></script>
 <script>
   window.document.addEventListener("DOMContentLoaded", function (_event) {
@@ -49,10 +52,10 @@ ul.task-list li input[type="checkbox"] {
 ">
 <meta name="citation_keywords" content="Arizona Tri University Recharge (ATUR),water table,ground water">
 <meta name="citation_author" content="Travis Zalesky">
-<meta name="citation_publication_date" content="2024-10-29">
-<meta name="citation_cover_date" content="2024-10-29">
+<meta name="citation_publication_date" content="2024-10-31">
+<meta name="citation_cover_date" content="2024-10-31">
 <meta name="citation_year" content="2024">
-<meta name="citation_online_date" content="2024-10-29">
+<meta name="citation_online_date" content="2024-10-31">
 <meta name="citation_language" content="en">
 <meta name="citation_reference" content="citation_title=Strategies for the development of volcanic hazard maps in monogenetic volcanic fields: The example of La Palma (Canary Islands);,citation_author=José Marrero;,citation_author=Alicia García;,citation_author=Manuel Berrocoso;,citation_author=Ángeles Llinares;,citation_author=Antonio Rodríguez-Losada;,citation_author=R. Ortiz;,citation_publication_date=2019-07;,citation_cover_date=2019-07;,citation_year=2019;,citation_doi=10.1186/s13617-019-0085-5;,citation_volume=8;,citation_journal_title=Journal of Applied Volcanology;">
 </head>
@@ -88,7 +91,7 @@ ul.task-list li input[type="checkbox"] {
                 <div>
             <div class="quarto-title-meta-heading">Published</div>
             <div class="quarto-title-meta-contents">
-              <p class="date">October 29, 2024</p>
+              <p class="date">October 31, 2024</p>
             </div>
           </div>
           
@@ -124,10 +127,9 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a></li>
   <li><a href="#sec-data-methods" id="toc-sec-data-methods" class="nav-link" data-scroll-target="#sec-data-methods"><span class="header-section-number">2</span> Data &amp; Methods</a>
   <ul class="collapse">
-  <li><a href="#elevation" id="toc-elevation" class="nav-link" data-scroll-target="#elevation"><span class="header-section-number">2.1</span> Elevation</a></li>
-  <li><a href="#precipitation" id="toc-precipitation" class="nav-link" data-scroll-target="#precipitation"><span class="header-section-number">2.2</span> Precipitation</a></li>
-  <li><a href="#vegetation-characteristics" id="toc-vegetation-characteristics" class="nav-link" data-scroll-target="#vegetation-characteristics"><span class="header-section-number">2.3</span> Vegetation Characteristics</a></li>
-  <li><a href="#soil-hydrology" id="toc-soil-hydrology" class="nav-link" data-scroll-target="#soil-hydrology"><span class="header-section-number">2.4</span> Soil Hydrology</a></li>
+  <li><a href="#precipitation" id="toc-precipitation" class="nav-link" data-scroll-target="#precipitation"><span class="header-section-number">2.1</span> Precipitation</a></li>
+  <li><a href="#vegetation-characteristics" id="toc-vegetation-characteristics" class="nav-link" data-scroll-target="#vegetation-characteristics"><span class="header-section-number">2.2</span> Vegetation Characteristics</a></li>
+  <li><a href="#soil-hydrology" id="toc-soil-hydrology" class="nav-link" data-scroll-target="#soil-hydrology"><span class="header-section-number">2.3</span> Soil Hydrology</a></li>
   </ul></li>
   <li><a href="#sec-conclusions" id="toc-sec-conclusions" class="nav-link" data-scroll-target="#sec-conclusions"><span class="header-section-number">3</span> Conclusion</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
@@ -148,70 +150,224 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="sec-data-methods" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="sec-data-methods"><span class="header-section-number">2</span> Data &amp; Methods</h2>
-<section id="elevation" class="level3" data-number="2.1">
-<h3 data-number="2.1" class="anchored" data-anchor-id="elevation"><span class="header-section-number">2.1</span> Elevation</h3>
-<section id="dem" class="level4" data-number="2.1.1">
-<h4 data-number="2.1.1" class="anchored" data-anchor-id="dem"><span class="header-section-number">2.1.1</span> DEM</h4>
-<p>Elevation and elevation derivatives from 30-m NASA SRTM. USGS 3-DEM (10m) product not suitable for full study area analysis due to (1) the large area of missing data in Mexico, and (2), the excessively high spatial resolution (massively increasing computational requirements).</p>
+<p><strong>These methods and data layers are preliminary and subject to change</strong> ### Elevation #### DEM Elevation and elevation derivatives from 30-m NASA SRTM. USGS 3-DEM (10m) product not suitable for full study area analysis due to (1) the large area of missing data in Mexico, and (2), the excessively high spatial resolution (massively increasing computational requirements).</p>
 <p>SRTM elevation sinks filled prior to calculating slope and aspect.</p>
 <p><strong>Should elevation be directly used in the suitability analysis?</strong></p>
-</section>
-<section id="slope" class="level4" data-number="2.1.2">
-<h4 data-number="2.1.2" class="anchored" data-anchor-id="slope"><span class="header-section-number">2.1.2</span> Slope</h4>
+<section id="slope" class="level4" data-number="2.0.1">
+<h4 data-number="2.0.1" class="anchored" data-anchor-id="slope"><span class="header-section-number">2.0.1</span> Slope</h4>
 <p>Slope derived from hydrologically conditioned (filled) 30-m SRTM layer using quadratic surface function and a fixed 30-m neighborhood. Slope measured in °.</p>
 <blockquote class="blockquote">
 <p>Higher slopes are less suitable because thinning is both more expensive and more precipitation will end up as runoff.</p>
 </blockquote>
-<p>Slope classified from 1-10 using a continuous function in ArcPro Suitability Mapper.</p>
+<p>Slope classified from 1-10 using a <strong>continuous function</strong> in ArcPro Suitability Mapper.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Pamameter</th>
+<th style="text-align: center;">Setting</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Function</td>
+<td style="text-align: center;"><a href="https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst/the-transformation-functions-available-for-rescale-by-function.htm#ESRI_SECTION1_6C2FDA23D8094B8F99DBF3DF5E176B1D">MSSSmall</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Mean multiplyer</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Sddv multiplier</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Lower threshold</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Value below threshold</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Upper threshold</td>
+<td style="text-align: center;">90</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Value above threshold</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Invert function</td>
+<td style="text-align: center;">FALSE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Save transformed dataset</td>
+<td style="text-align: center;">TRUE</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Output</td>
+<td style="text-align: center;">Transformed_SRTM_slope</td>
+</tr>
+</tbody>
+</table>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/SuitabilityAnalysis_Transformations/Slope.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Slope suitability mapper rescale transformation setup."><img src="images/SuitabilityAnalysis_Transformations/Slope.png" class="img-fluid figure-img" alt="Slope suitability mapper rescale transformation setup."></a></p>
+<figcaption>Slope suitability mapper rescale transformation setup.</figcaption>
+</figure>
+</div>
 </section>
-<section id="aspect" class="level4" data-number="2.1.3">
-<h4 data-number="2.1.3" class="anchored" data-anchor-id="aspect"><span class="header-section-number">2.1.3</span> Aspect</h4>
+<section id="aspect" class="level4" data-number="2.0.2">
+<h4 data-number="2.0.2" class="anchored" data-anchor-id="aspect"><span class="header-section-number">2.0.2</span> Aspect</h4>
 <p>Aspect calculated as with slope. Aspect reference point at N. Pole.</p>
 <blockquote class="blockquote">
-<p>Aspect has a large impact on solar radiation. Closer to 0 or 360 is desired, low suitability scores for closeness.</p>
+<p>Aspect has a large impact on solar radiation.</p>
 </blockquote>
-<p>Aspect classified from 1-10 using a continuous function in ArcPro Suitability Mapper.</p>
+<blockquote class="blockquote">
+<p>Closer to 0 or 360 is desired, low suitability scores for closeness.</p>
+</blockquote>
+<p>Aspect classified from 1-10 using a <strong>continuous function</strong> in ArcPro Suitability Mapper.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Pamameter</th>
+<th style="text-align: center;">Setting</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Function</td>
+<td style="text-align: center;"><a href="https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst/the-transformation-functions-available-for-rescale-by-function.htm#ESRI_SECTION1_A7FC2FC126CD4A41974C8D3F5E0F8FD6">Near</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Mid Point</td>
+<td style="text-align: center;">180</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Point spread</td>
+<td style="text-align: center;">0.0011049638968393428 (default)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Lower threshold</td>
+<td style="text-align: center;">-1 (flat)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Value below threshold</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Upper threshold</td>
+<td style="text-align: center;">360</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Value above threshold</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Invert function</td>
+<td style="text-align: center;">TRUE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Save transformed dataset</td>
+<td style="text-align: center;">TRUE</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Output</td>
+<td style="text-align: center;">Transformed_SRTM_aspect</td>
+</tr>
+</tbody>
+</table>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/SuitabilityAnalysis_Transformations/Aspect.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Aspect suitability mapper rescale transformation setup."><img src="images/SuitabilityAnalysis_Transformations/Aspect.png" class="img-fluid figure-img" alt="Aspect suitability mapper rescale transformation setup."></a></p>
+<figcaption>Aspect suitability mapper rescale transformation setup.</figcaption>
+</figure>
+</div>
+</section>
+<section id="precipitation" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="precipitation"><span class="header-section-number">2.1</span> Precipitation</h3>
+<p>PRISM normals, 800m resolution. Annual precipitation.</p>
+<blockquote class="blockquote">
+<p>Mean annual precipitation must be higher than 500mm 1990 - 2020</p>
+</blockquote>
+<p>Precipitation classified from 1-10 using a <strong>continuous function</strong> in ArcPro Suitability Mapper.</p>
+<p>NOTE: The logistic growth function may also be a good choice for this dataset. See <a href="https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst/the-transformation-functions-available-for-rescale-by-function.htm#ESRI_SECTION1_76ED0A2D02A24C95B98B8A691603F2F4">Logistic Growth function</a></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Pamameter</th>
+<th style="text-align: center;">Setting</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Function</td>
+<td style="text-align: center;"><a href="https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst/the-transformation-functions-available-for-rescale-by-function.htm#ESRI_SECTION1_B83C9047549542DE995823E6030A29F3">MSLarge</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Mean multiplyer</td>
+<td style="text-align: center;">1.68 (aproximates 500mm at x-intercept)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Sddv multiplier</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Lower threshold</td>
+<td style="text-align: center;">67.33789825439453 (default, minimum)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Value below threshold</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Upper threshold</td>
+<td style="text-align: center;">1214.5689697265625 (default, maximum)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Value above threshold</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Invert function</td>
+<td style="text-align: center;">FALSE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Save transformed dataset</td>
+<td style="text-align: center;">TRUE</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Output</td>
+<td style="text-align: center;">Transformed_PRISM_ppt_30yrnormal_800m</td>
+</tr>
+</tbody>
+</table>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/SuitabilityAnalysis_Transformations/Precip_PRISM.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Aspect suitability mapper rescale transformation setup."><img src="images/SuitabilityAnalysis_Transformations/Precip_PRISM.png" class="img-fluid figure-img" alt="Aspect suitability mapper rescale transformation setup."></a></p>
+<figcaption>Aspect suitability mapper rescale transformation setup.</figcaption>
+</figure>
+</div>
+</section>
+<section id="vegetation-characteristics" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="vegetation-characteristics"><span class="header-section-number">2.2</span> Vegetation Characteristics</h3>
+<section id="nlcd-2021-total-canopy-cover" class="level4" data-number="2.2.1">
+<h4 data-number="2.2.1" class="anchored" data-anchor-id="nlcd-2021-total-canopy-cover"><span class="header-section-number">2.2.1</span> NLCD 2021 Total Canopy Cover</h4>
+</section>
+<section id="landfire" class="level4" data-number="2.2.2">
+<h4 data-number="2.2.2" class="anchored" data-anchor-id="landfire"><span class="header-section-number">2.2.2</span> Landfire</h4>
 </section>
 </section>
-<section id="precipitation" class="level3" data-number="2.2">
-<h3 data-number="2.2" class="anchored" data-anchor-id="precipitation"><span class="header-section-number">2.2</span> Precipitation</h3>
-<p><strong>Data source?</strong></p>
-<ul>
-<li><strong>PRISM normals</strong>
-<ul>
-<li>800m resolution</li>
-<li>All months (30-Y)</li>
-</ul></li>
-<li><strong>Custom PRISM</strong>
-<ul>
-<li>1Km resolution</li>
-<li>Subset months of interest</li>
-<li>Custom date range</li>
-<li>Custom averaging function</li>
-<li>More granular control over data</li>
-</ul></li>
-</ul>
-<p><strong>Also applies to Temp and other Climactic variables of interest.</strong></p>
-</section>
-<section id="vegetation-characteristics" class="level3" data-number="2.3">
-<h3 data-number="2.3" class="anchored" data-anchor-id="vegetation-characteristics"><span class="header-section-number">2.3</span> Vegetation Characteristics</h3>
-<section id="nlcd-2021-total-canopy-cover" class="level4" data-number="2.3.1">
-<h4 data-number="2.3.1" class="anchored" data-anchor-id="nlcd-2021-total-canopy-cover"><span class="header-section-number">2.3.1</span> NLCD 2021 Total Canopy Cover</h4>
-</section>
-<section id="landfire" class="level4" data-number="2.3.2">
-<h4 data-number="2.3.2" class="anchored" data-anchor-id="landfire"><span class="header-section-number">2.3.2</span> Landfire</h4>
-</section>
-</section>
-<section id="soil-hydrology" class="level3" data-number="2.4">
-<h3 data-number="2.4" class="anchored" data-anchor-id="soil-hydrology"><span class="header-section-number">2.4</span> Soil Hydrology</h3>
+<section id="soil-hydrology" class="level3" data-number="2.3">
+<h3 data-number="2.3" class="anchored" data-anchor-id="soil-hydrology"><span class="header-section-number">2.3</span> Soil Hydrology</h3>
 <p>AZ_Soil_Hydric_Group data layer</p>
 <p><strong>Classification Schema</strong></p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 19%">
-<col style="width: 19%">
-<col style="width: 41%">
-<col style="width: 19%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 52%">
+<col style="width: 15%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -230,39 +386,39 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="even">
 <td style="text-align: center;">B</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
+<td style="text-align: center;">76665198</td>
+<td style="text-align: center;">Group B soils consist of deep well drained soils with a moderately fine to moderately coarse texture and a moderate rate of infiltration and runoff.</td>
+<td style="text-align: center;">10</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">C</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
+<td style="text-align: center;">88491710</td>
+<td style="text-align: center;">Group C consists of soils with a layer that impedes the downward movement of water or fine textured soils and a slow rate of infiltration.</td>
+<td style="text-align: center;">8</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">D</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
+<td style="text-align: center;">155095790</td>
+<td style="text-align: center;">Group D consists of soils with a very slow infiltration rate and high runoff potential. This group is composed of clays that have a high shrink-swell potential, soils with a high water table, soils that have a clay pan or clay layer at or near the surface, and soils that are shallow over nearly impervious material.</td>
+<td style="text-align: center;">3</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">A/D</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
+<td style="text-align: center;">43192</td>
+<td style="text-align: center;">Group A/D soils naturally have a very slow infiltration rate due to a high water table but will have high infiltration and low runoff rates if drained.</td>
+<td style="text-align: center;">??</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">B/D</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
+<td style="text-align: center;">18456</td>
+<td style="text-align: center;">Group B/D soils naturally have a very slow infiltration rate due to a high water table but will have a moderate rate of infiltration and runoff if drained.</td>
+<td style="text-align: center;">??</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">C/D</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
+<td style="text-align: center;">217771</td>
+<td style="text-align: center;">Group C/D soils naturally have a very slow infiltration rate due to a high water table but will have a slow rate of infiltration if drained.</td>
+<td style="text-align: center;">??</td>
 </tr>
 </tbody>
 </table>
@@ -698,6 +854,38 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 
