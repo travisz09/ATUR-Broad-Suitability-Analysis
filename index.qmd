@@ -32,6 +32,7 @@ jupyter: python3
 ## Introduction
 
 ## Data & Methods {#sec-data-methods}
+**These methods and data layers are preliminary and subject to change**
 ### Elevation
 #### DEM
 Elevation and elevation derivatives from 30-m NASA SRTM. USGS 3-DEM (10m) product not suitable for full study area analysis due to (1) the large area of missing data in Mexico, and (2), the excessively high spatial resolution (massively increasing computational requirements).
@@ -45,30 +46,69 @@ Slope derived from hydrologically conditioned (filled) 30-m SRTM layer using qua
 
 > Higher slopes are less suitable because thinning is both more expensive and more precipitation will end up as runoff.
 
-Slope classified from 1-10 using a continuous function in ArcPro Suitability Mapper.
+Slope classified from 1-10 using a **continuous function** in ArcPro Suitability Mapper.
+
+Pamameter|Setting
+:-------:|:-------------:
+Function|[MSSSmall](https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst/the-transformation-functions-available-for-rescale-by-function.htm#ESRI_SECTION1_6C2FDA23D8094B8F99DBF3DF5E176B1D)
+Mean multiplyer|1
+Sddv multiplier|2
+Lower threshold|0
+Value below threshold|0
+Upper threshold|90
+Value above threshold|0
+Invert function|FALSE
+Save transformed dataset|TRUE
+Output|Transformed_SRTM_slope
+
+![Slope suitability mapper rescale transformation setup.](images/SuitabilityAnalysis_Transformations/Slope.png)
 
 #### Aspect
 Aspect calculated as with slope. Aspect reference point at N. Pole.
 
 > Aspect has a large impact on solar radiation.
+
 > Closer to 0 or 360 is desired, low suitability scores for closeness.
 
-Aspect classified from 1-10 using a continuous function in ArcPro Suitability Mapper.
+Aspect classified from 1-10 using a **continuous function** in ArcPro Suitability Mapper.
+
+Pamameter|Setting
+:-------:|:-------------:
+Function|[Near](https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst/the-transformation-functions-available-for-rescale-by-function.htm#ESRI_SECTION1_A7FC2FC126CD4A41974C8D3F5E0F8FD6)
+Mid Point|180
+Point spread|0.0011049638968393428 (default)
+Lower threshold|-1 (flat)
+Value below threshold|0
+Upper threshold|360
+Value above threshold|0
+Invert function|TRUE
+Save transformed dataset|TRUE
+Output|Transformed_SRTM_aspect
+![Aspect suitability mapper rescale transformation setup.](images/SuitabilityAnalysis_Transformations/Aspect.png)
 
 ### Precipitation
-**Data source?**
+PRISM normals, 800m resolution. Annual precipitation.
 
-* **PRISM normals**
-  + 800m resolution
-  + All months (30-Y)
-* **Custom PRISM**
-  + 1Km resolution
-  + Subset months of interest
-  + Custom date range
-  + Custom averaging function
-  + More granular control over data
+> Mean annual precipitation must be higher than 500mm 1990 - 2020
 
-**Also applies to Temp and other Climactic variables of interest.**
+Precipitation classified from 1-10 using a **continuous function** in ArcPro Suitability Mapper.
+
+NOTE: The logistic growth function may also be a good choice for this dataset. See [Logistic Growth function](https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst/the-transformation-functions-available-for-rescale-by-function.htm#ESRI_SECTION1_76ED0A2D02A24C95B98B8A691603F2F4)
+
+Pamameter|Setting
+:-------:|:-------------:
+Function|[MSLarge](https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst/the-transformation-functions-available-for-rescale-by-function.htm#ESRI_SECTION1_B83C9047549542DE995823E6030A29F3)
+Mean multiplyer|1.68 (aproximates 500mm at x-intercept)
+Sddv multiplier|1
+Lower threshold|67.33789825439453 (default, minimum)
+Value below threshold|0
+Upper threshold|1214.5689697265625 (default, maximum)
+Value above threshold|0
+Invert function|FALSE
+Save transformed dataset|TRUE
+Output|Transformed_PRISM_ppt_30yrnormal_800m
+
+![Aspect suitability mapper rescale transformation setup.](images/SuitabilityAnalysis_Transformations/Precip_PRISM.png)
 
 ### Vegetation Characteristics
 #### NLCD 2021 Total Canopy Cover
@@ -82,14 +122,14 @@ AZ_Soil_Hydric_Group data layer
 **Classification Schema**
 
 | Class | Count (pixels) | Text | Value |
-|:-----:|:-----:|:-------------:|:-----:|
+|:-----:|:-----:|:---------------------:|:-----:|
 |A|62559472|Group A soils consist of deep, well drained sands or gravelly sands with high infiltration and low runoff rates.|10|
-|B|
-|C|
-|D|
-|A/D|
-|B/D|
-|C/D|
+|B|76665198|Group B soils consist of deep well drained soils with a moderately fine to moderately coarse texture and a moderate rate of infiltration and runoff.|10|
+|C|88491710|Group C consists of soils with a layer that impedes the downward movement of water or fine textured soils and a slow rate of infiltration.|8|
+|D|155095790|Group D consists of soils with a very slow infiltration rate and high runoff potential. This group is composed of clays that have a high shrink-swell potential, soils with a high water table, soils that have a clay pan or clay layer at or near the surface, and soils that are shallow over nearly impervious material.|3|
+|A/D|43192|Group A/D soils naturally have a very slow infiltration rate due to a high water table but will have high infiltration and low runoff rates if drained.|??|
+|B/D|18456|Group B/D soils naturally have a very slow infiltration rate due to a high water table but will have a moderate rate of infiltration and runoff if drained.|??|
+|C/D|217771|Group C/D soils naturally have a very slow infiltration rate due to a high water table but will have a slow rate of infiltration if drained.|??|
 
 ## Conclusion {#sec-conclusions}
 
