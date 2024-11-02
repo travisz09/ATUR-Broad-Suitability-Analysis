@@ -364,7 +364,7 @@ template for more focuse analysis.</p>
             <td align="center">Group B soils consist of deep well
             drained soils with a moderately fine to moderately coarse
             texture and a moderate rate of infiltration and runoff.</td>
-            <td align="center">10</td>
+            <td align="center">8</td>
           </tr>
           <tr>
             <td align="center">C</td>
@@ -372,7 +372,7 @@ template for more focuse analysis.</p>
             <td align="center">Group C consists of soils with a layer
             that impedes the downward movement of water or fine textured
             soils and a slow rate of infiltration.</td>
-            <td align="center">8</td>
+            <td align="center">5</td>
           </tr>
           <tr>
             <td align="center">D</td>
@@ -383,7 +383,7 @@ template for more focuse analysis.</p>
             potential, soils with a high water table, soils that have a
             clay pan or clay layer at or near the surface, and soils
             that are shallow over nearly impervious material.</td>
-            <td align="center">3</td>
+            <td align="center">2</td>
           </tr>
           <tr>
             <td align="center">A/D</td>
@@ -391,7 +391,7 @@ template for more focuse analysis.</p>
             <td align="center">Group A/D soils naturally have a very
             slow infiltration rate due to a high water table but will
             have high infiltration and low runoff rates if drained.</td>
-            <td align="center">??</td>
+            <td align="center">7</td>
           </tr>
           <tr>
             <td align="center">B/D</td>
@@ -400,7 +400,7 @@ template for more focuse analysis.</p>
             slow infiltration rate due to a high water table but will
             have a moderate rate of infiltration and runoff if
             drained.</td>
-            <td align="center">??</td>
+            <td align="center">6</td>
           </tr>
           <tr>
             <td align="center">C/D</td>
@@ -408,11 +408,129 @@ template for more focuse analysis.</p>
             <td align="center">Group C/D soils naturally have a very
             slow infiltration rate due to a high water table but will
             have a slow rate of infiltration if drained.</td>
-            <td align="center">??</td>
+            <td align="center">3</td>
           </tr>
         </tbody>
       </table>
     </table-wrap>
+    <p><italic>Transformed dataset</italic>
+    Transformed_AZ_Soil_Hydric_Group</p>
+  </sec>
+  <sec id="depth-to-bedrock">
+    <title>2.4 Depth to Bedrock</title>
+    <p><bold>There are 2 data layers which represent depth to bedrock
+    and it is not clear which data layer is prefered!</bold></p>
+    <list list-type="bullet">
+      <list-item>
+        <p>AZ_BedrockDepth_cm.tif</p>
+        <list list-type="bullet">
+          <list-item>
+            <p>218 m resolution</p>
+          </list-item>
+          <list-item>
+            <p>UTM 12N, NAVD88 depth (m) possitive down</p>
+          </list-item>
+          <list-item>
+            <p>0 – 108,273 cm</p>
+          </list-item>
+        </list>
+      </list-item>
+    </list>
+    <fig>
+      <caption><p>AZ_BedrockDepth_cm.tif with histogram.</p></caption>
+      <graphic mimetype="image" mime-subtype="png" xlink:href="images/Depth_to_Bedrock/AZ_BedrockDepth_cm.png" />
+    </fig>
+    <list list-type="bullet">
+      <list-item>
+        <p>Depth to Bedrock WTA</p>
+        <list list-type="bullet">
+          <list-item>
+            <p>Classified</p>
+          </list-item>
+          <list-item>
+            <p>30 m resolution</p>
+          </list-item>
+          <list-item>
+            <p>UTM 12N, NAVD88 height (m) possitive up</p>
+            <list list-type="bullet">
+              <list-item>
+                <p>vertical datum is incorrect. Should be depth (m)
+                possitive down</p>
+              </list-item>
+            </list>
+          </list-item>
+          <list-item>
+            <p>0 – 269 cm</p>
+          </list-item>
+          <list-item>
+            <p>Extremely skewed distribution clustering arround 200
+            cm</p>
+          </list-item>
+        </list>
+      </list-item>
+    </list>
+    <fig>
+      <caption><p>Depth to Bedrock WTA, DEP2BEDRS_WTA layer with
+      histogram</p></caption>
+      <graphic mimetype="image" mime-subtype="png" xlink:href="images/Depth_to_Bedrock/Depth_to_Bedrock_WTA.png" />
+    </fig>
+    <sec id="soil-vs.-subsurface-geology-weighting-layers">
+      <title>2.4.1 Soil vs. Subsurface Geology Weighting Layers</title>
+      <p>To quantify the differental importance of soils vs. subsurface
+      geology layers for determining suitability two related data layers
+      had to be calculated.</p>
+      <p>The logic assumes that there are two uniform subsurface layers,
+      soil, and subsurface geology (i.e. geology). However, the weighted
+      importance of these layers is not uniform across space. Where the
+      bedrock is close to the surface, we assume that the soil is the
+      most important layer for ground water storage. Inversely, when the
+      bedrock is extremely deep, we assume that the geology is the more
+      important layer. Our soil layer is measured at a depth of 200cm
+      (2m), and we assume a uniform soil depth across the state.
+      Therefore, the depth to bedrock was divided by 200 to get a depth
+      to bedrock (dtb) in soil units. The first “soil depth” was
+      ascribed to the soil layer, and varies from 0 to 1, while the
+      remaining “soil depth” were attibuted to the geology layer, with a
+      range from 0 to 541. Ergo, where the bedrock is deepest, the
+      geology layer is 541 time more influential than the soils
+      layer.</p>
+      <fig>
+        <caption><p>Simple diagram of logic underlying the soil
+        vs. subsurface geology weighting layers.</p></caption>
+        <graphic mimetype="image" mime-subtype="jpeg" xlink:href="images/Depth_to_Bedrock/Notes.jpg" />
+      </fig>
+      <p>These layers were created in a custom R script using the
+      following raster math, with their resulting outputs.</p>
+      <sec id="soils">
+        <title>2.4.1.1 Soils</title>
+        <code language="markdown">```{r}
+# Where depth to bedrock (dtb) = 0cm, soil multiplier = 0 (no soil)
+# Where depth to dtb &gt;= 200cm, soil multiplier = 1 (Full depth of soil)
+# Intermediate depths = linear
+soilMultiplier = masked
+soilMultiplier[soilMultiplier &gt; 200] = 200  # Fix upper limit of soil depth = 200 cm
+soilMultiplier = soilMultiplier/200
+```</code>
+        <fig>
+          <caption><p>Soils multipler layer.</p></caption>
+          <graphic mimetype="image" mime-subtype="png" xlink:href="images/Depth_to_Bedrock/SoilsMultiplier.png" />
+        </fig>
+      </sec>
+      <sec id="geology">
+        <title>2.4.1.2 Geology</title>
+        <code language="markdown">```{r}
+# Where dtb &lt; 200cm, geology multiplier = 0 (soil only)
+# Where dtb &gt;= 200cm, geology multiplier = dtb/200 (in units of relative soil depth)
+geologyMultiplier = masked
+geologyMultiplier[geologyMultiplier &lt; 200] = 0
+geologyMultiplier = geologyMultiplier/200
+```</code>
+        <fig>
+          <caption><p>Geology multiplier layer.</p></caption>
+          <graphic mimetype="image" mime-subtype="png" xlink:href="images/Depth_to_Bedrock/GeologyMultiplier.png" />
+        </fig>
+      </sec>
+    </sec>
   </sec>
 </sec>
 <sec id="sec-conclusions">
@@ -426,6 +544,522 @@ template for more focuse analysis.</p>
 <back>
 </back>
 
+<sub-article article-type="notebook" id="nb-8-nb-article">
+<front-stub>
+<title-group>
+<article-title>Arizona Aquifer Recharge Suitability
+Analysis</article-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author" corresp="yes">
+<contrib-id contrib-id-type="orcid">0009-0006-0181-3099</contrib-id>
+<name>
+<surname>Zalesky</surname>
+<given-names>Travis</given-names>
+</name>
+<string-name>Travis Zalesky</string-name>
+
+<email>travisz@arizona.edu</email>
+<role>Author</role>
+<role>GIST Software and Applications</role>
+<role>Cartography</role>
+<role>Suitability Analysis</role>
+<xref ref-type="aff" rid="aff-1-nb-article">a</xref>
+<xref ref-type="corresp" rid="cor-1-nb-article">&#x002A;</xref>
+</contrib>
+</contrib-group>
+<aff id="aff-1-nb-article">
+<institution-wrap>
+<institution>University of Arizona</institution>
+</institution-wrap>
+
+
+
+
+
+
+
+</aff>
+<author-notes>
+<corresp id="cor-1-nb-article">travisz@arizona.edu</corresp>
+</author-notes>
+<abstract>
+<p>Aquifer recharge can be either passive or active, and is implemented
+in a variety of ways. This analysis seeks to identify regions across AZ
+which are boadly suitable for aquifer recharge projects as a general
+template for more focuse analysis.</p>
+</abstract>
+</front-stub>
+
+<body>
+<sec id="introduction-nb-article">
+  <title>1 Introduction</title>
+</sec>
+<sec id="sec-data-methods-nb-article">
+  <title>2 Data &amp; Methods</title>
+  <p><bold>These methods and data layers are preliminary and subject to
+  change</bold> ### Elevation #### DEM Elevation and elevation
+  derivatives from 30-m NASA SRTM. USGS 3-DEM (10m) product not suitable
+  for full study area analysis due to (1) the large area of missing data
+  in Mexico, and (2), the excessively high spatial resolution (massively
+  increasing computational requirements).</p>
+  <p>SRTM elevation sinks filled prior to calculating slope and
+  aspect.</p>
+  <p><bold>Should elevation be directly used in the suitability
+  analysis?</bold></p>
+  <sec id="slope-nb-article">
+    <title>2.0.1 Slope</title>
+    <p>Slope derived from hydrologically conditioned (filled) 30-m SRTM
+    layer using quadratic surface function and a fixed 30-m
+    neighborhood. Slope measured in °.</p>
+    <disp-quote>
+      <p>Higher slopes are less suitable because thinning is both more
+      expensive and more precipitation will end up as runoff.</p>
+    </disp-quote>
+    <p>Slope classified from 1-10 using a <bold>continuous
+    function</bold> in ArcPro Suitability Mapper.</p>
+    <table-wrap>
+      <table>
+        <colgroup>
+          <col width="38%" />
+          <col width="62%" />
+        </colgroup>
+        <thead>
+          <tr>
+            <th align="center">Pamameter</th>
+            <th align="center">Setting</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td align="center">Function</td>
+            <td align="center"><ext-link ext-link-type="uri" xlink:href="https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst/the-transformation-functions-available-for-rescale-by-function.htm#ESRI_SECTION1_6C2FDA23D8094B8F99DBF3DF5E176B1D">MSSSmall</ext-link></td>
+          </tr>
+          <tr>
+            <td align="center">Mean multiplyer</td>
+            <td align="center">1</td>
+          </tr>
+          <tr>
+            <td align="center">Sddv multiplier</td>
+            <td align="center">2</td>
+          </tr>
+          <tr>
+            <td align="center">Lower threshold</td>
+            <td align="center">0</td>
+          </tr>
+          <tr>
+            <td align="center">Value below threshold</td>
+            <td align="center">0</td>
+          </tr>
+          <tr>
+            <td align="center">Upper threshold</td>
+            <td align="center">90</td>
+          </tr>
+          <tr>
+            <td align="center">Value above threshold</td>
+            <td align="center">0</td>
+          </tr>
+          <tr>
+            <td align="center">Invert function</td>
+            <td align="center">FALSE</td>
+          </tr>
+          <tr>
+            <td align="center">Save transformed dataset</td>
+            <td align="center">TRUE</td>
+          </tr>
+          <tr>
+            <td align="center">Output</td>
+            <td align="center">Transformed_SRTM_slope</td>
+          </tr>
+        </tbody>
+      </table>
+    </table-wrap>
+    <fig>
+      <caption><p>Slope suitability mapper rescale transformation
+      setup.</p></caption>
+      <graphic mimetype="image" mime-subtype="png" xlink:href="images/SuitabilityAnalysis_Transformations/Slope.png" />
+    </fig>
+  </sec>
+  <sec id="aspect-nb-article">
+    <title>2.0.2 Aspect</title>
+    <p>Aspect calculated as with slope. Aspect reference point at N.
+    Pole.</p>
+    <disp-quote>
+      <p>Aspect has a large impact on solar radiation.</p>
+    </disp-quote>
+    <disp-quote>
+      <p>Closer to 0 or 360 is desired, low suitability scores for
+      closeness.</p>
+    </disp-quote>
+    <p>Aspect classified from 1-10 using a <bold>continuous
+    function</bold> in ArcPro Suitability Mapper.</p>
+    <table-wrap>
+      <table>
+        <colgroup>
+          <col width="38%" />
+          <col width="62%" />
+        </colgroup>
+        <thead>
+          <tr>
+            <th align="center">Pamameter</th>
+            <th align="center">Setting</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td align="center">Function</td>
+            <td align="center"><ext-link ext-link-type="uri" xlink:href="https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst/the-transformation-functions-available-for-rescale-by-function.htm#ESRI_SECTION1_A7FC2FC126CD4A41974C8D3F5E0F8FD6">Near</ext-link></td>
+          </tr>
+          <tr>
+            <td align="center">Mid Point</td>
+            <td align="center">180</td>
+          </tr>
+          <tr>
+            <td align="center">Point spread</td>
+            <td align="center">0.0011049638968393428 (default)</td>
+          </tr>
+          <tr>
+            <td align="center">Lower threshold</td>
+            <td align="center">-1 (flat)</td>
+          </tr>
+          <tr>
+            <td align="center">Value below threshold</td>
+            <td align="center">0</td>
+          </tr>
+          <tr>
+            <td align="center">Upper threshold</td>
+            <td align="center">360</td>
+          </tr>
+          <tr>
+            <td align="center">Value above threshold</td>
+            <td align="center">0</td>
+          </tr>
+          <tr>
+            <td align="center">Invert function</td>
+            <td align="center">TRUE</td>
+          </tr>
+          <tr>
+            <td align="center">Save transformed dataset</td>
+            <td align="center">TRUE</td>
+          </tr>
+          <tr>
+            <td align="center">Output</td>
+            <td align="center">Transformed_SRTM_aspect</td>
+          </tr>
+        </tbody>
+      </table>
+    </table-wrap>
+    <fig>
+      <caption><p>Aspect suitability mapper rescale transformation
+      setup.</p></caption>
+      <graphic mimetype="image" mime-subtype="png" xlink:href="images/SuitabilityAnalysis_Transformations/Aspect.png" />
+    </fig>
+  </sec>
+  <sec id="precipitation-nb-article">
+    <title>2.1 Precipitation</title>
+    <p>PRISM normals, 800m resolution. Annual precipitation.</p>
+    <disp-quote>
+      <p>Mean annual precipitation must be higher than 500mm 1990 -
+      2020</p>
+    </disp-quote>
+    <p>Precipitation classified from 1-10 using a <bold>continuous
+    function</bold> in ArcPro Suitability Mapper.</p>
+    <p>NOTE: The logistic growth function may also be a good choice for
+    this dataset. See
+    <ext-link ext-link-type="uri" xlink:href="https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst/the-transformation-functions-available-for-rescale-by-function.htm#ESRI_SECTION1_76ED0A2D02A24C95B98B8A691603F2F4">Logistic
+    Growth function</ext-link></p>
+    <table-wrap>
+      <table>
+        <colgroup>
+          <col width="38%" />
+          <col width="62%" />
+        </colgroup>
+        <thead>
+          <tr>
+            <th align="center">Pamameter</th>
+            <th align="center">Setting</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td align="center">Function</td>
+            <td align="center"><ext-link ext-link-type="uri" xlink:href="https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst/the-transformation-functions-available-for-rescale-by-function.htm#ESRI_SECTION1_B83C9047549542DE995823E6030A29F3">MSLarge</ext-link></td>
+          </tr>
+          <tr>
+            <td align="center">Mean multiplyer</td>
+            <td align="center">1.68 (aproximates 500mm at
+            x-intercept)</td>
+          </tr>
+          <tr>
+            <td align="center">Sddv multiplier</td>
+            <td align="center">1</td>
+          </tr>
+          <tr>
+            <td align="center">Lower threshold</td>
+            <td align="center">67.33789825439453 (default, minimum)</td>
+          </tr>
+          <tr>
+            <td align="center">Value below threshold</td>
+            <td align="center">0</td>
+          </tr>
+          <tr>
+            <td align="center">Upper threshold</td>
+            <td align="center">1214.5689697265625 (default,
+            maximum)</td>
+          </tr>
+          <tr>
+            <td align="center">Value above threshold</td>
+            <td align="center">0</td>
+          </tr>
+          <tr>
+            <td align="center">Invert function</td>
+            <td align="center">FALSE</td>
+          </tr>
+          <tr>
+            <td align="center">Save transformed dataset</td>
+            <td align="center">TRUE</td>
+          </tr>
+          <tr>
+            <td align="center">Output</td>
+            <td align="center">Transformed_PRISM_ppt_30yrnormal_800m</td>
+          </tr>
+        </tbody>
+      </table>
+    </table-wrap>
+    <fig>
+      <caption><p>Aspect suitability mapper rescale transformation
+      setup.</p></caption>
+      <graphic mimetype="image" mime-subtype="png" xlink:href="images/SuitabilityAnalysis_Transformations/Precip_PRISM.png" />
+    </fig>
+  </sec>
+  <sec id="vegetation-characteristics-nb-article">
+    <title>2.2 Vegetation Characteristics</title>
+    <sec id="nlcd-2021-total-canopy-cover-nb-article">
+      <title>2.2.1 NLCD 2021 Total Canopy Cover</title>
+    </sec>
+    <sec id="landfire-nb-article">
+      <title>2.2.2 Landfire</title>
+    </sec>
+  </sec>
+  <sec id="soil-hydrology-nb-article">
+    <title>2.3 Soil Hydrology</title>
+    <p>AZ_Soil_Hydric_Group data layer</p>
+    <p><bold>Classification Schema</bold></p>
+    <table-wrap>
+      <table>
+        <colgroup>
+          <col width="16%" />
+          <col width="16%" />
+          <col width="52%" />
+          <col width="16%" />
+        </colgroup>
+        <thead>
+          <tr>
+            <th align="center">Class</th>
+            <th align="center">Count (pixels)</th>
+            <th align="center">Text</th>
+            <th align="center">Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td align="center">A</td>
+            <td align="center">62559472</td>
+            <td align="center">Group A soils consist of deep, well
+            drained sands or gravelly sands with high infiltration and
+            low runoff rates.</td>
+            <td align="center">10</td>
+          </tr>
+          <tr>
+            <td align="center">B</td>
+            <td align="center">76665198</td>
+            <td align="center">Group B soils consist of deep well
+            drained soils with a moderately fine to moderately coarse
+            texture and a moderate rate of infiltration and runoff.</td>
+            <td align="center">8</td>
+          </tr>
+          <tr>
+            <td align="center">C</td>
+            <td align="center">88491710</td>
+            <td align="center">Group C consists of soils with a layer
+            that impedes the downward movement of water or fine textured
+            soils and a slow rate of infiltration.</td>
+            <td align="center">5</td>
+          </tr>
+          <tr>
+            <td align="center">D</td>
+            <td align="center">155095790</td>
+            <td align="center">Group D consists of soils with a very
+            slow infiltration rate and high runoff potential. This group
+            is composed of clays that have a high shrink-swell
+            potential, soils with a high water table, soils that have a
+            clay pan or clay layer at or near the surface, and soils
+            that are shallow over nearly impervious material.</td>
+            <td align="center">2</td>
+          </tr>
+          <tr>
+            <td align="center">A/D</td>
+            <td align="center">43192</td>
+            <td align="center">Group A/D soils naturally have a very
+            slow infiltration rate due to a high water table but will
+            have high infiltration and low runoff rates if drained.</td>
+            <td align="center">7</td>
+          </tr>
+          <tr>
+            <td align="center">B/D</td>
+            <td align="center">18456</td>
+            <td align="center">Group B/D soils naturally have a very
+            slow infiltration rate due to a high water table but will
+            have a moderate rate of infiltration and runoff if
+            drained.</td>
+            <td align="center">6</td>
+          </tr>
+          <tr>
+            <td align="center">C/D</td>
+            <td align="center">217771</td>
+            <td align="center">Group C/D soils naturally have a very
+            slow infiltration rate due to a high water table but will
+            have a slow rate of infiltration if drained.</td>
+            <td align="center">3</td>
+          </tr>
+        </tbody>
+      </table>
+    </table-wrap>
+    <p><italic>Transformed dataset</italic>
+    Transformed_AZ_Soil_Hydric_Group</p>
+  </sec>
+  <sec id="depth-to-bedrock-nb-article">
+    <title>2.4 Depth to Bedrock</title>
+    <p><bold>There are 2 data layers which represent depth to bedrock
+    and it is not clear which data layer is prefered!</bold></p>
+    <list list-type="bullet">
+      <list-item>
+        <p>AZ_BedrockDepth_cm.tif</p>
+        <list list-type="bullet">
+          <list-item>
+            <p>218 m resolution</p>
+          </list-item>
+          <list-item>
+            <p>UTM 12N, NAVD88 depth (m) possitive down</p>
+          </list-item>
+          <list-item>
+            <p>0 – 108,273 cm</p>
+          </list-item>
+        </list>
+      </list-item>
+    </list>
+    <fig>
+      <caption><p>AZ_BedrockDepth_cm.tif with histogram.</p></caption>
+      <graphic mimetype="image" mime-subtype="png" xlink:href="images/Depth_to_Bedrock/AZ_BedrockDepth_cm.png" />
+    </fig>
+    <list list-type="bullet">
+      <list-item>
+        <p>Depth to Bedrock WTA</p>
+        <list list-type="bullet">
+          <list-item>
+            <p>Classified</p>
+          </list-item>
+          <list-item>
+            <p>30 m resolution</p>
+          </list-item>
+          <list-item>
+            <p>UTM 12N, NAVD88 height (m) possitive up</p>
+            <list list-type="bullet">
+              <list-item>
+                <p>vertical datum is incorrect. Should be depth (m)
+                possitive down</p>
+              </list-item>
+            </list>
+          </list-item>
+          <list-item>
+            <p>0 – 269 cm</p>
+          </list-item>
+          <list-item>
+            <p>Extremely skewed distribution clustering arround 200
+            cm</p>
+          </list-item>
+        </list>
+      </list-item>
+    </list>
+    <fig>
+      <caption><p>Depth to Bedrock WTA, DEP2BEDRS_WTA layer with
+      histogram</p></caption>
+      <graphic mimetype="image" mime-subtype="png" xlink:href="images/Depth_to_Bedrock/Depth_to_Bedrock_WTA.png" />
+    </fig>
+    <sec id="soil-vs.-subsurface-geology-weighting-layers-nb-article">
+      <title>2.4.1 Soil vs. Subsurface Geology Weighting Layers</title>
+      <p>To quantify the differental importance of soils vs. subsurface
+      geology layers for determining suitability two related data layers
+      had to be calculated.</p>
+      <p>The logic assumes that there are two uniform subsurface layers,
+      soil, and subsurface geology (i.e. geology). However, the weighted
+      importance of these layers is not uniform across space. Where the
+      bedrock is close to the surface, we assume that the soil is the
+      most important layer for ground water storage. Inversely, when the
+      bedrock is extremely deep, we assume that the geology is the more
+      important layer. Our soil layer is measured at a depth of 200cm
+      (2m), and we assume a uniform soil depth across the state.
+      Therefore, the depth to bedrock was divided by 200 to get a depth
+      to bedrock (dtb) in soil units. The first “soil depth” was
+      ascribed to the soil layer, and varies from 0 to 1, while the
+      remaining “soil depth” were attibuted to the geology layer, with a
+      range from 0 to 541. Ergo, where the bedrock is deepest, the
+      geology layer is 541 time more influential than the soils
+      layer.</p>
+      <fig>
+        <caption><p>Simple diagram of logic underlying the soil
+        vs. subsurface geology weighting layers.</p></caption>
+        <graphic mimetype="image" mime-subtype="jpeg" xlink:href="images/Depth_to_Bedrock/Notes.jpg" />
+      </fig>
+      <p>These layers were created in a custom R script using the
+      following raster math, with their resulting outputs.</p>
+      <sec id="soils-nb-article">
+        <title>2.4.1.1 Soils</title>
+        <code language="markdown">```{r}
+# Where depth to bedrock (dtb) = 0cm, soil multiplier = 0 (no soil)
+# Where depth to dtb &gt;= 200cm, soil multiplier = 1 (Full depth of soil)
+# Intermediate depths = linear
+soilMultiplier = masked
+soilMultiplier[soilMultiplier &gt; 200] = 200  # Fix upper limit of soil depth = 200 cm
+soilMultiplier = soilMultiplier/200
+```</code>
+        <fig>
+          <caption><p>Soils multipler layer.</p></caption>
+          <graphic mimetype="image" mime-subtype="png" xlink:href="images/Depth_to_Bedrock/SoilsMultiplier.png" />
+        </fig>
+      </sec>
+      <sec id="geology-nb-article">
+        <title>2.4.1.2 Geology</title>
+        <code language="markdown">```{r}
+# Where dtb &lt; 200cm, geology multiplier = 0 (soil only)
+# Where dtb &gt;= 200cm, geology multiplier = dtb/200 (in units of relative soil depth)
+geologyMultiplier = masked
+geologyMultiplier[geologyMultiplier &lt; 200] = 0
+geologyMultiplier = geologyMultiplier/200
+```</code>
+        <fig>
+          <caption><p>Geology multiplier layer.</p></caption>
+          <graphic mimetype="image" mime-subtype="png" xlink:href="images/Depth_to_Bedrock/GeologyMultiplier.png" />
+        </fig>
+      </sec>
+    </sec>
+  </sec>
+</sec>
+<sec id="sec-conclusions-nb-article">
+  <title>3 Conclusion</title>
+</sec>
+<sec id="references-nb-article">
+  <title>References</title>
+</sec>
+</body>
+
+
+
+<back>
+</back>
+
+
+</sub-article>
 <sub-article article-type="notebook" id="nb-4-nb-1">
 <front-stub>
 <title-group>

@@ -64,6 +64,46 @@
 \fi
 \makeatother
 
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{241,243,245}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
 
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
@@ -181,9 +221,9 @@ ground water.
 
 
 
-\section{Introduction}\label{introduction}
+\subsection{Introduction}\label{introduction}
 
-\section{Data \& Methods}\label{sec-data-methods}
+\subsection{Data \& Methods}\label{sec-data-methods}
 
 \textbf{These methods and data layers are preliminary and subject to
 change} \#\#\# Elevation \#\#\#\# DEM Elevation and elevation
@@ -196,7 +236,7 @@ SRTM elevation sinks filled prior to calculating slope and aspect.
 
 \textbf{Should elevation be directly used in the suitability analysis?}
 
-\subsubsection{Slope}\label{slope}
+\paragraph{Slope}\label{slope}
 
 Slope derived from hydrologically conditioned (filled) 30-m SRTM layer
 using quadratic surface function and a fixed 30-m neighborhood. Slope
@@ -246,7 +286,7 @@ Output & Transformed\_SRTM\_slope \\
 
 \end{figure}%
 
-\subsubsection{Aspect}\label{aspect}
+\paragraph{Aspect}\label{aspect}
 
 Aspect calculated as with slope. Aspect reference point at N. Pole.
 
@@ -297,7 +337,7 @@ Output & Transformed\_SRTM\_aspect \\
 
 \end{figure}%
 
-\subsection{Precipitation}\label{precipitation}
+\subsubsection{Precipitation}\label{precipitation}
 
 PRISM normals, 800m resolution. Annual precipitation.
 
@@ -349,15 +389,15 @@ Output & Transformed\_PRISM\_ppt\_30yrnormal\_800m \\
 
 \end{figure}%
 
-\subsection{Vegetation
+\subsubsection{Vegetation
 Characteristics}\label{vegetation-characteristics}
 
-\subsubsection{NLCD 2021 Total Canopy
+\paragraph{NLCD 2021 Total Canopy
 Cover}\label{nlcd-2021-total-canopy-cover}
 
-\subsubsection{Landfire}\label{landfire}
+\paragraph{Landfire}\label{landfire}
 
-\subsection{Soil Hydrology}\label{soil-hydrology}
+\subsubsection{Soil Hydrology}\label{soil-hydrology}
 
 AZ\_Soil\_Hydric\_Group data layer
 
@@ -386,30 +426,183 @@ A & 62559472 & Group A soils consist of deep, well drained sands or
 gravelly sands with high infiltration and low runoff rates. & 10 \\
 B & 76665198 & Group B soils consist of deep well drained soils with a
 moderately fine to moderately coarse texture and a moderate rate of
-infiltration and runoff. & 10 \\
+infiltration and runoff. & 8 \\
 C & 88491710 & Group C consists of soils with a layer that impedes the
 downward movement of water or fine textured soils and a slow rate of
-infiltration. & 8 \\
+infiltration. & 5 \\
 D & 155095790 & Group D consists of soils with a very slow infiltration
 rate and high runoff potential. This group is composed of clays that
 have a high shrink-swell potential, soils with a high water table, soils
 that have a clay pan or clay layer at or near the surface, and soils
-that are shallow over nearly impervious material. & 3 \\
+that are shallow over nearly impervious material. & 2 \\
 A/D & 43192 & Group A/D soils naturally have a very slow infiltration
 rate due to a high water table but will have high infiltration and low
-runoff rates if drained. & ?? \\
+runoff rates if drained. & 7 \\
 B/D & 18456 & Group B/D soils naturally have a very slow infiltration
 rate due to a high water table but will have a moderate rate of
-infiltration and runoff if drained. & ?? \\
+infiltration and runoff if drained. & 6 \\
 C/D & 217771 & Group C/D soils naturally have a very slow infiltration
 rate due to a high water table but will have a slow rate of infiltration
-if drained. & ?? \\
+if drained. & 3 \\
 \end{longtable}
 
-\section{Conclusion}\label{sec-conclusions}
+\emph{Transformed dataset} Transformed\_AZ\_Soil\_Hydric\_Group
 
-\section*{References}\label{references}
-\addcontentsline{toc}{section}{References}
+\subsubsection{Depth to Bedrock}\label{depth-to-bedrock}
+
+\textbf{There are 2 data layers which represent depth to bedrock and it
+is not clear which data layer is prefered!}
+
+\begin{itemize}
+\tightlist
+\item
+  AZ\_BedrockDepth\_cm.tif
+
+  \begin{itemize}
+  \tightlist
+  \item
+    218 m resolution
+  \item
+    UTM 12N, NAVD88 depth (m) possitive down
+  \item
+    0 -- 108,273 cm
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{images/Depth_to_Bedrock/AZ_BedrockDepth_cm.png}}
+
+}
+
+\caption{AZ\_BedrockDepth\_cm.tif with histogram.}
+
+\end{figure}%
+
+\begin{itemize}
+\tightlist
+\item
+  Depth to Bedrock WTA
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Classified
+  \item
+    30 m resolution
+  \item
+    UTM 12N, NAVD88 height (m) possitive up
+
+    \begin{itemize}
+    \tightlist
+    \item
+      vertical datum is incorrect. Should be depth (m) possitive down
+    \end{itemize}
+  \item
+    0 -- 269 cm
+  \item
+    Extremely skewed distribution clustering arround 200 cm
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{images/Depth_to_Bedrock/Depth_to_Bedrock_WTA.png}}
+
+}
+
+\caption{Depth to Bedrock WTA, DEP2BEDRS\_WTA layer with histogram}
+
+\end{figure}%
+
+\paragraph{Soil vs.~Subsurface Geology Weighting
+Layers}\label{soil-vs.-subsurface-geology-weighting-layers}
+
+To quantify the differental importance of soils vs.~subsurface geology
+layers for determining suitability two related data layers had to be
+calculated.
+
+The logic assumes that there are two uniform subsurface layers, soil,
+and subsurface geology (i.e.~geology). However, the weighted importance
+of these layers is not uniform across space. Where the bedrock is close
+to the surface, we assume that the soil is the most important layer for
+ground water storage. Inversely, when the bedrock is extremely deep, we
+assume that the geology is the more important layer. Our soil layer is
+measured at a depth of 200cm (2m), and we assume a uniform soil depth
+across the state. Therefore, the depth to bedrock was divided by 200 to
+get a depth to bedrock (dtb) in soil units. The first ``soil depth'' was
+ascribed to the soil layer, and varies from 0 to 1, while the remaining
+``soil depth'' were attibuted to the geology layer, with a range from 0
+to 541. Ergo, where the bedrock is deepest, the geology layer is 541
+time more influential than the soils layer.
+
+\begin{figure}[H]
+
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{images/Depth_to_Bedrock/Notes.jpg}}
+
+}
+
+\caption{Simple diagram of logic underlying the soil vs.~subsurface
+geology weighting layers.}
+
+\end{figure}%
+
+These layers were created in a custom R script using the following
+raster math, with their resulting outputs.
+
+\subparagraph{Soils}\label{soils}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}\{r\}}
+\InformationTok{\# Where depth to bedrock (dtb) = 0cm, soil multiplier = 0 (no soil)}
+\InformationTok{\# Where depth to dtb \textgreater{}= 200cm, soil multiplier = 1 (Full depth of soil)}
+\InformationTok{\# Intermediate depths = linear}
+\InformationTok{soilMultiplier = masked}
+\InformationTok{soilMultiplier[soilMultiplier \textgreater{} 200] = 200  \# Fix upper limit of soil depth = 200 cm}
+\InformationTok{soilMultiplier = soilMultiplier/200}
+\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{images/Depth_to_Bedrock/SoilsMultiplier.png}}
+
+}
+
+\caption{Soils multipler layer.}
+
+\end{figure}%
+
+\subparagraph{Geology}\label{geology}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}\{r\}}
+\InformationTok{\# Where dtb \textless{} 200cm, geology multiplier = 0 (soil only)}
+\InformationTok{\# Where dtb \textgreater{}= 200cm, geology multiplier = dtb/200 (in units of relative soil depth)}
+\InformationTok{geologyMultiplier = masked}
+\InformationTok{geologyMultiplier[geologyMultiplier \textless{} 200] = 0}
+\InformationTok{geologyMultiplier = geologyMultiplier/200}
+\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{images/Depth_to_Bedrock/GeologyMultiplier.png}}
+
+}
+
+\caption{Geology multiplier layer.}
+
+\end{figure}%
+
+\subsection{Conclusion}\label{sec-conclusions}
+
+\subsection*{References}\label{references}
+\addcontentsline{toc}{subsection}{References}
 
 
 

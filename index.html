@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Travis Zalesky">
-<meta name="dcterms.date" content="2024-10-31">
+<meta name="dcterms.date" content="2024-11-02">
 <meta name="keywords" content="Arizona Tri University Recharge (ATUR), water table, ground water">
 
 <title>Arizona Aquifer Recharge Suitability Analysis</title>
@@ -22,6 +22,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -52,10 +86,10 @@ ul.task-list li input[type="checkbox"] {
 ">
 <meta name="citation_keywords" content="Arizona Tri University Recharge (ATUR),water table,ground water">
 <meta name="citation_author" content="Travis Zalesky">
-<meta name="citation_publication_date" content="2024-10-31">
-<meta name="citation_cover_date" content="2024-10-31">
+<meta name="citation_publication_date" content="2024-11-02">
+<meta name="citation_cover_date" content="2024-11-02">
 <meta name="citation_year" content="2024">
-<meta name="citation_online_date" content="2024-10-31">
+<meta name="citation_online_date" content="2024-11-02">
 <meta name="citation_language" content="en">
 <meta name="citation_reference" content="citation_title=Strategies for the development of volcanic hazard maps in monogenetic volcanic fields: The example of La Palma (Canary Islands);,citation_author=José Marrero;,citation_author=Alicia García;,citation_author=Manuel Berrocoso;,citation_author=Ángeles Llinares;,citation_author=Antonio Rodríguez-Losada;,citation_author=R. Ortiz;,citation_publication_date=2019-07;,citation_cover_date=2019-07;,citation_year=2019;,citation_doi=10.1186/s13617-019-0085-5;,citation_volume=8;,citation_journal_title=Journal of Applied Volcanology;">
 </head>
@@ -91,7 +125,7 @@ ul.task-list li input[type="checkbox"] {
                 <div>
             <div class="quarto-title-meta-heading">Published</div>
             <div class="quarto-title-meta-contents">
-              <p class="date">October 31, 2024</p>
+              <p class="date">November 2, 2024</p>
             </div>
           </div>
           
@@ -130,6 +164,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#precipitation" id="toc-precipitation" class="nav-link" data-scroll-target="#precipitation"><span class="header-section-number">2.1</span> Precipitation</a></li>
   <li><a href="#vegetation-characteristics" id="toc-vegetation-characteristics" class="nav-link" data-scroll-target="#vegetation-characteristics"><span class="header-section-number">2.2</span> Vegetation Characteristics</a></li>
   <li><a href="#soil-hydrology" id="toc-soil-hydrology" class="nav-link" data-scroll-target="#soil-hydrology"><span class="header-section-number">2.3</span> Soil Hydrology</a></li>
+  <li><a href="#depth-to-bedrock" id="toc-depth-to-bedrock" class="nav-link" data-scroll-target="#depth-to-bedrock"><span class="header-section-number">2.4</span> Depth to Bedrock</a></li>
   </ul></li>
   <li><a href="#sec-conclusions" id="toc-sec-conclusions" class="nav-link" data-scroll-target="#sec-conclusions"><span class="header-section-number">3</span> Conclusion</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
@@ -388,40 +423,123 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: center;">B</td>
 <td style="text-align: center;">76665198</td>
 <td style="text-align: center;">Group B soils consist of deep well drained soils with a moderately fine to moderately coarse texture and a moderate rate of infiltration and runoff.</td>
-<td style="text-align: center;">10</td>
+<td style="text-align: center;">8</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">C</td>
 <td style="text-align: center;">88491710</td>
 <td style="text-align: center;">Group C consists of soils with a layer that impedes the downward movement of water or fine textured soils and a slow rate of infiltration.</td>
-<td style="text-align: center;">8</td>
+<td style="text-align: center;">5</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">D</td>
 <td style="text-align: center;">155095790</td>
 <td style="text-align: center;">Group D consists of soils with a very slow infiltration rate and high runoff potential. This group is composed of clays that have a high shrink-swell potential, soils with a high water table, soils that have a clay pan or clay layer at or near the surface, and soils that are shallow over nearly impervious material.</td>
-<td style="text-align: center;">3</td>
+<td style="text-align: center;">2</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">A/D</td>
 <td style="text-align: center;">43192</td>
 <td style="text-align: center;">Group A/D soils naturally have a very slow infiltration rate due to a high water table but will have high infiltration and low runoff rates if drained.</td>
-<td style="text-align: center;">??</td>
+<td style="text-align: center;">7</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">B/D</td>
 <td style="text-align: center;">18456</td>
 <td style="text-align: center;">Group B/D soils naturally have a very slow infiltration rate due to a high water table but will have a moderate rate of infiltration and runoff if drained.</td>
-<td style="text-align: center;">??</td>
+<td style="text-align: center;">6</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">C/D</td>
 <td style="text-align: center;">217771</td>
 <td style="text-align: center;">Group C/D soils naturally have a very slow infiltration rate due to a high water table but will have a slow rate of infiltration if drained.</td>
-<td style="text-align: center;">??</td>
+<td style="text-align: center;">3</td>
 </tr>
 </tbody>
 </table>
+<p><em>Transformed dataset</em> Transformed_AZ_Soil_Hydric_Group</p>
+</section>
+<section id="depth-to-bedrock" class="level3" data-number="2.4">
+<h3 data-number="2.4" class="anchored" data-anchor-id="depth-to-bedrock"><span class="header-section-number">2.4</span> Depth to Bedrock</h3>
+<p><strong>There are 2 data layers which represent depth to bedrock and it is not clear which data layer is prefered!</strong></p>
+<ul>
+<li>AZ_BedrockDepth_cm.tif
+<ul>
+<li>218 m resolution</li>
+<li>UTM 12N, NAVD88 depth (m) possitive down</li>
+<li>0 – 108,273 cm</li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/Depth_to_Bedrock/AZ_BedrockDepth_cm.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="AZ_BedrockDepth_cm.tif with histogram."><img src="images/Depth_to_Bedrock/AZ_BedrockDepth_cm.png" class="img-fluid figure-img" alt="AZ_BedrockDepth_cm.tif with histogram."></a></p>
+<figcaption>AZ_BedrockDepth_cm.tif with histogram.</figcaption>
+</figure>
+</div>
+<ul>
+<li>Depth to Bedrock WTA
+<ul>
+<li>Classified</li>
+<li>30 m resolution</li>
+<li>UTM 12N, NAVD88 height (m) possitive up
+<ul>
+<li>vertical datum is incorrect. Should be depth (m) possitive down</li>
+</ul></li>
+<li>0 – 269 cm</li>
+<li>Extremely skewed distribution clustering arround 200 cm</li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/Depth_to_Bedrock/Depth_to_Bedrock_WTA.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Depth to Bedrock WTA, DEP2BEDRS_WTA layer with histogram"><img src="images/Depth_to_Bedrock/Depth_to_Bedrock_WTA.png" class="img-fluid figure-img" alt="Depth to Bedrock WTA, DEP2BEDRS_WTA layer with histogram"></a></p>
+<figcaption>Depth to Bedrock WTA, DEP2BEDRS_WTA layer with histogram</figcaption>
+</figure>
+</div>
+<section id="soil-vs.-subsurface-geology-weighting-layers" class="level4" data-number="2.4.1">
+<h4 data-number="2.4.1" class="anchored" data-anchor-id="soil-vs.-subsurface-geology-weighting-layers"><span class="header-section-number">2.4.1</span> Soil vs.&nbsp;Subsurface Geology Weighting Layers</h4>
+<p>To quantify the differental importance of soils vs.&nbsp;subsurface geology layers for determining suitability two related data layers had to be calculated.</p>
+<p>The logic assumes that there are two uniform subsurface layers, soil, and subsurface geology (i.e.&nbsp;geology). However, the weighted importance of these layers is not uniform across space. Where the bedrock is close to the surface, we assume that the soil is the most important layer for ground water storage. Inversely, when the bedrock is extremely deep, we assume that the geology is the more important layer. Our soil layer is measured at a depth of 200cm (2m), and we assume a uniform soil depth across the state. Therefore, the depth to bedrock was divided by 200 to get a depth to bedrock (dtb) in soil units. The first “soil depth” was ascribed to the soil layer, and varies from 0 to 1, while the remaining “soil depth” were attibuted to the geology layer, with a range from 0 to 541. Ergo, where the bedrock is deepest, the geology layer is 541 time more influential than the soils layer.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/Depth_to_Bedrock/Notes.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Simple diagram of logic underlying the soil vs.&nbsp;subsurface geology weighting layers."><img src="images/Depth_to_Bedrock/Notes.jpg" class="img-fluid figure-img" alt="Simple diagram of logic underlying the soil vs.&nbsp;subsurface geology weighting layers."></a></p>
+<figcaption>Simple diagram of logic underlying the soil vs.&nbsp;subsurface geology weighting layers.</figcaption>
+</figure>
+</div>
+<p>These layers were created in a custom R script using the following raster math, with their resulting outputs.</p>
+<section id="soils" class="level5" data-number="2.4.1.1">
+<h5 data-number="2.4.1.1" class="anchored" data-anchor-id="soils"><span class="header-section-number">2.4.1.1</span> Soils</h5>
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="in"># Where depth to bedrock (dtb) = 0cm, soil multiplier = 0 (no soil)</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="in"># Where depth to dtb &gt;= 200cm, soil multiplier = 1 (Full depth of soil)</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="in"># Intermediate depths = linear</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="in">soilMultiplier = masked</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="in">soilMultiplier[soilMultiplier &gt; 200] = 200  # Fix upper limit of soil depth = 200 cm</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="in">soilMultiplier = soilMultiplier/200</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/Depth_to_Bedrock/SoilsMultiplier.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Soils multipler layer."><img src="images/Depth_to_Bedrock/SoilsMultiplier.png" class="img-fluid figure-img" alt="Soils multipler layer."></a></p>
+<figcaption>Soils multipler layer.</figcaption>
+</figure>
+</div>
+</section>
+<section id="geology" class="level5" data-number="2.4.1.2">
+<h5 data-number="2.4.1.2" class="anchored" data-anchor-id="geology"><span class="header-section-number">2.4.1.2</span> Geology</h5>
+<div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="in"># Where dtb &lt; 200cm, geology multiplier = 0 (soil only)</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="in"># Where dtb &gt;= 200cm, geology multiplier = dtb/200 (in units of relative soil depth)</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="in">geologyMultiplier = masked</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="in">geologyMultiplier[geologyMultiplier &lt; 200] = 0</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="in">geologyMultiplier = geologyMultiplier/200</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/Depth_to_Bedrock/GeologyMultiplier.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Geology multiplier layer."><img src="images/Depth_to_Bedrock/GeologyMultiplier.png" class="img-fluid figure-img" alt="Geology multiplier layer."></a></p>
+<figcaption>Geology multiplier layer.</figcaption>
+</figure>
+</div>
+</section>
+</section>
 </section>
 </section>
 <section id="sec-conclusions" class="level2" data-number="3">
