@@ -124,12 +124,67 @@ AZ_Soil_Hydric_Group data layer
 | Class | Count (pixels) | Text | Value |
 |:-----:|:-----:|:---------------------:|:-----:|
 |A|62559472|Group A soils consist of deep, well drained sands or gravelly sands with high infiltration and low runoff rates.|10|
-|B|76665198|Group B soils consist of deep well drained soils with a moderately fine to moderately coarse texture and a moderate rate of infiltration and runoff.|10|
-|C|88491710|Group C consists of soils with a layer that impedes the downward movement of water or fine textured soils and a slow rate of infiltration.|8|
-|D|155095790|Group D consists of soils with a very slow infiltration rate and high runoff potential. This group is composed of clays that have a high shrink-swell potential, soils with a high water table, soils that have a clay pan or clay layer at or near the surface, and soils that are shallow over nearly impervious material.|3|
-|A/D|43192|Group A/D soils naturally have a very slow infiltration rate due to a high water table but will have high infiltration and low runoff rates if drained.|??|
-|B/D|18456|Group B/D soils naturally have a very slow infiltration rate due to a high water table but will have a moderate rate of infiltration and runoff if drained.|??|
-|C/D|217771|Group C/D soils naturally have a very slow infiltration rate due to a high water table but will have a slow rate of infiltration if drained.|??|
+|B|76665198|Group B soils consist of deep well drained soils with a moderately fine to moderately coarse texture and a moderate rate of infiltration and runoff.|8|
+|C|88491710|Group C consists of soils with a layer that impedes the downward movement of water or fine textured soils and a slow rate of infiltration.|5|
+|D|155095790|Group D consists of soils with a very slow infiltration rate and high runoff potential. This group is composed of clays that have a high shrink-swell potential, soils with a high water table, soils that have a clay pan or clay layer at or near the surface, and soils that are shallow over nearly impervious material.|2|
+|A/D|43192|Group A/D soils naturally have a very slow infiltration rate due to a high water table but will have high infiltration and low runoff rates if drained.|7|
+|B/D|18456|Group B/D soils naturally have a very slow infiltration rate due to a high water table but will have a moderate rate of infiltration and runoff if drained.|6|
+|C/D|217771|Group C/D soils naturally have a very slow infiltration rate due to a high water table but will have a slow rate of infiltration if drained.|3|
+
+*Transformed dataset* Transformed_AZ_Soil_Hydric_Group
+
+
+### Depth to Bedrock
+**There are 2 data layers which represent depth to bedrock and it is not clear which data layer is prefered!**
+
+* AZ_BedrockDepth_cm.tif
+  + 218 m resolution
+  + UTM 12N, NAVD88 depth (m) possitive down
+  + 0 -- 108,273 cm
+
+![AZ_BedrockDepth_cm.tif with histogram.](images/Depth_to_Bedrock/AZ_BedrockDepth_cm.png)
+
+* Depth to Bedrock WTA
+  + Classified
+  + 30 m resolution
+  + UTM 12N, NAVD88 height (m) possitive up
+    - vertical datum is incorrect. Should be depth (m) possitive down
+  + 0 -- 269 cm
+  + Extremely skewed distribution clustering arround 200 cm
+
+![Depth to Bedrock WTA, DEP2BEDRS_WTA layer with histogram](images/Depth_to_Bedrock/Depth_to_Bedrock_WTA.png)
+
+#### Soil vs. Subsurface Geology Weighting Layers
+To quantify the differental importance of soils vs. subsurface geology layers for determining suitability two related data layers had to be calculated.
+
+The logic assumes that there are two uniform subsurface layers, soil, and subsurface geology (i.e. geology). However, the weighted importance of these layers is not uniform across space. Where the bedrock is close to the surface, we assume that the soil is the most important layer for ground water storage. Inversely, when the bedrock is extremely deep, we assume that the geology is the more important layer. Our soil layer is measured at a depth of 200cm (2m), and we assume a uniform soil depth across the state. Therefore, the depth to bedrock was divided by 200 to get a depth to bedrock (dtb) in soil units. The first "soil depth" was ascribed to the soil layer, and varies from 0 to 1, while the remaining "soil depth" were attibuted to the geology layer, with a range from 0 to 541. Ergo, where the bedrock is deepest, the geology layer is 541 time more influential than the soils layer.
+
+![Simple diagram of logic underlying the soil vs. subsurface geology weighting layers.](images/Depth_to_Bedrock/Notes.jpg)
+
+These layers were created in a custom R script using the following raster math, with their resulting outputs.
+
+##### Soils
+```{{r}}
+# Where depth to bedrock (dtb) = 0cm, soil multiplier = 0 (no soil)
+# Where depth to dtb >= 200cm, soil multiplier = 1 (Full depth of soil)
+# Intermediate depths = linear
+soilMultiplier = masked
+soilMultiplier[soilMultiplier > 200] = 200  # Fix upper limit of soil depth = 200 cm
+soilMultiplier = soilMultiplier/200
+```
+
+![Soils multipler layer.](images/Depth_to_Bedrock/SoilsMultiplier.png)
+
+##### Geology
+```{{r}}
+# Where dtb < 200cm, geology multiplier = 0 (soil only)
+# Where dtb >= 200cm, geology multiplier = dtb/200 (in units of relative soil depth)
+geologyMultiplier = masked
+geologyMultiplier[geologyMultiplier < 200] = 0
+geologyMultiplier = geologyMultiplier/200
+```
+
+![Geology multiplier layer.](images/Depth_to_Bedrock/GeologyMultiplier.png)
 
 ## Conclusion {#sec-conclusions}
 
