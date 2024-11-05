@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Travis Zalesky">
-<meta name="dcterms.date" content="2024-11-02">
+<meta name="dcterms.date" content="2024-11-05">
 <meta name="keywords" content="Arizona Tri University Recharge (ATUR), water table, ground water">
 
 <title>Arizona Aquifer Recharge Suitability Analysis</title>
@@ -86,10 +86,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ">
 <meta name="citation_keywords" content="Arizona Tri University Recharge (ATUR),water table,ground water">
 <meta name="citation_author" content="Travis Zalesky">
-<meta name="citation_publication_date" content="2024-11-02">
-<meta name="citation_cover_date" content="2024-11-02">
+<meta name="citation_publication_date" content="2024-11-05">
+<meta name="citation_cover_date" content="2024-11-05">
 <meta name="citation_year" content="2024">
-<meta name="citation_online_date" content="2024-11-02">
+<meta name="citation_online_date" content="2024-11-05">
 <meta name="citation_language" content="en">
 <meta name="citation_reference" content="citation_title=Strategies for the development of volcanic hazard maps in monogenetic volcanic fields: The example of La Palma (Canary Islands);,citation_author=José Marrero;,citation_author=Alicia García;,citation_author=Manuel Berrocoso;,citation_author=Ángeles Llinares;,citation_author=Antonio Rodríguez-Losada;,citation_author=R. Ortiz;,citation_publication_date=2019-07;,citation_cover_date=2019-07;,citation_year=2019;,citation_doi=10.1186/s13617-019-0085-5;,citation_volume=8;,citation_journal_title=Journal of Applied Volcanology;">
 </head>
@@ -125,7 +125,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
                 <div>
             <div class="quarto-title-meta-heading">Published</div>
             <div class="quarto-title-meta-contents">
-              <p class="date">November 2, 2024</p>
+              <p class="date">November 5, 2024</p>
             </div>
           </div>
           
@@ -161,10 +161,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a></li>
   <li><a href="#sec-data-methods" id="toc-sec-data-methods" class="nav-link" data-scroll-target="#sec-data-methods"><span class="header-section-number">2</span> Data &amp; Methods</a>
   <ul class="collapse">
-  <li><a href="#precipitation" id="toc-precipitation" class="nav-link" data-scroll-target="#precipitation"><span class="header-section-number">2.1</span> Precipitation</a></li>
-  <li><a href="#vegetation-characteristics" id="toc-vegetation-characteristics" class="nav-link" data-scroll-target="#vegetation-characteristics"><span class="header-section-number">2.2</span> Vegetation Characteristics</a></li>
-  <li><a href="#soil-hydrology" id="toc-soil-hydrology" class="nav-link" data-scroll-target="#soil-hydrology"><span class="header-section-number">2.3</span> Soil Hydrology</a></li>
-  <li><a href="#depth-to-bedrock" id="toc-depth-to-bedrock" class="nav-link" data-scroll-target="#depth-to-bedrock"><span class="header-section-number">2.4</span> Depth to Bedrock</a></li>
+  <li><a href="#elevation" id="toc-elevation" class="nav-link" data-scroll-target="#elevation"><span class="header-section-number">2.1</span> Elevation</a></li>
+  <li><a href="#precipitation" id="toc-precipitation" class="nav-link" data-scroll-target="#precipitation"><span class="header-section-number">2.2</span> Precipitation</a></li>
+  <li><a href="#vegetation-characteristics" id="toc-vegetation-characteristics" class="nav-link" data-scroll-target="#vegetation-characteristics"><span class="header-section-number">2.3</span> Vegetation Characteristics</a></li>
+  <li><a href="#soil-hydrology" id="toc-soil-hydrology" class="nav-link" data-scroll-target="#soil-hydrology"><span class="header-section-number">2.4</span> Soil Hydrology</a></li>
+  <li><a href="#depth-to-bedrock" id="toc-depth-to-bedrock" class="nav-link" data-scroll-target="#depth-to-bedrock"><span class="header-section-number">2.5</span> Depth to Bedrock</a></li>
   </ul></li>
   <li><a href="#sec-conclusions" id="toc-sec-conclusions" class="nav-link" data-scroll-target="#sec-conclusions"><span class="header-section-number">3</span> Conclusion</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
@@ -185,11 +186,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="sec-data-methods" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="sec-data-methods"><span class="header-section-number">2</span> Data &amp; Methods</h2>
-<p><strong>These methods and data layers are preliminary and subject to change</strong> ### Elevation #### DEM Elevation and elevation derivatives from 30-m NASA SRTM. USGS 3-DEM (10m) product not suitable for full study area analysis due to (1) the large area of missing data in Mexico, and (2), the excessively high spatial resolution (massively increasing computational requirements).</p>
+<p><strong>These methods and data layers are preliminary and subject to change</strong></p>
+<section id="elevation" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="elevation"><span class="header-section-number">2.1</span> Elevation</h3>
+<section id="dem" class="level4" data-number="2.1.1">
+<h4 data-number="2.1.1" class="anchored" data-anchor-id="dem"><span class="header-section-number">2.1.1</span> DEM</h4>
+<p>Elevation and elevation derivatives from 30-m NASA SRTM. USGS 3-DEM (10m) product not suitable for full study area analysis due to (1) the large area of missing data in Mexico, and (2), the excessively high spatial resolution (massively increasing computational requirements).</p>
 <p>SRTM elevation sinks filled prior to calculating slope and aspect.</p>
 <p><strong>Should elevation be directly used in the suitability analysis?</strong></p>
-<section id="slope" class="level4" data-number="2.0.1">
-<h4 data-number="2.0.1" class="anchored" data-anchor-id="slope"><span class="header-section-number">2.0.1</span> Slope</h4>
+</section>
+<section id="slope" class="level4" data-number="2.1.2">
+<h4 data-number="2.1.2" class="anchored" data-anchor-id="slope"><span class="header-section-number">2.1.2</span> Slope</h4>
 <p>Slope derived from hydrologically conditioned (filled) 30-m SRTM layer using quadratic surface function and a fixed 30-m neighborhood. Slope measured in °.</p>
 <blockquote class="blockquote">
 <p>Higher slopes are less suitable because thinning is both more expensive and more precipitation will end up as runoff.</p>
@@ -252,8 +259,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </section>
-<section id="aspect" class="level4" data-number="2.0.2">
-<h4 data-number="2.0.2" class="anchored" data-anchor-id="aspect"><span class="header-section-number">2.0.2</span> Aspect</h4>
+<section id="aspect" class="level4" data-number="2.1.3">
+<h4 data-number="2.1.3" class="anchored" data-anchor-id="aspect"><span class="header-section-number">2.1.3</span> Aspect</h4>
 <p>Aspect calculated as with slope. Aspect reference point at N. Pole.</p>
 <blockquote class="blockquote">
 <p>Aspect has a large impact on solar radiation.</p>
@@ -319,8 +326,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </section>
-<section id="precipitation" class="level3" data-number="2.1">
-<h3 data-number="2.1" class="anchored" data-anchor-id="precipitation"><span class="header-section-number">2.1</span> Precipitation</h3>
+</section>
+<section id="precipitation" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="precipitation"><span class="header-section-number">2.2</span> Precipitation</h3>
 <p>PRISM normals, 800m resolution. Annual precipitation.</p>
 <blockquote class="blockquote">
 <p>Mean annual precipitation must be higher than 500mm 1990 - 2020</p>
@@ -384,17 +392,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </section>
-<section id="vegetation-characteristics" class="level3" data-number="2.2">
-<h3 data-number="2.2" class="anchored" data-anchor-id="vegetation-characteristics"><span class="header-section-number">2.2</span> Vegetation Characteristics</h3>
-<section id="nlcd-2021-total-canopy-cover" class="level4" data-number="2.2.1">
-<h4 data-number="2.2.1" class="anchored" data-anchor-id="nlcd-2021-total-canopy-cover"><span class="header-section-number">2.2.1</span> NLCD 2021 Total Canopy Cover</h4>
+<section id="vegetation-characteristics" class="level3" data-number="2.3">
+<h3 data-number="2.3" class="anchored" data-anchor-id="vegetation-characteristics"><span class="header-section-number">2.3</span> Vegetation Characteristics</h3>
+<section id="nlcd-2021-total-canopy-cover" class="level4" data-number="2.3.1">
+<h4 data-number="2.3.1" class="anchored" data-anchor-id="nlcd-2021-total-canopy-cover"><span class="header-section-number">2.3.1</span> NLCD 2021 Total Canopy Cover</h4>
 </section>
-<section id="landfire" class="level4" data-number="2.2.2">
-<h4 data-number="2.2.2" class="anchored" data-anchor-id="landfire"><span class="header-section-number">2.2.2</span> Landfire</h4>
+<section id="landfire" class="level4" data-number="2.3.2">
+<h4 data-number="2.3.2" class="anchored" data-anchor-id="landfire"><span class="header-section-number">2.3.2</span> Landfire</h4>
 </section>
 </section>
-<section id="soil-hydrology" class="level3" data-number="2.3">
-<h3 data-number="2.3" class="anchored" data-anchor-id="soil-hydrology"><span class="header-section-number">2.3</span> Soil Hydrology</h3>
+<section id="soil-hydrology" class="level3" data-number="2.4">
+<h3 data-number="2.4" class="anchored" data-anchor-id="soil-hydrology"><span class="header-section-number">2.4</span> Soil Hydrology</h3>
 <p>AZ_Soil_Hydric_Group data layer</p>
 <p><strong>Classification Schema</strong></p>
 <table class="caption-top table">
@@ -459,8 +467,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 <p><em>Transformed dataset</em> Transformed_AZ_Soil_Hydric_Group</p>
 </section>
-<section id="depth-to-bedrock" class="level3" data-number="2.4">
-<h3 data-number="2.4" class="anchored" data-anchor-id="depth-to-bedrock"><span class="header-section-number">2.4</span> Depth to Bedrock</h3>
+<section id="depth-to-bedrock" class="level3" data-number="2.5">
+<h3 data-number="2.5" class="anchored" data-anchor-id="depth-to-bedrock"><span class="header-section-number">2.5</span> Depth to Bedrock</h3>
 <p><strong>There are 2 data layers which represent depth to bedrock and it is not clear which data layer is prefered!</strong></p>
 <ul>
 <li>AZ_BedrockDepth_cm.tif
@@ -495,8 +503,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figcaption>Depth to Bedrock WTA, DEP2BEDRS_WTA layer with histogram</figcaption>
 </figure>
 </div>
-<section id="soil-vs.-subsurface-geology-weighting-layers" class="level4" data-number="2.4.1">
-<h4 data-number="2.4.1" class="anchored" data-anchor-id="soil-vs.-subsurface-geology-weighting-layers"><span class="header-section-number">2.4.1</span> Soil vs.&nbsp;Subsurface Geology Weighting Layers</h4>
+<section id="soil-vs.-subsurface-geology-weighting-layers" class="level4" data-number="2.5.1">
+<h4 data-number="2.5.1" class="anchored" data-anchor-id="soil-vs.-subsurface-geology-weighting-layers"><span class="header-section-number">2.5.1</span> Soil vs.&nbsp;Subsurface Geology Weighting Layers</h4>
 <p>To quantify the differental importance of soils vs.&nbsp;subsurface geology layers for determining suitability two related data layers had to be calculated.</p>
 <p>The logic assumes that there are two uniform subsurface layers, soil, and subsurface geology (i.e.&nbsp;geology). However, the weighted importance of these layers is not uniform across space. Where the bedrock is close to the surface, we assume that the soil is the most important layer for ground water storage. Inversely, when the bedrock is extremely deep, we assume that the geology is the more important layer. Our soil layer is measured at a depth of 200cm (2m), and we assume a uniform soil depth across the state. Therefore, the depth to bedrock was divided by 200 to get a depth to bedrock (dtb) in soil units. The first “soil depth” was ascribed to the soil layer, and varies from 0 to 1, while the remaining “soil depth” were attibuted to the geology layer, with a range from 0 to 541. Ergo, where the bedrock is deepest, the geology layer is 541 time more influential than the soils layer.</p>
 <div class="quarto-figure quarto-figure-center">
@@ -506,8 +514,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 <p>These layers were created in a custom R script using the following raster math, with their resulting outputs.</p>
-<section id="soils" class="level5" data-number="2.4.1.1">
-<h5 data-number="2.4.1.1" class="anchored" data-anchor-id="soils"><span class="header-section-number">2.4.1.1</span> Soils</h5>
+<section id="soils" class="level5" data-number="2.5.1.1">
+<h5 data-number="2.5.1.1" class="anchored" data-anchor-id="soils"><span class="header-section-number">2.5.1.1</span> Soils</h5>
 <div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="in"># Where depth to bedrock (dtb) = 0cm, soil multiplier = 0 (no soil)</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="in"># Where depth to dtb &gt;= 200cm, soil multiplier = 1 (Full depth of soil)</span></span>
@@ -523,8 +531,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </section>
-<section id="geology" class="level5" data-number="2.4.1.2">
-<h5 data-number="2.4.1.2" class="anchored" data-anchor-id="geology"><span class="header-section-number">2.4.1.2</span> Geology</h5>
+<section id="geology" class="level5" data-number="2.5.1.2">
+<h5 data-number="2.5.1.2" class="anchored" data-anchor-id="geology"><span class="header-section-number">2.5.1.2</span> Geology</h5>
 <div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="in"># Where dtb &lt; 200cm, geology multiplier = 0 (soil only)</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="in"># Where dtb &gt;= 200cm, geology multiplier = dtb/200 (in units of relative soil depth)</span></span>
