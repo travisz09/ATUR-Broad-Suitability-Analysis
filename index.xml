@@ -620,8 +620,9 @@ geologyMultiplier = geologyMultiplier/200
       </list>
       <sec id="alternative-layers">
         <title>2.6.2.1 Alternative layers</title>
-        <p>(gNATSGO (gridded National Soil Survey Geographic
-        Database))[https://gee-community-catalog.org/projects/gnatsgo/]</p>
+        <p><ext-link ext-link-type="uri" xlink:href="https://gee-community-catalog.org/projects/gnatsgo/">gNATSGO
+        (gridded National Soil Survey Geographic
+        Database)</ext-link></p>
         <list list-type="bullet">
           <list-item>
             <p>Pros:</p>
@@ -650,8 +651,8 @@ geologyMultiplier = geologyMultiplier/200
             </list>
           </list-item>
         </list>
-        <p>(Polaris 30m Probabilistic Soil Properties
-        US)[https://gee-community-catalog.org/projects/polaris/]</p>
+        <p><ext-link ext-link-type="uri" xlink:href="https://gee-community-catalog.org/projects/polaris/">Polaris
+        30m Probabilistic Soil Properties US</ext-link></p>
         <list list-type="bullet">
           <list-item>
             <p>Pros:</p>
@@ -1279,8 +1280,9 @@ geologyMultiplier = geologyMultiplier/200
       </list>
       <sec id="alternative-layers-nb-article">
         <title>2.6.2.1 Alternative layers</title>
-        <p>(gNATSGO (gridded National Soil Survey Geographic
-        Database))[https://gee-community-catalog.org/projects/gnatsgo/]</p>
+        <p><ext-link ext-link-type="uri" xlink:href="https://gee-community-catalog.org/projects/gnatsgo/">gNATSGO
+        (gridded National Soil Survey Geographic
+        Database)</ext-link></p>
         <list list-type="bullet">
           <list-item>
             <p>Pros:</p>
@@ -1309,8 +1311,8 @@ geologyMultiplier = geologyMultiplier/200
             </list>
           </list-item>
         </list>
-        <p>(Polaris 30m Probabilistic Soil Properties
-        US)[https://gee-community-catalog.org/projects/polaris/]</p>
+        <p><ext-link ext-link-type="uri" xlink:href="https://gee-community-catalog.org/projects/polaris/">Polaris
+        30m Probabilistic Soil Properties US</ext-link></p>
         <list list-type="bullet">
           <list-item>
             <p>Pros:</p>

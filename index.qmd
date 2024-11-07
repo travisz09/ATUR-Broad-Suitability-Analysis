@@ -215,7 +215,7 @@ https://gee-community-catalog.org/projects/soilprop/?h=
   + Large data gaps (layer dependent)
 
 ##### Alternative layers
-(gNATSGO (gridded National Soil Survey Geographic Database))[https://gee-community-catalog.org/projects/gnatsgo/]
+[gNATSGO (gridded National Soil Survey Geographic Database)](https://gee-community-catalog.org/projects/gnatsgo/)
 
 * Pros:
   + Authoritative
@@ -225,7 +225,7 @@ https://gee-community-catalog.org/projects/soilprop/?h=
   + Large data gaps across AZ
   + 10m resolution
 
-(Polaris 30m Probabilistic Soil Properties US)[https://gee-community-catalog.org/projects/polaris/]
+[Polaris 30m Probabilistic Soil Properties US](https://gee-community-catalog.org/projects/polaris/)
 
 * Pros: 
   + Continuous data availability (no gaps)
