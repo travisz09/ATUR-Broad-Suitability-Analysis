@@ -539,6 +539,146 @@ geologyMultiplier = geologyMultiplier/200
       </sec>
     </sec>
   </sec>
+  <sec id="other-data-layers-for-consideration">
+    <title>2.6 Other Data Layers for Consideration</title>
+    <sec id="global-hydrologic-curve-numbergcn250">
+      <title>2.6.1 Global Hydrologic Curve Number(GCN250)</title>
+      <p>https://gee-community-catalog.org/projects/gcn250/?h=hydrologic</p>
+      <disp-quote>
+        <p>The GCN250 is a globally consistent, gridded dataset defining
+        CNs at the <bold>250 m spatial resolution</bold> from new global
+        land cover (300 m) and soils data (250 m). GCN250
+        <bold>represents runoff</bold> for a combination of the European
+        space agency global land cover dataset for 2015 (ESA CCI-LC)
+        resampled to 250 m and geo-registered with the hydrologic soil
+        group global data product (HYSOGs250m) released in 2018. The
+        <bold>potential application</bold> of this data includes
+        <bold>hydrologic design</bold>, land management applications,
+        flood risk assessment, and <bold>groundwater recharge
+        modeling</bold>. The CN values vary depending on antecedent
+        runoff conditions (ARC), which is affected by the rainfall
+        intensity and duration, total rainfall, soil moisture
+        conditions, cover density, stage of growth, and temperature[.]
+        <italic>emphasis mine</italic></p>
+      </disp-quote>
+    </sec>
+    <sec id="soil-properties-800m">
+      <title>2.6.2 Soil Properties 800m</title>
+      <p>https://gee-community-catalog.org/projects/soilprop/?h=</p>
+      <disp-quote>
+        <p>The data shown here were obtained by aggregating current
+        USDA-NCSS soil survey data (SSURGO back-filled with STATSGO
+        where SSURGO is not available) within <bold>800m² grid
+        cells</bold>. This data aggregation technique results in maps
+        that may not match the original data at any given point, and is
+        <bold>intended to depict regional trends in soil properties at
+        the statewide scale</bold>. <italic>emphasis mine</italic></p>
+      </disp-quote>
+      <list list-type="bullet">
+        <list-item>
+          <p>Pros:</p>
+          <list list-type="bullet">
+            <list-item>
+              <p>Lots of relevant data layers, such as:</p>
+              <list list-type="bullet">
+                <list-item>
+                  <p>Avail. Water Holding Capacity</p>
+                </list-item>
+                <list-item>
+                  <p>Drainage Class</p>
+                </list-item>
+                <list-item>
+                  <p>Sat. Hyd. Conductivity</p>
+                </list-item>
+                <list-item>
+                  <p>Depth to Restrictive Layer</p>
+                </list-item>
+                <list-item>
+                  <p>Hydrologic Group</p>
+                </list-item>
+                <list-item>
+                  <p>Soil Depth</p>
+                </list-item>
+                <list-item>
+                  <p>etc.</p>
+                </list-item>
+              </list>
+            </list-item>
+          </list>
+        </list-item>
+        <list-item>
+          <p>Cons:</p>
+          <list list-type="bullet">
+            <list-item>
+              <p>800m resolution</p>
+            </list-item>
+            <list-item>
+              <p>Large data gaps (layer dependent)</p>
+            </list-item>
+          </list>
+        </list-item>
+      </list>
+      <sec id="alternative-layers">
+        <title>2.6.2.1 Alternative layers</title>
+        <p>(gNATSGO (gridded National Soil Survey Geographic
+        Database))[https://gee-community-catalog.org/projects/gnatsgo/]</p>
+        <list list-type="bullet">
+          <list-item>
+            <p>Pros:</p>
+            <list list-type="bullet">
+              <list-item>
+                <p>Authoritative</p>
+              </list-item>
+              <list-item>
+                <p>Source layer for value added products (including Soil
+                Properties 800m)</p>
+              </list-item>
+              <list-item>
+                <p>10m resolution</p>
+              </list-item>
+            </list>
+          </list-item>
+          <list-item>
+            <p>Cons:</p>
+            <list list-type="bullet">
+              <list-item>
+                <p>Large data gaps across AZ</p>
+              </list-item>
+              <list-item>
+                <p>10m resolution</p>
+              </list-item>
+            </list>
+          </list-item>
+        </list>
+        <p>(Polaris 30m Probabilistic Soil Properties
+        US)[https://gee-community-catalog.org/projects/polaris/]</p>
+        <list list-type="bullet">
+          <list-item>
+            <p>Pros:</p>
+            <list list-type="bullet">
+              <list-item>
+                <p>Continuous data availability (no gaps)</p>
+              </list-item>
+              <list-item>
+                <p>30m resolution</p>
+              </list-item>
+            </list>
+          </list-item>
+          <list-item>
+            <p>Cons:</p>
+            <list list-type="bullet">
+              <list-item>
+                <p>Fewer data layers</p>
+              </list-item>
+              <list-item>
+                <p>Probabalistic model (increased uncertainty)</p>
+              </list-item>
+            </list>
+          </list-item>
+        </list>
+      </sec>
+    </sec>
+  </sec>
 </sec>
 <sec id="sec-conclusions">
   <title>3 Conclusion</title>
@@ -1055,6 +1195,146 @@ geologyMultiplier = geologyMultiplier/200
           <caption><p>Geology multiplier layer.</p></caption>
           <graphic mimetype="image" mime-subtype="png" xlink:href="images/Depth_to_Bedrock/GeologyMultiplier.png" />
         </fig>
+      </sec>
+    </sec>
+  </sec>
+  <sec id="other-data-layers-for-consideration-nb-article">
+    <title>2.6 Other Data Layers for Consideration</title>
+    <sec id="global-hydrologic-curve-numbergcn250-nb-article">
+      <title>2.6.1 Global Hydrologic Curve Number(GCN250)</title>
+      <p>https://gee-community-catalog.org/projects/gcn250/?h=hydrologic</p>
+      <disp-quote>
+        <p>The GCN250 is a globally consistent, gridded dataset defining
+        CNs at the <bold>250 m spatial resolution</bold> from new global
+        land cover (300 m) and soils data (250 m). GCN250
+        <bold>represents runoff</bold> for a combination of the European
+        space agency global land cover dataset for 2015 (ESA CCI-LC)
+        resampled to 250 m and geo-registered with the hydrologic soil
+        group global data product (HYSOGs250m) released in 2018. The
+        <bold>potential application</bold> of this data includes
+        <bold>hydrologic design</bold>, land management applications,
+        flood risk assessment, and <bold>groundwater recharge
+        modeling</bold>. The CN values vary depending on antecedent
+        runoff conditions (ARC), which is affected by the rainfall
+        intensity and duration, total rainfall, soil moisture
+        conditions, cover density, stage of growth, and temperature[.]
+        <italic>emphasis mine</italic></p>
+      </disp-quote>
+    </sec>
+    <sec id="soil-properties-800m-nb-article">
+      <title>2.6.2 Soil Properties 800m</title>
+      <p>https://gee-community-catalog.org/projects/soilprop/?h=</p>
+      <disp-quote>
+        <p>The data shown here were obtained by aggregating current
+        USDA-NCSS soil survey data (SSURGO back-filled with STATSGO
+        where SSURGO is not available) within <bold>800m² grid
+        cells</bold>. This data aggregation technique results in maps
+        that may not match the original data at any given point, and is
+        <bold>intended to depict regional trends in soil properties at
+        the statewide scale</bold>. <italic>emphasis mine</italic></p>
+      </disp-quote>
+      <list list-type="bullet">
+        <list-item>
+          <p>Pros:</p>
+          <list list-type="bullet">
+            <list-item>
+              <p>Lots of relevant data layers, such as:</p>
+              <list list-type="bullet">
+                <list-item>
+                  <p>Avail. Water Holding Capacity</p>
+                </list-item>
+                <list-item>
+                  <p>Drainage Class</p>
+                </list-item>
+                <list-item>
+                  <p>Sat. Hyd. Conductivity</p>
+                </list-item>
+                <list-item>
+                  <p>Depth to Restrictive Layer</p>
+                </list-item>
+                <list-item>
+                  <p>Hydrologic Group</p>
+                </list-item>
+                <list-item>
+                  <p>Soil Depth</p>
+                </list-item>
+                <list-item>
+                  <p>etc.</p>
+                </list-item>
+              </list>
+            </list-item>
+          </list>
+        </list-item>
+        <list-item>
+          <p>Cons:</p>
+          <list list-type="bullet">
+            <list-item>
+              <p>800m resolution</p>
+            </list-item>
+            <list-item>
+              <p>Large data gaps (layer dependent)</p>
+            </list-item>
+          </list>
+        </list-item>
+      </list>
+      <sec id="alternative-layers-nb-article">
+        <title>2.6.2.1 Alternative layers</title>
+        <p>(gNATSGO (gridded National Soil Survey Geographic
+        Database))[https://gee-community-catalog.org/projects/gnatsgo/]</p>
+        <list list-type="bullet">
+          <list-item>
+            <p>Pros:</p>
+            <list list-type="bullet">
+              <list-item>
+                <p>Authoritative</p>
+              </list-item>
+              <list-item>
+                <p>Source layer for value added products (including Soil
+                Properties 800m)</p>
+              </list-item>
+              <list-item>
+                <p>10m resolution</p>
+              </list-item>
+            </list>
+          </list-item>
+          <list-item>
+            <p>Cons:</p>
+            <list list-type="bullet">
+              <list-item>
+                <p>Large data gaps across AZ</p>
+              </list-item>
+              <list-item>
+                <p>10m resolution</p>
+              </list-item>
+            </list>
+          </list-item>
+        </list>
+        <p>(Polaris 30m Probabilistic Soil Properties
+        US)[https://gee-community-catalog.org/projects/polaris/]</p>
+        <list list-type="bullet">
+          <list-item>
+            <p>Pros:</p>
+            <list list-type="bullet">
+              <list-item>
+                <p>Continuous data availability (no gaps)</p>
+              </list-item>
+              <list-item>
+                <p>30m resolution</p>
+              </list-item>
+            </list>
+          </list-item>
+          <list-item>
+            <p>Cons:</p>
+            <list list-type="bullet">
+              <list-item>
+                <p>Fewer data layers</p>
+              </list-item>
+              <list-item>
+                <p>Probabalistic model (increased uncertainty)</p>
+              </list-item>
+            </list>
+          </list-item>
+        </list>
       </sec>
     </sec>
   </sec>

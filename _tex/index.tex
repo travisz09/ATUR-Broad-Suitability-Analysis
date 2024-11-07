@@ -604,6 +604,141 @@ raster math, with their resulting outputs.
 
 \end{figure}%
 
+\subsubsection{Other Data Layers for
+Consideration}\label{other-data-layers-for-consideration}
+
+\paragraph{Global Hydrologic Curve
+Number(GCN250)}\label{global-hydrologic-curve-numbergcn250}
+
+https://gee-community-catalog.org/projects/gcn250/?h=hydrologic
+
+\begin{quote}
+The GCN250 is a globally consistent, gridded dataset defining CNs at the
+\textbf{250 m spatial resolution} from new global land cover (300 m) and
+soils data (250 m). GCN250 \textbf{represents runoff} for a combination
+of the European space agency global land cover dataset for 2015 (ESA
+CCI-LC) resampled to 250 m and geo-registered with the hydrologic soil
+group global data product (HYSOGs250m) released in 2018. The
+\textbf{potential application} of this data includes \textbf{hydrologic
+design}, land management applications, flood risk assessment, and
+\textbf{groundwater recharge modeling}. The CN values vary depending on
+antecedent runoff conditions (ARC), which is affected by the rainfall
+intensity and duration, total rainfall, soil moisture conditions, cover
+density, stage of growth, and temperature{[}.{]} \emph{emphasis mine}
+\end{quote}
+
+\paragraph{Soil Properties 800m}\label{soil-properties-800m}
+
+https://gee-community-catalog.org/projects/soilprop/?h=
+
+\begin{quote}
+The data shown here were obtained by aggregating current USDA-NCSS soil
+survey data (SSURGO back-filled with STATSGO where SSURGO is not
+available) within \textbf{800m² grid cells}. This data aggregation
+technique results in maps that may not match the original data at any
+given point, and is \textbf{intended to depict regional trends in soil
+properties at the statewide scale}. \emph{emphasis mine}
+\end{quote}
+
+\begin{itemize}
+\tightlist
+\item
+  Pros:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Lots of relevant data layers, such as:
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Avail. Water Holding Capacity
+    \item
+      Drainage Class
+    \item
+      Sat. Hyd. Conductivity
+    \item
+      Depth to Restrictive Layer
+    \item
+      Hydrologic Group
+    \item
+      Soil Depth
+    \item
+      etc.
+    \end{itemize}
+  \end{itemize}
+\item
+  Cons:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    800m resolution
+  \item
+    Large data gaps (layer dependent)
+  \end{itemize}
+\end{itemize}
+
+\subparagraph{Alternative layers}\label{alternative-layers}
+
+(gNATSGO (gridded National Soil Survey Geographic
+Database)){[}https://gee-community-catalog.org/projects/gnatsgo/{]}
+
+\begin{itemize}
+\tightlist
+\item
+  Pros:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Authoritative
+  \item
+    Source layer for value added products (including Soil Properties
+    800m)
+  \item
+    10m resolution
+  \end{itemize}
+\item
+  Cons:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Large data gaps across AZ
+  \item
+    10m resolution
+  \end{itemize}
+\end{itemize}
+
+(Polaris 30m Probabilistic Soil Properties
+US){[}https://gee-community-catalog.org/projects/polaris/{]}
+
+\begin{itemize}
+\tightlist
+\item
+  Pros:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Continuous data availability (no gaps)
+  \item
+    30m resolution
+  \end{itemize}
+\item
+  Cons:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Fewer data layers
+  \item
+    Probabalistic model (increased uncertainty)
+  \end{itemize}
+\end{itemize}
+
 \subsection{Conclusion}\label{sec-conclusions}
 
 \subsection*{References}\label{references}

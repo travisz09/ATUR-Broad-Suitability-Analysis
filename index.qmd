@@ -20,7 +20,7 @@ abstract: |
 plain-language-summary: |
   Identifying regions in AZ where surface water can be stored long-term as ground water.
 key-points:
-  #| TBD
+  #| TODO
 date: last-modified
 bibliography: references.bib
 #| citation:
@@ -186,6 +186,55 @@ geologyMultiplier = geologyMultiplier/200
 ```
 
 ![Geology multiplier layer.](images/Depth_to_Bedrock/GeologyMultiplier.png)
+
+### Other Data Layers for Consideration
+
+#### Global Hydrologic Curve Number(GCN250)
+https://gee-community-catalog.org/projects/gcn250/?h=hydrologic
+
+> The GCN250 is a globally consistent, gridded dataset defining CNs at the **250 m spatial resolution** from new global land cover (300 m) and soils data (250 m). GCN250 **represents runoff** for a combination of the European space agency global land cover dataset for 2015 (ESA CCI-LC) resampled to 250 m and geo-registered with the hydrologic soil group global data product (HYSOGs250m) released in 2018. The **potential application** of this data includes **hydrologic design**, land management applications, flood risk assessment, and **groundwater recharge modeling**. The CN values vary depending on antecedent runoff conditions (ARC), which is affected by the rainfall intensity and duration, total rainfall, soil moisture conditions, cover density, stage of growth, and temperature[.] 
+*emphasis mine*
+
+#### Soil Properties 800m
+https://gee-community-catalog.org/projects/soilprop/?h=
+
+> The data shown here were obtained by aggregating current USDA-NCSS soil survey data (SSURGO back-filled with STATSGO where SSURGO is not available) within **800m² grid cells**. This data aggregation technique results in maps that may not match the original data at any given point, and is **intended to depict regional trends in soil properties at the statewide scale**. 
+*emphasis mine*
+
+* Pros:
+  + Lots of relevant data layers, such as:
+    - Avail. Water Holding Capacity
+    - Drainage Class
+    - Sat. Hyd. Conductivity 
+    - Depth to Restrictive Layer
+    - Hydrologic Group
+    - Soil Depth
+    - etc.
+* Cons:
+  + 800m resolution
+  + Large data gaps (layer dependent)
+
+##### Alternative layers
+(gNATSGO (gridded National Soil Survey Geographic Database))[https://gee-community-catalog.org/projects/gnatsgo/]
+
+* Pros:
+  + Authoritative
+  + Source layer for value added products (including Soil Properties 800m)
+  + 10m resolution
+* Cons:
+  + Large data gaps across AZ
+  + 10m resolution
+
+(Polaris 30m Probabilistic Soil Properties US)[https://gee-community-catalog.org/projects/polaris/]
+
+* Pros: 
+  + Continuous data availability (no gaps)
+  + 30m resolution
+* Cons: 
+  + Fewer data layers
+  + Probabalistic model (increased uncertainty)
+
+
 
 ## Conclusion {#sec-conclusions}
 
