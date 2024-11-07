@@ -16,7 +16,7 @@ keywords:
   - water table
   - ground water
 abstract: |
-  Aquifer recharge can be either passive or active, and is implemented in a variety of ways. This analysis seeks to identify regions across AZ which are boadly suitable for aquifer recharge projects as a general template for more focuse analysis.
+  Aquifer recharge can be either passive or active, and is implemented in a variety of ways. This analysis seeks to identify regions across AZ which are boadly suitable for aquifer recharge projects as a general template for more focused analysis.
 plain-language-summary: |
   Identifying regions in AZ where surface water can be stored long-term as ground water.
 key-points:
