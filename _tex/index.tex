@@ -210,7 +210,7 @@ table, ground water},
 \begin{abstract}
 Aquifer recharge can be either passive or active, and is implemented in
 a variety of ways. This analysis seeks to identify regions across AZ
-which are boadly suitable for aquifer recharge projects as a general
+which are broadly suitable for aquifer recharge projects as a general
 template for more focused analysis.
 \end{abstract}
 
@@ -260,7 +260,7 @@ ArcPro Suitability Mapper.
   >{\centering\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.6250}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\centering
-Pamameter
+Parameter
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
 Setting
 \end{minipage} \\
@@ -270,7 +270,7 @@ Setting
 \endlastfoot
 Function &
 \href{https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst/the-transformation-functions-available-for-rescale-by-function.htm\#ESRI_SECTION1_6C2FDA23D8094B8F99DBF3DF5E176B1D}{MSSSmall} \\
-Mean multiplyer & 1 \\
+Mean multiplier & 1 \\
 Sddv multiplier & 2 \\
 Lower threshold & 0 \\
 Value below threshold & 0 \\
@@ -311,7 +311,7 @@ ArcPro Suitability Mapper.
   >{\centering\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.6250}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\centering
-Pamameter
+Parameter
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
 Setting
 \end{minipage} \\
@@ -363,7 +363,7 @@ Growth function}
   >{\centering\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.6250}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\centering
-Pamameter
+Parameter
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
 Setting
 \end{minipage} \\
@@ -373,7 +373,7 @@ Setting
 \endlastfoot
 Function &
 \href{https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst/the-transformation-functions-available-for-rescale-by-function.htm\#ESRI_SECTION1_B83C9047549542DE995823E6030A29F3}{MSLarge} \\
-Mean multiplyer & 1.68 (aproximates 500mm at x-intercept) \\
+Mean multiplier & 1.68 (approximates 500mm at x-intercept) \\
 Sddv multiplier & 1 \\
 Lower threshold & 67.33789825439453 (default, minimum) \\
 Value below threshold & 0 \\
@@ -456,7 +456,7 @@ if drained. & 3 \\
 \subsubsection{Depth to Bedrock}\label{depth-to-bedrock}
 
 \textbf{There are 2 data layers which represent depth to bedrock and it
-is not clear which data layer is prefered!}
+is not clear which data layer is preferred!}
 
 \begin{itemize}
 \tightlist
@@ -468,7 +468,7 @@ is not clear which data layer is prefered!}
   \item
     218 m resolution
   \item
-    UTM 12N, NAVD88 depth (m) possitive down
+    UTM 12N, NAVD88 depth (m) positive down
   \item
     0 -- 108,273 cm
   \end{itemize}
@@ -496,17 +496,17 @@ is not clear which data layer is prefered!}
   \item
     30 m resolution
   \item
-    UTM 12N, NAVD88 height (m) possitive up
+    UTM 12N, NAVD88 height (m) positive up
 
     \begin{itemize}
     \tightlist
     \item
-      vertical datum is incorrect. Should be depth (m) possitive down
+      vertical datum is incorrect. Should be depth (m) positive down
     \end{itemize}
   \item
     0 -- 269 cm
   \item
-    Extremely skewed distribution clustering arround 200 cm
+    Extremely skewed distribution clustering around 200 cm
   \end{itemize}
 \end{itemize}
 
@@ -523,7 +523,7 @@ is not clear which data layer is prefered!}
 \paragraph{Soil vs.~Subsurface Geology Weighting
 Layers}\label{soil-vs.-subsurface-geology-weighting-layers}
 
-To quantify the differental importance of soils vs.~subsurface geology
+To quantify the differential importance of soils vs.~subsurface geology
 layers for determining suitability two related data layers had to be
 calculated.
 
@@ -537,7 +537,7 @@ measured at a depth of 200cm (2m), and we assume a uniform soil depth
 across the state. Therefore, the depth to bedrock was divided by 200 to
 get a depth to bedrock (dtb) in soil units. The first ``soil depth'' was
 ascribed to the soil layer, and varies from 0 to 1, while the remaining
-``soil depth'' were attibuted to the geology layer, with a range from 0
+``soil depth'' were attributed to the geology layer, with a range from 0
 to 541. Ergo, where the bedrock is deepest, the geology layer is 541
 time more influential than the soils layer.
 
@@ -576,7 +576,7 @@ raster math, with their resulting outputs.
 
 }
 
-\caption{Soils multipler layer.}
+\caption{Soils multiplier layer.}
 
 \end{figure}%
 
@@ -735,25 +735,25 @@ Probabilistic Soil Properties US}
   \item
     Fewer data layers
   \item
-    Probabalistic model (increased uncertainty)
+    Probabilistic model (increased uncertainty)
   \end{itemize}
 \end{itemize}
 
 \paragraph{Leaf Area Index (LAI)}\label{leaf-area-index-lai}
 
 Leaf Area Index (LAI) can be calculated from Landsat data (30 m
-resolution), as a proxy of landcover. LAI is a unitless index value
+resolution), as a proxy of land cover. LAI is a unitless index value
 which is calculated as a function of the Enhanced Vegetation Index
 (ENVI) and typically ranges from 0 to 3.5 (\emph{citation needed}). LAI
-can be calculated effincintly over a large spatial scale in Google Earth
+can be calculated efficiently over a large spatial scale in Google Earth
 Engine (GEE) using the Javascript API, however LAI will vary seasonally,
 with updated Landsat data available every 8-days. Additionally, due to
 our large study area, as well as the logistics of Landsat orbital paths,
-it takes 6 days to photograph the entier study area. Therefore, any LAI
-analysis on this scale will necessaraly be a mosaic image, over roughly
+it takes 6 days to photograph the entire study area. Therefore, any LAI
+analysis on this scale will necessarily be a mosaic image, over roughly
 a week. For these reasons, a single LAI image should be viewed with some
-skeptisism, and a seasonal mean or median LAI mosaic image may be more
-desireable as a proxy for landcover.
+skepticism, and a seasonal mean or median LAI mosaic image may be more
+desireable as a proxy for land cover.
 
 Code is available for calculating LAI from Landsat 8/9 imagery in my
 personal GEE scripts folder, which could be easily modified for purpose.

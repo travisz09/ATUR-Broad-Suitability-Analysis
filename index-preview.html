@@ -169,7 +169,7 @@
   });
 </script>  
       <meta name="citation_title" content="Arizona Aquifer Recharge Suitability Analysis">
-<meta name="citation_abstract" content="Aquifer recharge can be either passive or active, and is implemented in a variety of ways. This analysis seeks to identify regions across AZ which are boadly suitable for aquifer recharge projects as a general template for more focused analysis.
+<meta name="citation_abstract" content="Aquifer recharge can be either passive or active, and is implemented in a variety of ways. This analysis seeks to identify regions across AZ which are broadly suitable for aquifer recharge projects as a general template for more focused analysis.
 ">
 <meta name="citation_keywords" content="Arizona Tri University Recharge (ATUR),water table,ground water">
 <meta name="citation_author" content="Travis Zalesky">
@@ -233,7 +233,7 @@
     <div>
       <div class="abstract">
         <div class="block-title">Abstract</div>
-        <p>Aquifer recharge can be either passive or active, and is implemented in a variety of ways. This analysis seeks to identify regions across AZ which are boadly suitable for aquifer recharge projects as a general template for more focused analysis.</p>
+        <p>Aquifer recharge can be either passive or active, and is implemented in a variety of ways. This analysis seeks to identify regions across AZ which are broadly suitable for aquifer recharge projects as a general template for more focused analysis.</p>
       </div>
     </div>
 
@@ -295,7 +295,7 @@
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th style="text-align: center;">Pamameter</th>
+<th style="text-align: center;">Parameter</th>
 <th style="text-align: center;">Setting</th>
 </tr>
 </thead>
@@ -305,7 +305,7 @@
 <td style="text-align: center;"><a href="https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst/the-transformation-functions-available-for-rescale-by-function.htm#ESRI_SECTION1_6C2FDA23D8094B8F99DBF3DF5E176B1D">MSSSmall</a></td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">Mean multiplyer</td>
+<td style="text-align: center;">Mean multiplier</td>
 <td style="text-align: center;">1</td>
 </tr>
 <tr class="odd">
@@ -362,7 +362,7 @@
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th style="text-align: center;">Pamameter</th>
+<th style="text-align: center;">Parameter</th>
 <th style="text-align: center;">Setting</th>
 </tr>
 </thead>
@@ -428,7 +428,7 @@
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th style="text-align: center;">Pamameter</th>
+<th style="text-align: center;">Parameter</th>
 <th style="text-align: center;">Setting</th>
 </tr>
 </thead>
@@ -438,8 +438,8 @@
 <td style="text-align: center;"><a href="https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst/the-transformation-functions-available-for-rescale-by-function.htm#ESRI_SECTION1_B83C9047549542DE995823E6030A29F3">MSLarge</a></td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">Mean multiplyer</td>
-<td style="text-align: center;">1.68 (aproximates 500mm at x-intercept)</td>
+<td style="text-align: center;">Mean multiplier</td>
+<td style="text-align: center;">1.68 (approximates 500mm at x-intercept)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">Sddv multiplier</td>
@@ -559,12 +559,12 @@
 </section>
 <section id="depth-to-bedrock" class="level3" data-number="2.5">
 <h3 data-number="2.5" class="anchored" data-anchor-id="depth-to-bedrock"><span class="header-section-number">2.5</span> Depth to Bedrock</h3>
-<p><strong>There are 2 data layers which represent depth to bedrock and it is not clear which data layer is prefered!</strong></p>
+<p><strong>There are 2 data layers which represent depth to bedrock and it is not clear which data layer is preferred!</strong></p>
 <ul>
 <li>AZ_BedrockDepth_cm.tif
 <ul>
 <li>218 m resolution</li>
-<li>UTM 12N, NAVD88 depth (m) possitive down</li>
+<li>UTM 12N, NAVD88 depth (m) positive down</li>
 <li>0 – 108,273 cm</li>
 </ul></li>
 </ul>
@@ -579,12 +579,12 @@
 <ul>
 <li>Classified</li>
 <li>30 m resolution</li>
-<li>UTM 12N, NAVD88 height (m) possitive up
+<li>UTM 12N, NAVD88 height (m) positive up
 <ul>
-<li>vertical datum is incorrect. Should be depth (m) possitive down</li>
+<li>vertical datum is incorrect. Should be depth (m) positive down</li>
 </ul></li>
 <li>0 – 269 cm</li>
-<li>Extremely skewed distribution clustering arround 200 cm</li>
+<li>Extremely skewed distribution clustering around 200 cm</li>
 </ul></li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
@@ -595,8 +595,8 @@
 </div>
 <section id="soil-vs.-subsurface-geology-weighting-layers" class="level4" data-number="2.5.1">
 <h4 data-number="2.5.1" class="anchored" data-anchor-id="soil-vs.-subsurface-geology-weighting-layers"><span class="header-section-number">2.5.1</span> Soil vs.&nbsp;Subsurface Geology Weighting Layers</h4>
-<p>To quantify the differental importance of soils vs.&nbsp;subsurface geology layers for determining suitability two related data layers had to be calculated.</p>
-<p>The logic assumes that there are two uniform subsurface layers, soil, and subsurface geology (i.e.&nbsp;geology). However, the weighted importance of these layers is not uniform across space. Where the bedrock is close to the surface, we assume that the soil is the most important layer for ground water storage. Inversely, when the bedrock is extremely deep, we assume that the geology is the more important layer. Our soil layer is measured at a depth of 200cm (2m), and we assume a uniform soil depth across the state. Therefore, the depth to bedrock was divided by 200 to get a depth to bedrock (dtb) in soil units. The first “soil depth” was ascribed to the soil layer, and varies from 0 to 1, while the remaining “soil depth” were attibuted to the geology layer, with a range from 0 to 541. Ergo, where the bedrock is deepest, the geology layer is 541 time more influential than the soils layer.</p>
+<p>To quantify the differential importance of soils vs.&nbsp;subsurface geology layers for determining suitability two related data layers had to be calculated.</p>
+<p>The logic assumes that there are two uniform subsurface layers, soil, and subsurface geology (i.e.&nbsp;geology). However, the weighted importance of these layers is not uniform across space. Where the bedrock is close to the surface, we assume that the soil is the most important layer for ground water storage. Inversely, when the bedrock is extremely deep, we assume that the geology is the more important layer. Our soil layer is measured at a depth of 200cm (2m), and we assume a uniform soil depth across the state. Therefore, the depth to bedrock was divided by 200 to get a depth to bedrock (dtb) in soil units. The first “soil depth” was ascribed to the soil layer, and varies from 0 to 1, while the remaining “soil depth” were attributed to the geology layer, with a range from 0 to 541. Ergo, where the bedrock is deepest, the geology layer is 541 time more influential than the soils layer.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><a href="images/Depth_to_Bedrock/Notes.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Simple diagram of logic underlying the soil vs.&nbsp;subsurface geology weighting layers."><img src="images/Depth_to_Bedrock/Notes.jpg" class="img-fluid figure-img" alt="Simple diagram of logic underlying the soil vs.&nbsp;subsurface geology weighting layers."></a></p>
@@ -616,8 +616,8 @@
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="images/Depth_to_Bedrock/SoilsMultiplier.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Soils multipler layer."><img src="images/Depth_to_Bedrock/SoilsMultiplier.png" class="img-fluid figure-img" alt="Soils multipler layer."></a></p>
-<figcaption>Soils multipler layer.</figcaption>
+<p><a href="images/Depth_to_Bedrock/SoilsMultiplier.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Soils multiplier layer."><img src="images/Depth_to_Bedrock/SoilsMultiplier.png" class="img-fluid figure-img" alt="Soils multiplier layer."></a></p>
+<figcaption>Soils multiplier layer.</figcaption>
 </figure>
 </div>
 </section>
@@ -700,14 +700,14 @@
 <li>Cons:
 <ul>
 <li>Fewer data layers</li>
-<li>Probabalistic model (increased uncertainty)</li>
+<li>Probabilistic model (increased uncertainty)</li>
 </ul></li>
 </ul>
 </section>
 </section>
 <section id="leaf-area-index-lai" class="level4" data-number="2.6.3">
 <h4 data-number="2.6.3" class="anchored" data-anchor-id="leaf-area-index-lai"><span class="header-section-number">2.6.3</span> Leaf Area Index (LAI)</h4>
-<p>Leaf Area Index (LAI) can be calculated from Landsat data (30 m resolution), as a proxy of landcover. LAI is a unitless index value which is calculated as a function of the Enhanced Vegetation Index (ENVI) and typically ranges from 0 to 3.5 (<em>citation needed</em>). LAI can be calculated effincintly over a large spatial scale in Google Earth Engine (GEE) using the Javascript API, however LAI will vary seasonally, with updated Landsat data available every 8-days. Additionally, due to our large study area, as well as the logistics of Landsat orbital paths, it takes 6 days to photograph the entier study area. Therefore, any LAI analysis on this scale will necessaraly be a mosaic image, over roughly a week. For these reasons, a single LAI image should be viewed with some skeptisism, and a seasonal mean or median LAI mosaic image may be more desireable as a proxy for landcover.</p>
+<p>Leaf Area Index (LAI) can be calculated from Landsat data (30 m resolution), as a proxy of land cover. LAI is a unitless index value which is calculated as a function of the Enhanced Vegetation Index (ENVI) and typically ranges from 0 to 3.5 (<em>citation needed</em>). LAI can be calculated efficiently over a large spatial scale in Google Earth Engine (GEE) using the Javascript API, however LAI will vary seasonally, with updated Landsat data available every 8-days. Additionally, due to our large study area, as well as the logistics of Landsat orbital paths, it takes 6 days to photograph the entire study area. Therefore, any LAI analysis on this scale will necessarily be a mosaic image, over roughly a week. For these reasons, a single LAI image should be viewed with some skepticism, and a seasonal mean or median LAI mosaic image may be more desireable as a proxy for land cover.</p>
 <p>Code is available for calculating LAI from Landsat 8/9 imagery in my personal GEE scripts folder, which could be easily modified for purpose. Due to the large number of Landsat images involved the study period must be narrowed prior to analysis (i.e.&nbsp;July LAI, Winter LAI, etc.). Additional post-processing of LAI images may be required outside of GEE.</p>
 <section id="google-earth-engine-lai-javascript-code" class="level5" data-number="2.6.3.1">
 <h5 data-number="2.6.3.1" class="anchored" data-anchor-id="google-earth-engine-lai-javascript-code"><span class="header-section-number">2.6.3.1</span> Google Earth Engine LAI Javascript Code</h5>

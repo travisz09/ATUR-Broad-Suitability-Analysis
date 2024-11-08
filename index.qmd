@@ -16,7 +16,7 @@ keywords:
   - water table
   - ground water
 abstract: |
-  Aquifer recharge can be either passive or active, and is implemented in a variety of ways. This analysis seeks to identify regions across AZ which are boadly suitable for aquifer recharge projects as a general template for more focused analysis.
+  Aquifer recharge can be either passive or active, and is implemented in a variety of ways. This analysis seeks to identify regions across AZ which are broadly suitable for aquifer recharge projects as a general template for more focused analysis.
 plain-language-summary: |
   Identifying regions in AZ where surface water can be stored long-term as ground water.
 key-points:
@@ -50,10 +50,10 @@ Slope derived from hydrologically conditioned (filled) 30-m SRTM layer using qua
 
 Slope classified from 1-10 using a **continuous function** in ArcPro Suitability Mapper.
 
-Pamameter|Setting
+Parameter|Setting
 :-------:|:-------------:
 Function|[MSSSmall](https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst/the-transformation-functions-available-for-rescale-by-function.htm#ESRI_SECTION1_6C2FDA23D8094B8F99DBF3DF5E176B1D)
-Mean multiplyer|1
+Mean multiplier|1
 Sddv multiplier|2
 Lower threshold|0
 Value below threshold|0
@@ -74,7 +74,7 @@ Aspect calculated as with slope. Aspect reference point at N. Pole.
 
 Aspect classified from 1-10 using a **continuous function** in ArcPro Suitability Mapper.
 
-Pamameter|Setting
+Parameter|Setting
 :-------:|:-------------:
 Function|[Near](https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst/the-transformation-functions-available-for-rescale-by-function.htm#ESRI_SECTION1_A7FC2FC126CD4A41974C8D3F5E0F8FD6)
 Mid Point|180
@@ -97,10 +97,10 @@ Precipitation classified from 1-10 using a **continuous function** in ArcPro Sui
 
 NOTE: The logistic growth function may also be a good choice for this dataset. See [Logistic Growth function](https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst/the-transformation-functions-available-for-rescale-by-function.htm#ESRI_SECTION1_76ED0A2D02A24C95B98B8A691603F2F4)
 
-Pamameter|Setting
+Parameter|Setting
 :-------:|:-------------:
 Function|[MSLarge](https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst/the-transformation-functions-available-for-rescale-by-function.htm#ESRI_SECTION1_B83C9047549542DE995823E6030A29F3)
-Mean multiplyer|1.68 (aproximates 500mm at x-intercept)
+Mean multiplier|1.68 (approximates 500mm at x-intercept)
 Sddv multiplier|1
 Lower threshold|67.33789825439453 (default, minimum)
 Value below threshold|0
@@ -136,11 +136,11 @@ AZ_Soil_Hydric_Group data layer
 *Transformed dataset* Transformed_AZ_Soil_Hydric_Group
 
 ### Depth to Bedrock
-**There are 2 data layers which represent depth to bedrock and it is not clear which data layer is prefered!**
+**There are 2 data layers which represent depth to bedrock and it is not clear which data layer is preferred!**
 
 * AZ_BedrockDepth_cm.tif
   + 218 m resolution
-  + UTM 12N, NAVD88 depth (m) possitive down
+  + UTM 12N, NAVD88 depth (m) positive down
   + 0 -- 108,273 cm
 
 ![AZ_BedrockDepth_cm.tif with histogram.](images/Depth_to_Bedrock/AZ_BedrockDepth_cm.png)
@@ -148,17 +148,17 @@ AZ_Soil_Hydric_Group data layer
 * Depth to Bedrock WTA
   + Classified
   + 30 m resolution
-  + UTM 12N, NAVD88 height (m) possitive up
-    - vertical datum is incorrect. Should be depth (m) possitive down
+  + UTM 12N, NAVD88 height (m) positive up
+    - vertical datum is incorrect. Should be depth (m) positive down
   + 0 -- 269 cm
-  + Extremely skewed distribution clustering arround 200 cm
+  + Extremely skewed distribution clustering around 200 cm
 
 ![Depth to Bedrock WTA, DEP2BEDRS_WTA layer with histogram](images/Depth_to_Bedrock/Depth_to_Bedrock_WTA.png)
 
 #### Soil vs. Subsurface Geology Weighting Layers
-To quantify the differental importance of soils vs. subsurface geology layers for determining suitability two related data layers had to be calculated.
+To quantify the differential importance of soils vs. subsurface geology layers for determining suitability two related data layers had to be calculated.
 
-The logic assumes that there are two uniform subsurface layers, soil, and subsurface geology (i.e. geology). However, the weighted importance of these layers is not uniform across space. Where the bedrock is close to the surface, we assume that the soil is the most important layer for ground water storage. Inversely, when the bedrock is extremely deep, we assume that the geology is the more important layer. Our soil layer is measured at a depth of 200cm (2m), and we assume a uniform soil depth across the state. Therefore, the depth to bedrock was divided by 200 to get a depth to bedrock (dtb) in soil units. The first "soil depth" was ascribed to the soil layer, and varies from 0 to 1, while the remaining "soil depth" were attibuted to the geology layer, with a range from 0 to 541. Ergo, where the bedrock is deepest, the geology layer is 541 time more influential than the soils layer.
+The logic assumes that there are two uniform subsurface layers, soil, and subsurface geology (i.e. geology). However, the weighted importance of these layers is not uniform across space. Where the bedrock is close to the surface, we assume that the soil is the most important layer for ground water storage. Inversely, when the bedrock is extremely deep, we assume that the geology is the more important layer. Our soil layer is measured at a depth of 200cm (2m), and we assume a uniform soil depth across the state. Therefore, the depth to bedrock was divided by 200 to get a depth to bedrock (dtb) in soil units. The first "soil depth" was ascribed to the soil layer, and varies from 0 to 1, while the remaining "soil depth" were attributed to the geology layer, with a range from 0 to 541. Ergo, where the bedrock is deepest, the geology layer is 541 time more influential than the soils layer.
 
 ![Simple diagram of logic underlying the soil vs. subsurface geology weighting layers.](images/Depth_to_Bedrock/Notes.jpg)
 
@@ -174,7 +174,7 @@ soilMultiplier[soilMultiplier > 200] = 200  # Fix upper limit of soil depth = 20
 soilMultiplier = soilMultiplier/200
 ```
 
-![Soils multipler layer.](images/Depth_to_Bedrock/SoilsMultiplier.png)
+![Soils multiplier layer.](images/Depth_to_Bedrock/SoilsMultiplier.png)
 
 ##### Geology
 ```{{r}}
@@ -232,10 +232,10 @@ https://gee-community-catalog.org/projects/soilprop/?h=
   + 30m resolution
 * Cons: 
   + Fewer data layers
-  + Probabalistic model (increased uncertainty)
+  + Probabilistic model (increased uncertainty)
 
 #### Leaf Area Index (LAI)
-Leaf Area Index (LAI) can be calculated from Landsat data (30 m resolution), as a proxy of landcover. LAI is a unitless index value which is calculated as a function of the Enhanced Vegetation Index (ENVI) and typically ranges from 0 to 3.5 (*citation needed*). LAI can be calculated effincintly over a large spatial scale in Google Earth Engine (GEE) using the Javascript API, however LAI will vary seasonally, with updated Landsat data available every 8-days. Additionally, due to our large study area, as well as the logistics of Landsat orbital paths, it takes 6 days to photograph the entier study area. Therefore, any LAI analysis on this scale will necessaraly be a mosaic image, over roughly a week. For these reasons, a single LAI image should be viewed with some skeptisism, and a seasonal mean or median LAI mosaic image may be more desireable as a proxy for landcover.
+Leaf Area Index (LAI) can be calculated from Landsat data (30 m resolution), as a proxy of land cover. LAI is a unitless index value which is calculated as a function of the Enhanced Vegetation Index (ENVI) and typically ranges from 0 to 3.5 (*citation needed*). LAI can be calculated efficiently over a large spatial scale in Google Earth Engine (GEE) using the Javascript API, however LAI will vary seasonally, with updated Landsat data available every 8-days. Additionally, due to our large study area, as well as the logistics of Landsat orbital paths, it takes 6 days to photograph the entire study area. Therefore, any LAI analysis on this scale will necessarily be a mosaic image, over roughly a week. For these reasons, a single LAI image should be viewed with some skepticism, and a seasonal mean or median LAI mosaic image may be more desireable as a proxy for land cover.
 
 Code is available for calculating LAI from Landsat 8/9 imagery in my personal GEE scripts folder, which could be easily modified for purpose. Due to the large number of Landsat images involved the study period must be narrowed prior to analysis (i.e. July LAI, Winter LAI, etc.). Additional post-processing of LAI images may be required outside of GEE.
 

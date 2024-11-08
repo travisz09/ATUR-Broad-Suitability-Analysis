@@ -63,7 +63,7 @@ Analysis</article-title>
 <abstract>
 <p>Aquifer recharge can be either passive or active, and is implemented
 in a variety of ways. This analysis seeks to identify regions across AZ
-which are boadly suitable for aquifer recharge projects as a general
+which are broadly suitable for aquifer recharge projects as a general
 template for more focused analysis.</p>
 </abstract>
 <kwd-group kwd-group-type="author">
@@ -120,7 +120,7 @@ template for more focused analysis.</p>
           </colgroup>
           <thead>
             <tr>
-              <th align="center">Pamameter</th>
+              <th align="center">Parameter</th>
               <th align="center">Setting</th>
             </tr>
           </thead>
@@ -130,7 +130,7 @@ template for more focused analysis.</p>
               <td align="center"><ext-link ext-link-type="uri" xlink:href="https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst/the-transformation-functions-available-for-rescale-by-function.htm#ESRI_SECTION1_6C2FDA23D8094B8F99DBF3DF5E176B1D">MSSSmall</ext-link></td>
             </tr>
             <tr>
-              <td align="center">Mean multiplyer</td>
+              <td align="center">Mean multiplier</td>
               <td align="center">1</td>
             </tr>
             <tr>
@@ -195,7 +195,7 @@ template for more focused analysis.</p>
           </colgroup>
           <thead>
             <tr>
-              <th align="center">Pamameter</th>
+              <th align="center">Parameter</th>
               <th align="center">Setting</th>
             </tr>
           </thead>
@@ -271,7 +271,7 @@ template for more focused analysis.</p>
         </colgroup>
         <thead>
           <tr>
-            <th align="center">Pamameter</th>
+            <th align="center">Parameter</th>
             <th align="center">Setting</th>
           </tr>
         </thead>
@@ -281,8 +281,8 @@ template for more focused analysis.</p>
             <td align="center"><ext-link ext-link-type="uri" xlink:href="https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst/the-transformation-functions-available-for-rescale-by-function.htm#ESRI_SECTION1_B83C9047549542DE995823E6030A29F3">MSLarge</ext-link></td>
           </tr>
           <tr>
-            <td align="center">Mean multiplyer</td>
-            <td align="center">1.68 (aproximates 500mm at
+            <td align="center">Mean multiplier</td>
+            <td align="center">1.68 (approximates 500mm at
             x-intercept)</td>
           </tr>
           <tr>
@@ -426,7 +426,7 @@ template for more focused analysis.</p>
   <sec id="depth-to-bedrock">
     <title>2.5 Depth to Bedrock</title>
     <p><bold>There are 2 data layers which represent depth to bedrock
-    and it is not clear which data layer is prefered!</bold></p>
+    and it is not clear which data layer is preferred!</bold></p>
     <list list-type="bullet">
       <list-item>
         <p>AZ_BedrockDepth_cm.tif</p>
@@ -435,7 +435,7 @@ template for more focused analysis.</p>
             <p>218 m resolution</p>
           </list-item>
           <list-item>
-            <p>UTM 12N, NAVD88 depth (m) possitive down</p>
+            <p>UTM 12N, NAVD88 depth (m) positive down</p>
           </list-item>
           <list-item>
             <p>0 – 108,273 cm</p>
@@ -458,11 +458,11 @@ template for more focused analysis.</p>
             <p>30 m resolution</p>
           </list-item>
           <list-item>
-            <p>UTM 12N, NAVD88 height (m) possitive up</p>
+            <p>UTM 12N, NAVD88 height (m) positive up</p>
             <list list-type="bullet">
               <list-item>
                 <p>vertical datum is incorrect. Should be depth (m)
-                possitive down</p>
+                positive down</p>
               </list-item>
             </list>
           </list-item>
@@ -470,7 +470,7 @@ template for more focused analysis.</p>
             <p>0 – 269 cm</p>
           </list-item>
           <list-item>
-            <p>Extremely skewed distribution clustering arround 200
+            <p>Extremely skewed distribution clustering around 200
             cm</p>
           </list-item>
         </list>
@@ -483,7 +483,7 @@ template for more focused analysis.</p>
     </fig>
     <sec id="soil-vs.-subsurface-geology-weighting-layers">
       <title>2.5.1 Soil vs. Subsurface Geology Weighting Layers</title>
-      <p>To quantify the differental importance of soils vs. subsurface
+      <p>To quantify the differential importance of soils vs. subsurface
       geology layers for determining suitability two related data layers
       had to be calculated.</p>
       <p>The logic assumes that there are two uniform subsurface layers,
@@ -497,8 +497,8 @@ template for more focused analysis.</p>
       Therefore, the depth to bedrock was divided by 200 to get a depth
       to bedrock (dtb) in soil units. The first “soil depth” was
       ascribed to the soil layer, and varies from 0 to 1, while the
-      remaining “soil depth” were attibuted to the geology layer, with a
-      range from 0 to 541. Ergo, where the bedrock is deepest, the
+      remaining “soil depth” were attributed to the geology layer, with
+      a range from 0 to 541. Ergo, where the bedrock is deepest, the
       geology layer is 541 time more influential than the soils
       layer.</p>
       <fig>
@@ -519,7 +519,7 @@ soilMultiplier[soilMultiplier &gt; 200] = 200  # Fix upper limit of soil depth =
 soilMultiplier = soilMultiplier/200
 ```</code>
         <fig>
-          <caption><p>Soils multipler layer.</p></caption>
+          <caption><p>Soils multiplier layer.</p></caption>
           <graphic mimetype="image" mime-subtype="png" xlink:href="images/Depth_to_Bedrock/SoilsMultiplier.png" />
         </fig>
       </sec>
@@ -672,7 +672,7 @@ geologyMultiplier = geologyMultiplier/200
                 <p>Fewer data layers</p>
               </list-item>
               <list-item>
-                <p>Probabalistic model (increased uncertainty)</p>
+                <p>Probabilistic model (increased uncertainty)</p>
               </list-item>
             </list>
           </list-item>
@@ -682,19 +682,19 @@ geologyMultiplier = geologyMultiplier/200
     <sec id="leaf-area-index-lai">
       <title>2.6.3 Leaf Area Index (LAI)</title>
       <p>Leaf Area Index (LAI) can be calculated from Landsat data (30 m
-      resolution), as a proxy of landcover. LAI is a unitless index
+      resolution), as a proxy of land cover. LAI is a unitless index
       value which is calculated as a function of the Enhanced Vegetation
       Index (ENVI) and typically ranges from 0 to 3.5 (<italic>citation
-      needed</italic>). LAI can be calculated effincintly over a large
+      needed</italic>). LAI can be calculated efficiently over a large
       spatial scale in Google Earth Engine (GEE) using the Javascript
       API, however LAI will vary seasonally, with updated Landsat data
       available every 8-days. Additionally, due to our large study area,
       as well as the logistics of Landsat orbital paths, it takes 6 days
-      to photograph the entier study area. Therefore, any LAI analysis
-      on this scale will necessaraly be a mosaic image, over roughly a
+      to photograph the entire study area. Therefore, any LAI analysis
+      on this scale will necessarily be a mosaic image, over roughly a
       week. For these reasons, a single LAI image should be viewed with
-      some skeptisism, and a seasonal mean or median LAI mosaic image
-      may be more desireable as a proxy for landcover.</p>
+      some skepticism, and a seasonal mean or median LAI mosaic image
+      may be more desireable as a proxy for land cover.</p>
       <p>Code is available for calculating LAI from Landsat 8/9 imagery
       in my personal GEE scripts folder, which could be easily modified
       for purpose. Due to the large number of Landsat images involved
@@ -847,7 +847,7 @@ Analysis</article-title>
 <abstract>
 <p>Aquifer recharge can be either passive or active, and is implemented
 in a variety of ways. This analysis seeks to identify regions across AZ
-which are boadly suitable for aquifer recharge projects as a general
+which are broadly suitable for aquifer recharge projects as a general
 template for more focused analysis.</p>
 </abstract>
 </front-stub>
@@ -893,7 +893,7 @@ template for more focused analysis.</p>
           </colgroup>
           <thead>
             <tr>
-              <th align="center">Pamameter</th>
+              <th align="center">Parameter</th>
               <th align="center">Setting</th>
             </tr>
           </thead>
@@ -903,7 +903,7 @@ template for more focused analysis.</p>
               <td align="center"><ext-link ext-link-type="uri" xlink:href="https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst/the-transformation-functions-available-for-rescale-by-function.htm#ESRI_SECTION1_6C2FDA23D8094B8F99DBF3DF5E176B1D">MSSSmall</ext-link></td>
             </tr>
             <tr>
-              <td align="center">Mean multiplyer</td>
+              <td align="center">Mean multiplier</td>
               <td align="center">1</td>
             </tr>
             <tr>
@@ -968,7 +968,7 @@ template for more focused analysis.</p>
           </colgroup>
           <thead>
             <tr>
-              <th align="center">Pamameter</th>
+              <th align="center">Parameter</th>
               <th align="center">Setting</th>
             </tr>
           </thead>
@@ -1044,7 +1044,7 @@ template for more focused analysis.</p>
         </colgroup>
         <thead>
           <tr>
-            <th align="center">Pamameter</th>
+            <th align="center">Parameter</th>
             <th align="center">Setting</th>
           </tr>
         </thead>
@@ -1054,8 +1054,8 @@ template for more focused analysis.</p>
             <td align="center"><ext-link ext-link-type="uri" xlink:href="https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst/the-transformation-functions-available-for-rescale-by-function.htm#ESRI_SECTION1_B83C9047549542DE995823E6030A29F3">MSLarge</ext-link></td>
           </tr>
           <tr>
-            <td align="center">Mean multiplyer</td>
-            <td align="center">1.68 (aproximates 500mm at
+            <td align="center">Mean multiplier</td>
+            <td align="center">1.68 (approximates 500mm at
             x-intercept)</td>
           </tr>
           <tr>
@@ -1199,7 +1199,7 @@ template for more focused analysis.</p>
   <sec id="depth-to-bedrock-nb-article">
     <title>2.5 Depth to Bedrock</title>
     <p><bold>There are 2 data layers which represent depth to bedrock
-    and it is not clear which data layer is prefered!</bold></p>
+    and it is not clear which data layer is preferred!</bold></p>
     <list list-type="bullet">
       <list-item>
         <p>AZ_BedrockDepth_cm.tif</p>
@@ -1208,7 +1208,7 @@ template for more focused analysis.</p>
             <p>218 m resolution</p>
           </list-item>
           <list-item>
-            <p>UTM 12N, NAVD88 depth (m) possitive down</p>
+            <p>UTM 12N, NAVD88 depth (m) positive down</p>
           </list-item>
           <list-item>
             <p>0 – 108,273 cm</p>
@@ -1231,11 +1231,11 @@ template for more focused analysis.</p>
             <p>30 m resolution</p>
           </list-item>
           <list-item>
-            <p>UTM 12N, NAVD88 height (m) possitive up</p>
+            <p>UTM 12N, NAVD88 height (m) positive up</p>
             <list list-type="bullet">
               <list-item>
                 <p>vertical datum is incorrect. Should be depth (m)
-                possitive down</p>
+                positive down</p>
               </list-item>
             </list>
           </list-item>
@@ -1243,7 +1243,7 @@ template for more focused analysis.</p>
             <p>0 – 269 cm</p>
           </list-item>
           <list-item>
-            <p>Extremely skewed distribution clustering arround 200
+            <p>Extremely skewed distribution clustering around 200
             cm</p>
           </list-item>
         </list>
@@ -1256,7 +1256,7 @@ template for more focused analysis.</p>
     </fig>
     <sec id="soil-vs.-subsurface-geology-weighting-layers-nb-article">
       <title>2.5.1 Soil vs. Subsurface Geology Weighting Layers</title>
-      <p>To quantify the differental importance of soils vs. subsurface
+      <p>To quantify the differential importance of soils vs. subsurface
       geology layers for determining suitability two related data layers
       had to be calculated.</p>
       <p>The logic assumes that there are two uniform subsurface layers,
@@ -1270,8 +1270,8 @@ template for more focused analysis.</p>
       Therefore, the depth to bedrock was divided by 200 to get a depth
       to bedrock (dtb) in soil units. The first “soil depth” was
       ascribed to the soil layer, and varies from 0 to 1, while the
-      remaining “soil depth” were attibuted to the geology layer, with a
-      range from 0 to 541. Ergo, where the bedrock is deepest, the
+      remaining “soil depth” were attributed to the geology layer, with
+      a range from 0 to 541. Ergo, where the bedrock is deepest, the
       geology layer is 541 time more influential than the soils
       layer.</p>
       <fig>
@@ -1292,7 +1292,7 @@ soilMultiplier[soilMultiplier &gt; 200] = 200  # Fix upper limit of soil depth =
 soilMultiplier = soilMultiplier/200
 ```</code>
         <fig>
-          <caption><p>Soils multipler layer.</p></caption>
+          <caption><p>Soils multiplier layer.</p></caption>
           <graphic mimetype="image" mime-subtype="png" xlink:href="images/Depth_to_Bedrock/SoilsMultiplier.png" />
         </fig>
       </sec>
@@ -1445,7 +1445,7 @@ geologyMultiplier = geologyMultiplier/200
                 <p>Fewer data layers</p>
               </list-item>
               <list-item>
-                <p>Probabalistic model (increased uncertainty)</p>
+                <p>Probabilistic model (increased uncertainty)</p>
               </list-item>
             </list>
           </list-item>
@@ -1455,19 +1455,19 @@ geologyMultiplier = geologyMultiplier/200
     <sec id="leaf-area-index-lai-nb-article">
       <title>2.6.3 Leaf Area Index (LAI)</title>
       <p>Leaf Area Index (LAI) can be calculated from Landsat data (30 m
-      resolution), as a proxy of landcover. LAI is a unitless index
+      resolution), as a proxy of land cover. LAI is a unitless index
       value which is calculated as a function of the Enhanced Vegetation
       Index (ENVI) and typically ranges from 0 to 3.5 (<italic>citation
-      needed</italic>). LAI can be calculated effincintly over a large
+      needed</italic>). LAI can be calculated efficiently over a large
       spatial scale in Google Earth Engine (GEE) using the Javascript
       API, however LAI will vary seasonally, with updated Landsat data
       available every 8-days. Additionally, due to our large study area,
       as well as the logistics of Landsat orbital paths, it takes 6 days
-      to photograph the entier study area. Therefore, any LAI analysis
-      on this scale will necessaraly be a mosaic image, over roughly a
+      to photograph the entire study area. Therefore, any LAI analysis
+      on this scale will necessarily be a mosaic image, over roughly a
       week. For these reasons, a single LAI image should be viewed with
-      some skeptisism, and a seasonal mean or median LAI mosaic image
-      may be more desireable as a proxy for landcover.</p>
+      some skepticism, and a seasonal mean or median LAI mosaic image
+      may be more desireable as a proxy for land cover.</p>
       <p>Code is available for calculating LAI from Landsat 8/9 imagery
       in my personal GEE scripts folder, which could be easily modified
       for purpose. Due to the large number of Landsat images involved
