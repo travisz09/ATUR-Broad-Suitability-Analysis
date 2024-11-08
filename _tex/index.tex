@@ -739,6 +739,123 @@ Probabilistic Soil Properties US}
   \end{itemize}
 \end{itemize}
 
+\paragraph{Leaf Area Index (LAI)}\label{leaf-area-index-lai}
+
+Leaf Area Index (LAI) can be calculated from Landsat data (30 m
+resolution), as a proxy of landcover. LAI is a unitless index value
+which is calculated as a function of the Enhanced Vegetation Index
+(ENVI) and typically ranges from 0 to 3.5 (\emph{citation needed}). LAI
+can be calculated effincintly over a large spatial scale in Google Earth
+Engine (GEE) using the Javascript API, however LAI will vary seasonally,
+with updated Landsat data available every 8-days. Additionally, due to
+our large study area, as well as the logistics of Landsat orbital paths,
+it takes 6 days to photograph the entier study area. Therefore, any LAI
+analysis on this scale will necessaraly be a mosaic image, over roughly
+a week. For these reasons, a single LAI image should be viewed with some
+skeptisism, and a seasonal mean or median LAI mosaic image may be more
+desireable as a proxy for landcover.
+
+Code is available for calculating LAI from Landsat 8/9 imagery in my
+personal GEE scripts folder, which could be easily modified for purpose.
+Due to the large number of Landsat images involved the study period must
+be narrowed prior to analysis (i.e.~July LAI, Winter LAI, etc.).
+Additional post-processing of LAI images may be required outside of GEE.
+
+\subparagraph{Google Earth Engine LAI Javascript
+Code}\label{google-earth-engine-lai-javascript-code}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{var studyArea = ee.FeatureCollection("projects/ee{-}travisz09/assets/ATUR/WBDHU8\_OuterBoundary\_Project"),}
+\NormalTok{    landsat9 = ee.ImageCollection("LANDSAT/LC09/C02/T1\_TOA");}
+
+\NormalTok{// Map setup}
+\NormalTok{Map.centerObject(studyArea, 6);}
+\NormalTok{Map.addLayer(studyArea, \{\}, \textquotesingle{}Study Area\textquotesingle{}, false);}
+
+\NormalTok{// Paint study area outline}
+\NormalTok{var empty = ee.Image().byte();  // An empty layer to paint on}
+\NormalTok{var studyAreaOutline = empty.paint(studyArea, \textquotesingle{}black\textquotesingle{}, 2);}
+\NormalTok{Map.addLayer(studyAreaOutline, \{\}, \textquotesingle{}Study Area (outline)\textquotesingle{});}
+
+\NormalTok{// Study period}
+\NormalTok{var startDate = ee.Date(\textquotesingle{}2023{-}01{-}01\textquotesingle{});}
+\NormalTok{var endDate = ee.Date(\textquotesingle{}2024{-}01{-}01\textquotesingle{});  // Exclusive end date}
+\NormalTok{var timeDif = endDate.difference(startDate, \textquotesingle{}day\textquotesingle{});}
+\NormalTok{// var interval = 8;  // days}
+\NormalTok{// print(timeDif);}
+
+\NormalTok{// Landsat 8/9}
+\NormalTok{var cloudFilter = 10  // 10\% max cloud cover}
+\NormalTok{var landsat = ee.ImageCollection(\textquotesingle{}LANDSAT/LC08/C02/T1\_L2\textquotesingle{})}
+\NormalTok{  .merge(ee.ImageCollection(\textquotesingle{}LANDSAT/LC09/C02/T1\_L2\textquotesingle{}))  // Combine Lst{-}9 and Lst{-}8}
+\NormalTok{  .filterDate(startDate, endDate)}
+\NormalTok{  .filterBounds(studyArea)}
+\NormalTok{  .sort(\textquotesingle{}system:time\_start\textquotesingle{})  // Sort by date}
+\NormalTok{  .filter(ee.Filter.lt(\textquotesingle{}CLOUD\_COVER\textquotesingle{}, cloudFilter));}
+  
+\NormalTok{// Lst scaling factor function}
+\NormalTok{var scaleLst = function(col) \{}
+\NormalTok{  // Map over images in collection}
+\NormalTok{  var scaled = col.map(function(img) \{}
+\NormalTok{    var opticalBands = img.select(\textquotesingle{}SR\_B.\textquotesingle{}).multiply(0.0000275).add({-}0.2);}
+\NormalTok{    var thermalBands = img.select(\textquotesingle{}ST\_B.*\textquotesingle{}).multiply(0.00341802).add(149.0);}
+    
+\NormalTok{    return img.addBands(opticalBands, null, true)  // Overwrite unscaled bands}
+\NormalTok{      .addBands(thermalBands, null, true);}
+\NormalTok{  \});}
+  
+\NormalTok{  return scaled;}
+\NormalTok{\};}
+
+\NormalTok{// print(landsat.first());  // Check the Lst data before scaling}
+\NormalTok{landsat = scaleLst(landsat);  // Apply scaling factor}
+\NormalTok{// print(landsat.first());  // Check Lst data after scaling}
+
+\NormalTok{// NDVI, EVI, LAI, index function}
+\NormalTok{var calcIndices = function(col) \{}
+\NormalTok{  var indices = col.map(function(img) \{}
+\NormalTok{    var ndvi = img.normalizedDifference([\textquotesingle{}SR\_B5\textquotesingle{}, \textquotesingle{}SR\_B4\textquotesingle{}])}
+\NormalTok{      .rename(\textquotesingle{}ndvi\textquotesingle{});}
+\NormalTok{    var evi = img.expression(}
+\NormalTok{      \textquotesingle{}2.5 * ((nir {-} red) / (nir + 6 * red {-} 7.5 * blue + 1))\textquotesingle{},}
+\NormalTok{      \{}
+\NormalTok{        \textquotesingle{}nir\textquotesingle{}: img.select(\textquotesingle{}SR\_B5\textquotesingle{}),}
+\NormalTok{        \textquotesingle{}red\textquotesingle{}: img.select(\textquotesingle{}SR\_B4\textquotesingle{}),}
+\NormalTok{        \textquotesingle{}blue\textquotesingle{}: img.select(\textquotesingle{}SR\_B2\textquotesingle{})}
+\NormalTok{      \}).rename(\textquotesingle{}evi\textquotesingle{});}
+\NormalTok{    var lai = evi.expression(}
+\NormalTok{      \textquotesingle{}3.618 * evi {-} 0.118\textquotesingle{}, }
+\NormalTok{      \{}
+\NormalTok{        \textquotesingle{}evi\textquotesingle{}: evi.select(\textquotesingle{}evi\textquotesingle{})}
+\NormalTok{      \}).rename(\textquotesingle{}lai\textquotesingle{});}
+      
+\NormalTok{    return img.addBands(ndvi)}
+\NormalTok{      .addBands(evi)}
+\NormalTok{      .addBands(lai);}
+\NormalTok{  \});}
+  
+\NormalTok{  return indices;}
+\NormalTok{\};}
+
+\NormalTok{// Apply indices}
+\NormalTok{landsat = calcIndices(landsat);}
+\NormalTok{// print(landsat.first());  // sanity check}
+
+\NormalTok{// Isolate lai bands}
+\NormalTok{var lai = landsat.map(function(img) \{}
+\NormalTok{  return img.select(\textquotesingle{}lai\textquotesingle{});}
+\NormalTok{\});}
+
+\NormalTok{Map.addLayer(lai.limit(20), \{}
+\NormalTok{  min: 0,}
+\NormalTok{  max: 3.5,}
+\NormalTok{  palette: [\textquotesingle{}red\textquotesingle{}, \textquotesingle{}white\textquotesingle{}, \textquotesingle{}green\textquotesingle{}]}
+\NormalTok{\}, \textquotesingle{}LAI\textquotesingle{});}
+\NormalTok{print(lai);}
+\end{Highlighting}
+\end{Shaded}
+
 \subsection{Conclusion}\label{sec-conclusions}
 
 \subsection*{References}\label{references}
