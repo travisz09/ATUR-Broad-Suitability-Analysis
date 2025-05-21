@@ -80,17 +80,27 @@ template for more focused analysis.</p>
 </front>
 
 <body>
+<sec id="update-5-21-25-tcz">
+  <title>1 Update 5-21-25 (TCZ)</title>
+  <p><bold>This analysis has been taken over by Ryan Lima who has
+  developed the Soil Moisture Infiltration Index (SMII) and Subsurface
+  Infiltration Index (SbII). This page is no longer being updated and is
+  being maintained for archival purposes only. See
+  <ext-link ext-link-type="uri" xlink:href="https://ryan3lima.github.io/ATUR-Thinning-to-enhance-recharge/">ATUR
+  Thinning to enhance Recharge</ext-link> (private repository) for
+  updated method details.</bold></p>
+</sec>
 <sec id="introduction">
-  <title>1 Introduction</title>
+  <title>2 Introduction</title>
 </sec>
 <sec id="sec-data-methods">
-  <title>2 Data &amp; Methods</title>
+  <title>3 Data &amp; Methods</title>
   <p><bold>These methods and data layers are preliminary and subject to
   change</bold></p>
   <sec id="elevation">
-    <title>2.1 Elevation</title>
+    <title>3.1 Elevation</title>
     <sec id="dem">
-      <title>2.1.1 DEM</title>
+      <title>3.1.1 DEM</title>
       <p>Elevation and elevation derivatives from 30-m NASA SRTM. USGS
       3-DEM (10m) product not suitable for full study area analysis due
       to (1) the large area of missing data in Mexico, and (2), the
@@ -102,7 +112,7 @@ template for more focused analysis.</p>
       analysis?</bold></p>
     </sec>
     <sec id="slope">
-      <title>2.1.2 Slope</title>
+      <title>3.1.2 Slope</title>
       <p>Slope derived from hydrologically conditioned (filled) 30-m
       SRTM layer using quadratic surface function and a fixed 30-m
       neighborhood. Slope measured in °.</p>
@@ -175,7 +185,7 @@ template for more focused analysis.</p>
       </fig>
     </sec>
     <sec id="aspect">
-      <title>2.1.3 Aspect</title>
+      <title>3.1.3 Aspect</title>
       <p>Aspect calculated as with slope. Aspect reference point at N.
       Pole.</p>
       <disp-quote>
@@ -251,7 +261,7 @@ template for more focused analysis.</p>
     </sec>
   </sec>
   <sec id="precipitation">
-    <title>2.2 Precipitation</title>
+    <title>3.2 Precipitation</title>
     <p>PRISM normals, 800m resolution. Annual precipitation.</p>
     <disp-quote>
       <p>Mean annual precipitation must be higher than 500mm 1990 -
@@ -328,16 +338,16 @@ template for more focused analysis.</p>
     </fig>
   </sec>
   <sec id="vegetation-characteristics">
-    <title>2.3 Vegetation Characteristics</title>
+    <title>3.3 Vegetation Characteristics</title>
     <sec id="nlcd-2021-total-canopy-cover">
-      <title>2.3.1 NLCD 2021 Total Canopy Cover</title>
+      <title>3.3.1 NLCD 2021 Total Canopy Cover</title>
     </sec>
     <sec id="landfire">
-      <title>2.3.2 Landfire</title>
+      <title>3.3.2 Landfire</title>
     </sec>
   </sec>
   <sec id="soil-hydrology">
-    <title>2.4 Soil Hydrology</title>
+    <title>3.4 Soil Hydrology</title>
     <p>AZ_Soil_Hydric_Group data layer</p>
     <p><bold>Classification Schema</bold></p>
     <table-wrap>
@@ -424,7 +434,7 @@ template for more focused analysis.</p>
     Transformed_AZ_Soil_Hydric_Group</p>
   </sec>
   <sec id="depth-to-bedrock">
-    <title>2.5 Depth to Bedrock</title>
+    <title>3.5 Depth to Bedrock</title>
     <p><bold>There are 2 data layers which represent depth to bedrock
     and it is not clear which data layer is preferred!</bold></p>
     <list list-type="bullet">
@@ -482,7 +492,7 @@ template for more focused analysis.</p>
       <graphic mimetype="image" mime-subtype="png" xlink:href="images/Depth_to_Bedrock/Depth_to_Bedrock_WTA.png" />
     </fig>
     <sec id="soil-vs.-subsurface-geology-weighting-layers">
-      <title>2.5.1 Soil vs. Subsurface Geology Weighting Layers</title>
+      <title>3.5.1 Soil vs. Subsurface Geology Weighting Layers</title>
       <p>To quantify the differential importance of soils vs. subsurface
       geology layers for determining suitability two related data layers
       had to be calculated.</p>
@@ -509,7 +519,7 @@ template for more focused analysis.</p>
       <p>These layers were created in a custom R script using the
       following raster math, with their resulting outputs.</p>
       <sec id="soils">
-        <title>2.5.1.1 Soils</title>
+        <title>3.5.1.1 Soils</title>
         <code language="markdown">```{r}
 # Where depth to bedrock (dtb) = 0cm, soil multiplier = 0 (no soil)
 # Where depth to dtb &gt;= 200cm, soil multiplier = 1 (Full depth of soil)
@@ -524,7 +534,7 @@ soilMultiplier = soilMultiplier/200
         </fig>
       </sec>
       <sec id="geology">
-        <title>2.5.1.2 Geology</title>
+        <title>3.5.1.2 Geology</title>
         <code language="markdown">```{r}
 # Where dtb &lt; 200cm, geology multiplier = 0 (soil only)
 # Where dtb &gt;= 200cm, geology multiplier = dtb/200 (in units of relative soil depth)
@@ -540,9 +550,9 @@ geologyMultiplier = geologyMultiplier/200
     </sec>
   </sec>
   <sec id="other-data-layers-for-consideration">
-    <title>2.6 Other Data Layers for Consideration</title>
+    <title>3.6 Other Data Layers for Consideration</title>
     <sec id="global-hydrologic-curve-numbergcn250">
-      <title>2.6.1 Global Hydrologic Curve Number(GCN250)</title>
+      <title>3.6.1 Global Hydrologic Curve Number(GCN250)</title>
       <p>https://gee-community-catalog.org/projects/gcn250/?h=hydrologic</p>
       <disp-quote>
         <p>The GCN250 is a globally consistent, gridded dataset defining
@@ -563,7 +573,7 @@ geologyMultiplier = geologyMultiplier/200
       </disp-quote>
     </sec>
     <sec id="soil-properties-800m">
-      <title>2.6.2 Soil Properties 800m</title>
+      <title>3.6.2 Soil Properties 800m</title>
       <p>https://gee-community-catalog.org/projects/soilprop/?h=</p>
       <disp-quote>
         <p>The data shown here were obtained by aggregating current
@@ -619,7 +629,7 @@ geologyMultiplier = geologyMultiplier/200
         </list-item>
       </list>
       <sec id="alternative-layers">
-        <title>2.6.2.1 Alternative layers</title>
+        <title>3.6.2.1 Alternative layers</title>
         <p><ext-link ext-link-type="uri" xlink:href="https://gee-community-catalog.org/projects/gnatsgo/">gNATSGO
         (gridded National Soil Survey Geographic
         Database)</ext-link></p>
@@ -680,7 +690,7 @@ geologyMultiplier = geologyMultiplier/200
       </sec>
     </sec>
     <sec id="leaf-area-index-lai">
-      <title>2.6.3 Leaf Area Index (LAI)</title>
+      <title>3.6.3 Leaf Area Index (LAI)</title>
       <p>Leaf Area Index (LAI) can be calculated from Landsat data (30 m
       resolution), as a proxy of land cover. LAI is a unitless index
       value which is calculated as a function of the Enhanced Vegetation
@@ -694,7 +704,7 @@ geologyMultiplier = geologyMultiplier/200
       on this scale will necessarily be a mosaic image, over roughly a
       week. For these reasons, a single LAI image should be viewed with
       some skepticism, and a seasonal mean or median LAI mosaic image
-      may be more desireable as a proxy for land cover.</p>
+      may be more desirable as a proxy for land cover.</p>
       <p>Code is available for calculating LAI from Landsat 8/9 imagery
       in my personal GEE scripts folder, which could be easily modified
       for purpose. Due to the large number of Landsat images involved
@@ -702,7 +712,7 @@ geologyMultiplier = geologyMultiplier/200
       LAI, Winter LAI, etc.). Additional post-processing of LAI images
       may be required outside of GEE.</p>
       <sec id="google-earth-engine-lai-javascript-code">
-        <title>2.6.3.1 Google Earth Engine LAI Javascript Code</title>
+        <title>3.6.3.1 Google Earth Engine LAI Javascript Code</title>
         <preformat>var studyArea = ee.FeatureCollection(&quot;projects/ee-travisz09/assets/ATUR/WBDHU8_OuterBoundary_Project&quot;),
     landsat9 = ee.ImageCollection(&quot;LANDSAT/LC09/C02/T1_TOA&quot;);
 
@@ -795,7 +805,7 @@ print(lai);</preformat>
   </sec>
 </sec>
 <sec id="sec-conclusions">
-  <title>3 Conclusion</title>
+  <title>4 Conclusion</title>
 </sec>
 <sec id="references">
   <title>References</title>
@@ -853,17 +863,27 @@ template for more focused analysis.</p>
 </front-stub>
 
 <body>
+<sec id="update-5-21-25-tcz-nb-article">
+  <title>1 Update 5-21-25 (TCZ)</title>
+  <p><bold>This analysis has been taken over by Ryan Lima who has
+  developed the Soil Moisture Infiltration Index (SMII) and Subsurface
+  Infiltration Index (SbII). This page is no longer being updated and is
+  being maintained for archival purposes only. See
+  <ext-link ext-link-type="uri" xlink:href="https://ryan3lima.github.io/ATUR-Thinning-to-enhance-recharge/">ATUR
+  Thinning to enhance Recharge</ext-link> (private repository) for
+  updated method details.</bold></p>
+</sec>
 <sec id="introduction-nb-article">
-  <title>1 Introduction</title>
+  <title>2 Introduction</title>
 </sec>
 <sec id="sec-data-methods-nb-article">
-  <title>2 Data &amp; Methods</title>
+  <title>3 Data &amp; Methods</title>
   <p><bold>These methods and data layers are preliminary and subject to
   change</bold></p>
   <sec id="elevation-nb-article">
-    <title>2.1 Elevation</title>
+    <title>3.1 Elevation</title>
     <sec id="dem-nb-article">
-      <title>2.1.1 DEM</title>
+      <title>3.1.1 DEM</title>
       <p>Elevation and elevation derivatives from 30-m NASA SRTM. USGS
       3-DEM (10m) product not suitable for full study area analysis due
       to (1) the large area of missing data in Mexico, and (2), the
@@ -875,7 +895,7 @@ template for more focused analysis.</p>
       analysis?</bold></p>
     </sec>
     <sec id="slope-nb-article">
-      <title>2.1.2 Slope</title>
+      <title>3.1.2 Slope</title>
       <p>Slope derived from hydrologically conditioned (filled) 30-m
       SRTM layer using quadratic surface function and a fixed 30-m
       neighborhood. Slope measured in °.</p>
@@ -948,7 +968,7 @@ template for more focused analysis.</p>
       </fig>
     </sec>
     <sec id="aspect-nb-article">
-      <title>2.1.3 Aspect</title>
+      <title>3.1.3 Aspect</title>
       <p>Aspect calculated as with slope. Aspect reference point at N.
       Pole.</p>
       <disp-quote>
@@ -1024,7 +1044,7 @@ template for more focused analysis.</p>
     </sec>
   </sec>
   <sec id="precipitation-nb-article">
-    <title>2.2 Precipitation</title>
+    <title>3.2 Precipitation</title>
     <p>PRISM normals, 800m resolution. Annual precipitation.</p>
     <disp-quote>
       <p>Mean annual precipitation must be higher than 500mm 1990 -
@@ -1101,16 +1121,16 @@ template for more focused analysis.</p>
     </fig>
   </sec>
   <sec id="vegetation-characteristics-nb-article">
-    <title>2.3 Vegetation Characteristics</title>
+    <title>3.3 Vegetation Characteristics</title>
     <sec id="nlcd-2021-total-canopy-cover-nb-article">
-      <title>2.3.1 NLCD 2021 Total Canopy Cover</title>
+      <title>3.3.1 NLCD 2021 Total Canopy Cover</title>
     </sec>
     <sec id="landfire-nb-article">
-      <title>2.3.2 Landfire</title>
+      <title>3.3.2 Landfire</title>
     </sec>
   </sec>
   <sec id="soil-hydrology-nb-article">
-    <title>2.4 Soil Hydrology</title>
+    <title>3.4 Soil Hydrology</title>
     <p>AZ_Soil_Hydric_Group data layer</p>
     <p><bold>Classification Schema</bold></p>
     <table-wrap>
@@ -1197,7 +1217,7 @@ template for more focused analysis.</p>
     Transformed_AZ_Soil_Hydric_Group</p>
   </sec>
   <sec id="depth-to-bedrock-nb-article">
-    <title>2.5 Depth to Bedrock</title>
+    <title>3.5 Depth to Bedrock</title>
     <p><bold>There are 2 data layers which represent depth to bedrock
     and it is not clear which data layer is preferred!</bold></p>
     <list list-type="bullet">
@@ -1255,7 +1275,7 @@ template for more focused analysis.</p>
       <graphic mimetype="image" mime-subtype="png" xlink:href="images/Depth_to_Bedrock/Depth_to_Bedrock_WTA.png" />
     </fig>
     <sec id="soil-vs.-subsurface-geology-weighting-layers-nb-article">
-      <title>2.5.1 Soil vs. Subsurface Geology Weighting Layers</title>
+      <title>3.5.1 Soil vs. Subsurface Geology Weighting Layers</title>
       <p>To quantify the differential importance of soils vs. subsurface
       geology layers for determining suitability two related data layers
       had to be calculated.</p>
@@ -1282,7 +1302,7 @@ template for more focused analysis.</p>
       <p>These layers were created in a custom R script using the
       following raster math, with their resulting outputs.</p>
       <sec id="soils-nb-article">
-        <title>2.5.1.1 Soils</title>
+        <title>3.5.1.1 Soils</title>
         <code language="markdown">```{r}
 # Where depth to bedrock (dtb) = 0cm, soil multiplier = 0 (no soil)
 # Where depth to dtb &gt;= 200cm, soil multiplier = 1 (Full depth of soil)
@@ -1297,7 +1317,7 @@ soilMultiplier = soilMultiplier/200
         </fig>
       </sec>
       <sec id="geology-nb-article">
-        <title>2.5.1.2 Geology</title>
+        <title>3.5.1.2 Geology</title>
         <code language="markdown">```{r}
 # Where dtb &lt; 200cm, geology multiplier = 0 (soil only)
 # Where dtb &gt;= 200cm, geology multiplier = dtb/200 (in units of relative soil depth)
@@ -1313,9 +1333,9 @@ geologyMultiplier = geologyMultiplier/200
     </sec>
   </sec>
   <sec id="other-data-layers-for-consideration-nb-article">
-    <title>2.6 Other Data Layers for Consideration</title>
+    <title>3.6 Other Data Layers for Consideration</title>
     <sec id="global-hydrologic-curve-numbergcn250-nb-article">
-      <title>2.6.1 Global Hydrologic Curve Number(GCN250)</title>
+      <title>3.6.1 Global Hydrologic Curve Number(GCN250)</title>
       <p>https://gee-community-catalog.org/projects/gcn250/?h=hydrologic</p>
       <disp-quote>
         <p>The GCN250 is a globally consistent, gridded dataset defining
@@ -1336,7 +1356,7 @@ geologyMultiplier = geologyMultiplier/200
       </disp-quote>
     </sec>
     <sec id="soil-properties-800m-nb-article">
-      <title>2.6.2 Soil Properties 800m</title>
+      <title>3.6.2 Soil Properties 800m</title>
       <p>https://gee-community-catalog.org/projects/soilprop/?h=</p>
       <disp-quote>
         <p>The data shown here were obtained by aggregating current
@@ -1392,7 +1412,7 @@ geologyMultiplier = geologyMultiplier/200
         </list-item>
       </list>
       <sec id="alternative-layers-nb-article">
-        <title>2.6.2.1 Alternative layers</title>
+        <title>3.6.2.1 Alternative layers</title>
         <p><ext-link ext-link-type="uri" xlink:href="https://gee-community-catalog.org/projects/gnatsgo/">gNATSGO
         (gridded National Soil Survey Geographic
         Database)</ext-link></p>
@@ -1453,7 +1473,7 @@ geologyMultiplier = geologyMultiplier/200
       </sec>
     </sec>
     <sec id="leaf-area-index-lai-nb-article">
-      <title>2.6.3 Leaf Area Index (LAI)</title>
+      <title>3.6.3 Leaf Area Index (LAI)</title>
       <p>Leaf Area Index (LAI) can be calculated from Landsat data (30 m
       resolution), as a proxy of land cover. LAI is a unitless index
       value which is calculated as a function of the Enhanced Vegetation
@@ -1467,7 +1487,7 @@ geologyMultiplier = geologyMultiplier/200
       on this scale will necessarily be a mosaic image, over roughly a
       week. For these reasons, a single LAI image should be viewed with
       some skepticism, and a seasonal mean or median LAI mosaic image
-      may be more desireable as a proxy for land cover.</p>
+      may be more desirable as a proxy for land cover.</p>
       <p>Code is available for calculating LAI from Landsat 8/9 imagery
       in my personal GEE scripts folder, which could be easily modified
       for purpose. Due to the large number of Landsat images involved
@@ -1475,7 +1495,7 @@ geologyMultiplier = geologyMultiplier/200
       LAI, Winter LAI, etc.). Additional post-processing of LAI images
       may be required outside of GEE.</p>
       <sec id="google-earth-engine-lai-javascript-code-nb-article">
-        <title>2.6.3.1 Google Earth Engine LAI Javascript Code</title>
+        <title>3.6.3.1 Google Earth Engine LAI Javascript Code</title>
         <preformat>var studyArea = ee.FeatureCollection(&quot;projects/ee-travisz09/assets/ATUR/WBDHU8_OuterBoundary_Project&quot;),
     landsat9 = ee.ImageCollection(&quot;LANDSAT/LC09/C02/T1_TOA&quot;);
 
@@ -1568,7 +1588,7 @@ print(lai);</preformat>
   </sec>
 </sec>
 <sec id="sec-conclusions-nb-article">
-  <title>3 Conclusion</title>
+  <title>4 Conclusion</title>
 </sec>
 <sec id="references-nb-article">
   <title>References</title>

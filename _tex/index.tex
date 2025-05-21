@@ -1,25 +1,27 @@
 % Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 \PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
 %
 \documentclass[
 ]{agujournal2019}
-
+\usepackage{xcolor}
 \usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
-  \usepackage{unicode-math}
+  \usepackage{unicode-math} % this also loads fontspec
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
 \usepackage{lmodern}
-\ifPDFTeX\else  
-    % xetex/luatex font selection
+\ifPDFTeX\else
+  % xetex/luatex font selection
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -37,9 +39,6 @@
 }{% if KOMA class
   \KOMAoptions{parskip=half}}
 \makeatother
-\usepackage{xcolor}
-\setlength{\emergencystretch}{3em} % prevent overfull lines
-\setcounter{secnumdepth}{5}
 % Make \paragraph and \subparagraph free-standing
 \makeatletter
 \ifx\paragraph\undefined\else
@@ -105,8 +104,7 @@
 \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
 
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
+\usepackage{longtable,booktabs,array}
 \usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
@@ -131,6 +129,20 @@
 % Set default figure placement to htbp
 \def\fps@figure{htbp}
 \makeatother
+
+
+
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+ 
+
 
 \usepackage{url} %this package should fix any errors with URLs in refs.
 \usepackage{lineno}
@@ -178,11 +190,9 @@
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
-
 \usepackage{bookmark}
-
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\urlstyle{same} % disable monospaced font for URLs
+\urlstyle{same}
 \hypersetup{
   pdftitle={Arizona Aquifer Recharge Suitability Analysis},
   pdfauthor={Travis Zalesky},
@@ -221,16 +231,26 @@ ground water.
 
 
 
-\subsection{Introduction}\label{introduction}
+\section{Update 5-21-25 (TCZ)}\label{update-5-21-25-tcz}
 
-\subsection{Data \& Methods}\label{sec-data-methods}
+\textbf{This analysis has been taken over by Ryan Lima who has developed
+the Soil Moisture Infiltration Index (SMII) and Subsurface Infiltration
+Index (SbII). This page is no longer being updated and is being
+maintained for archival purposes only. See
+\href{https://ryan3lima.github.io/ATUR-Thinning-to-enhance-recharge/}{ATUR
+Thinning to enhance Recharge} (private repository) for updated method
+details.}
+
+\section{Introduction}\label{introduction}
+
+\section{Data \& Methods}\label{sec-data-methods}
 
 \textbf{These methods and data layers are preliminary and subject to
 change}
 
-\subsubsection{Elevation}\label{elevation}
+\subsection{Elevation}\label{elevation}
 
-\paragraph{DEM}\label{dem}
+\subsubsection{DEM}\label{dem}
 
 Elevation and elevation derivatives from 30-m NASA SRTM. USGS 3-DEM
 (10m) product not suitable for full study area analysis due to (1) the
@@ -241,7 +261,7 @@ SRTM elevation sinks filled prior to calculating slope and aspect.
 
 \textbf{Should elevation be directly used in the suitability analysis?}
 
-\paragraph{Slope}\label{slope}
+\subsubsection{Slope}\label{slope}
 
 Slope derived from hydrologically conditioned (filled) 30-m SRTM layer
 using quadratic surface function and a fixed 30-m neighborhood. Slope
@@ -291,7 +311,7 @@ Output & Transformed\_SRTM\_slope \\
 
 \end{figure}%
 
-\paragraph{Aspect}\label{aspect}
+\subsubsection{Aspect}\label{aspect}
 
 Aspect calculated as with slope. Aspect reference point at N. Pole.
 
@@ -342,7 +362,7 @@ Output & Transformed\_SRTM\_aspect \\
 
 \end{figure}%
 
-\subsubsection{Precipitation}\label{precipitation}
+\subsection{Precipitation}\label{precipitation}
 
 PRISM normals, 800m resolution. Annual precipitation.
 
@@ -394,15 +414,15 @@ Output & Transformed\_PRISM\_ppt\_30yrnormal\_800m \\
 
 \end{figure}%
 
-\subsubsection{Vegetation
+\subsection{Vegetation
 Characteristics}\label{vegetation-characteristics}
 
-\paragraph{NLCD 2021 Total Canopy
+\subsubsection{NLCD 2021 Total Canopy
 Cover}\label{nlcd-2021-total-canopy-cover}
 
-\paragraph{Landfire}\label{landfire}
+\subsubsection{Landfire}\label{landfire}
 
-\subsubsection{Soil Hydrology}\label{soil-hydrology}
+\subsection{Soil Hydrology}\label{soil-hydrology}
 
 AZ\_Soil\_Hydric\_Group data layer
 
@@ -453,7 +473,7 @@ if drained. & 3 \\
 
 \emph{Transformed dataset} Transformed\_AZ\_Soil\_Hydric\_Group
 
-\subsubsection{Depth to Bedrock}\label{depth-to-bedrock}
+\subsection{Depth to Bedrock}\label{depth-to-bedrock}
 
 \textbf{There are 2 data layers which represent depth to bedrock and it
 is not clear which data layer is preferred!}
@@ -520,7 +540,7 @@ is not clear which data layer is preferred!}
 
 \end{figure}%
 
-\paragraph{Soil vs.~Subsurface Geology Weighting
+\subsubsection{Soil vs.~Subsurface Geology Weighting
 Layers}\label{soil-vs.-subsurface-geology-weighting-layers}
 
 To quantify the differential importance of soils vs.~subsurface geology
@@ -555,17 +575,17 @@ geology weighting layers.}
 These layers were created in a custom R script using the following
 raster math, with their resulting outputs.
 
-\subparagraph{Soils}\label{soils}
+\paragraph{Soils}\label{soils}
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}\{r\}}
-\InformationTok{\# Where depth to bedrock (dtb) = 0cm, soil multiplier = 0 (no soil)}
-\InformationTok{\# Where depth to dtb \textgreater{}= 200cm, soil multiplier = 1 (Full depth of soil)}
-\InformationTok{\# Intermediate depths = linear}
-\InformationTok{soilMultiplier = masked}
-\InformationTok{soilMultiplier[soilMultiplier \textgreater{} 200] = 200  \# Fix upper limit of soil depth = 200 cm}
-\InformationTok{soilMultiplier = soilMultiplier/200}
+\CommentTok{\# Where depth to bedrock (dtb) = 0cm, soil multiplier = 0 (no soil)}
+\CommentTok{\# Where depth to dtb \textgreater{}= 200cm, soil multiplier = 1 (Full depth of soil)}
+\CommentTok{\# Intermediate depths = linear}
+\NormalTok{soilMultiplier }\OtherTok{=}\NormalTok{ masked}
+\NormalTok{soilMultiplier[soilMultiplier }\SpecialCharTok{\textgreater{}} \DecValTok{200}\NormalTok{] }\OtherTok{=} \DecValTok{200}  \CommentTok{\# Fix upper limit of soil depth = 200 cm}
+\NormalTok{soilMultiplier }\OtherTok{=}\NormalTok{ soilMultiplier}\SpecialCharTok{/}\DecValTok{200}
 \InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}}
 \end{Highlighting}
 \end{Shaded}
@@ -580,16 +600,16 @@ raster math, with their resulting outputs.
 
 \end{figure}%
 
-\subparagraph{Geology}\label{geology}
+\paragraph{Geology}\label{geology}
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}\{r\}}
-\InformationTok{\# Where dtb \textless{} 200cm, geology multiplier = 0 (soil only)}
-\InformationTok{\# Where dtb \textgreater{}= 200cm, geology multiplier = dtb/200 (in units of relative soil depth)}
-\InformationTok{geologyMultiplier = masked}
-\InformationTok{geologyMultiplier[geologyMultiplier \textless{} 200] = 0}
-\InformationTok{geologyMultiplier = geologyMultiplier/200}
+\CommentTok{\# Where dtb \textless{} 200cm, geology multiplier = 0 (soil only)}
+\CommentTok{\# Where dtb \textgreater{}= 200cm, geology multiplier = dtb/200 (in units of relative soil depth)}
+\NormalTok{geologyMultiplier }\OtherTok{=}\NormalTok{ masked}
+\NormalTok{geologyMultiplier[geologyMultiplier }\SpecialCharTok{\textless{}} \DecValTok{200}\NormalTok{] }\OtherTok{=} \DecValTok{0}
+\NormalTok{geologyMultiplier }\OtherTok{=}\NormalTok{ geologyMultiplier}\SpecialCharTok{/}\DecValTok{200}
 \InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}}
 \end{Highlighting}
 \end{Shaded}
@@ -604,10 +624,10 @@ raster math, with their resulting outputs.
 
 \end{figure}%
 
-\subsubsection{Other Data Layers for
+\subsection{Other Data Layers for
 Consideration}\label{other-data-layers-for-consideration}
 
-\paragraph{Global Hydrologic Curve
+\subsubsection{Global Hydrologic Curve
 Number(GCN250)}\label{global-hydrologic-curve-numbergcn250}
 
 https://gee-community-catalog.org/projects/gcn250/?h=hydrologic
@@ -627,7 +647,7 @@ intensity and duration, total rainfall, soil moisture conditions, cover
 density, stage of growth, and temperature{[}.{]} \emph{emphasis mine}
 \end{quote}
 
-\paragraph{Soil Properties 800m}\label{soil-properties-800m}
+\subsubsection{Soil Properties 800m}\label{soil-properties-800m}
 
 https://gee-community-catalog.org/projects/soilprop/?h=
 
@@ -680,7 +700,7 @@ properties at the statewide scale}. \emph{emphasis mine}
   \end{itemize}
 \end{itemize}
 
-\subparagraph{Alternative layers}\label{alternative-layers}
+\paragraph{Alternative layers}\label{alternative-layers}
 
 \href{https://gee-community-catalog.org/projects/gnatsgo/}{gNATSGO
 (gridded National Soil Survey Geographic Database)}
@@ -739,7 +759,7 @@ Probabilistic Soil Properties US}
   \end{itemize}
 \end{itemize}
 
-\paragraph{Leaf Area Index (LAI)}\label{leaf-area-index-lai}
+\subsubsection{Leaf Area Index (LAI)}\label{leaf-area-index-lai}
 
 Leaf Area Index (LAI) can be calculated from Landsat data (30 m
 resolution), as a proxy of land cover. LAI is a unitless index value
@@ -753,7 +773,7 @@ it takes 6 days to photograph the entire study area. Therefore, any LAI
 analysis on this scale will necessarily be a mosaic image, over roughly
 a week. For these reasons, a single LAI image should be viewed with some
 skepticism, and a seasonal mean or median LAI mosaic image may be more
-desireable as a proxy for land cover.
+desirable as a proxy for land cover.
 
 Code is available for calculating LAI from Landsat 8/9 imagery in my
 personal GEE scripts folder, which could be easily modified for purpose.
@@ -761,7 +781,7 @@ Due to the large number of Landsat images involved the study period must
 be narrowed prior to analysis (i.e.~July LAI, Winter LAI, etc.).
 Additional post-processing of LAI images may be required outside of GEE.
 
-\subparagraph{Google Earth Engine LAI Javascript
+\paragraph{Google Earth Engine LAI Javascript
 Code}\label{google-earth-engine-lai-javascript-code}
 
 \begin{Shaded}
@@ -856,10 +876,10 @@ Code}\label{google-earth-engine-lai-javascript-code}
 \end{Highlighting}
 \end{Shaded}
 
-\subsection{Conclusion}\label{sec-conclusions}
+\section{Conclusion}\label{sec-conclusions}
 
-\subsection*{References}\label{references}
-\addcontentsline{toc}{subsection}{References}
+\section*{References}\label{references}
+\addcontentsline{toc}{section}{References}
 
 
 
