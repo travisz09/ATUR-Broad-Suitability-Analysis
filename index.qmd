@@ -28,6 +28,8 @@ bibliography: references.bib
 number-sections: true
 jupyter: python3
 ---
+## Update 5-21-25 (TCZ)
+**This analysis has been taken over by Ryan Lima who has developed the Soil Moisture Infiltration Index (SMII) and Subsurface Infiltration Index (SbII). This page is no longer being updated and is being maintained for archival purposes only. See [ATUR Thinning to enhance Recharge](https://ryan3lima.github.io/ATUR-Thinning-to-enhance-recharge/) (private repository) for updated method details.**
 
 ## Introduction
 
@@ -235,7 +237,7 @@ https://gee-community-catalog.org/projects/soilprop/?h=
   + Probabilistic model (increased uncertainty)
 
 #### Leaf Area Index (LAI)
-Leaf Area Index (LAI) can be calculated from Landsat data (30 m resolution), as a proxy of land cover. LAI is a unitless index value which is calculated as a function of the Enhanced Vegetation Index (ENVI) and typically ranges from 0 to 3.5 (*citation needed*). LAI can be calculated efficiently over a large spatial scale in Google Earth Engine (GEE) using the Javascript API, however LAI will vary seasonally, with updated Landsat data available every 8-days. Additionally, due to our large study area, as well as the logistics of Landsat orbital paths, it takes 6 days to photograph the entire study area. Therefore, any LAI analysis on this scale will necessarily be a mosaic image, over roughly a week. For these reasons, a single LAI image should be viewed with some skepticism, and a seasonal mean or median LAI mosaic image may be more desireable as a proxy for land cover.
+Leaf Area Index (LAI) can be calculated from Landsat data (30 m resolution), as a proxy of land cover. LAI is a unitless index value which is calculated as a function of the Enhanced Vegetation Index (ENVI) and typically ranges from 0 to 3.5 (*citation needed*). LAI can be calculated efficiently over a large spatial scale in Google Earth Engine (GEE) using the Javascript API, however LAI will vary seasonally, with updated Landsat data available every 8-days. Additionally, due to our large study area, as well as the logistics of Landsat orbital paths, it takes 6 days to photograph the entire study area. Therefore, any LAI analysis on this scale will necessarily be a mosaic image, over roughly a week. For these reasons, a single LAI image should be viewed with some skepticism, and a seasonal mean or median LAI mosaic image may be more desirable as a proxy for land cover.
 
 Code is available for calculating LAI from Landsat 8/9 imagery in my personal GEE scripts folder, which could be easily modified for purpose. Due to the large number of Landsat images involved the study period must be narrowed prior to analysis (i.e. July LAI, Winter LAI, etc.). Additional post-processing of LAI images may be required outside of GEE.
 
